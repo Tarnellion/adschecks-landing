@@ -58,6 +58,7 @@
         action="https://formspree.io/f/xojakbla"
         method="POST"
       >
+        <input type="text" name="_gotcha" style="display:none">
         <input
           type="email"
           name="email"
@@ -70,6 +71,11 @@
           Request early access
         </button>
       </form>
+
+      <div class="form-success" hidden>
+        <strong>Thanks!</strong><br />
+        We’ll invite you to early access as soon as AdsChecks is ready.
+      </div>
 
       <p class="form-hint">
         No spam. Early access only.
@@ -99,4 +105,25 @@
 </footer>
 
 </body>
+<script>
+  const form = document.querySelector('.early-access-form');
+  const success = document.querySelector('.form-success');
+
+  if (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        success.hidden = false;
+      }
+    });
+  }
+</script>
 </html>
