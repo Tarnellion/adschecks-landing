@@ -178,3 +178,259 @@
     width: 100%;
   }
 }
+
+/* =========================
+   Demo report (HTML mock)
+========================= */
+
+.demo {
+  margin-top: 64px;
+}
+
+.demo__header {
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+.demo__header h2 {
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+
+.demo__sub {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.report {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+}
+
+/* Top bar */
+.report__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.report__title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.report__meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.report__brand {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* KPI cards */
+.report__kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.kpi {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.kpi__label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.kpi__value {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.kpi__value--text {
+  font-size: 16px;
+}
+
+.kpi__value--danger {
+  color: #dc2626;
+}
+
+.kpi__hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Grid */
+.report__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* Table */
+.report__table {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.table__head,
+.table__row {
+  display: grid;
+  grid-template-columns: 0.6fr 1fr 2fr 1.2fr 1fr;
+  gap: 10px;
+  padding: 12px 14px;
+  align-items: center;
+}
+
+.table__head {
+  background: #f9fafb;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.table__row {
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* Pills */
+.pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+}
+
+.pill--ok {
+  color: #166534;
+  background: rgba(22,163,74,.1);
+}
+
+.pill--bad {
+  color: #991b1b;
+  background: rgba(220,38,38,.1);
+}
+
+.pill--warn {
+  color: #92400e;
+  background: rgba(245,158,11,.15);
+}
+
+/* Proof */
+.report__proof {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.proof__title {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.proof__cards {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.shot {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.shot__badge {
+  font-size: 12px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  background: #f9fafb;
+}
+
+.shot__frame {
+  height: 150px;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+.shot--mobile .shot__frame {
+  background: linear-gradient(135deg, #ecfeff, #f8fafc);
+}
+
+.proof__hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* Footer note */
+.report__foot {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .report__kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .report__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proof__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .table__head,
+  .table__row {
+    grid-template-columns: 0.6fr 1fr 2fr 1.2fr;
+  }
+
+  .table__head div:nth-child(5),
+  .table__row div:nth-child(5) {
+    display: none;
+  }
+}
+/* =========================
+   Mobile form fix (iOS Safari)
+========================= */
+
+@media (max-width: 600px) {
+  .early-access-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .early-access-form input,
+  .early-access-form button {
+    width: 100%;
+  }
+}
