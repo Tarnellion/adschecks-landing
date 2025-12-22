@@ -232,11 +232,12 @@
 
 .report__brand {
   font-size: 12px;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid var(--border);
   color: var(--muted);
-  white-space: nowrap;
+  background: #f9fafb;
+  align-self: flex-start;
 }
 
 /* KPI cards */
