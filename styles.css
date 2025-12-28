@@ -870,6 +870,7 @@ li {
     letter-spacing: 0.08em;
     font-size: var(--type-xs);
     white-space: nowrap;
+    padding: var(--space-12);
 }
 
 .table__row {
@@ -1040,6 +1041,7 @@ li {
     .table__head,
     .table__row {
         min-width: 560px;
+        align-items: flex-start;
     }
 
     .report__proof,
