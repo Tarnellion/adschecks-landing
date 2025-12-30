@@ -1,3 +1,5 @@
-.vscode/
-Todo.md
-AGENTS.md
+node_modules/
+.playwright/
+test-results/
+playwright-report/
+*.log
