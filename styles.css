@@ -1139,6 +1139,15 @@ input[type='email']:focus {
     min-width: 0;
 }
 
+.consent a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.consent a:hover {
+    color: var(--accent-strong);
+}
+
 .form-status {
     font-size: var(--type-small);
     min-height: var(--space-24);

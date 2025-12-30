@@ -78,6 +78,15 @@
                             AdsChecks inspects live pages and documents where ad slots appear. The output is a technical report
                             with location, device context, and visual evidence for each check.
                         </p>
+                        <!-- 
+                            Allowed CTAs (MVP compliance):
+                            - Request early access
+                            - Request walkthrough
+                            - Discuss use case
+                            
+                            Prohibited CTAs:
+                            - Get started, Book a demo, Start using, Trial, Subscribe
+                        -->
                         <div class="hero__actions">
                             <a class="btn" href="#early-access">Request early access</a>
                             <a class="btn btn--ghost" href="#report-preview">Report preview</a>
@@ -406,7 +415,7 @@
                         </label>
                         <label class="consent">
                             <input type="checkbox" name="consent" required />
-                            <span>I agree to the processing of my data for early access communication.</span>
+                            <span>I agree to the processing of my data for early access communication. See our <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</span>
                         </label>
                         <button class="btn" type="submit">Request early access</button>
                         <p class="form-status" data-form-status aria-live="polite"></p>
@@ -420,6 +429,7 @@
                 <div>
                     <div class="brand">AdsChecks</div>
                     <p class="muted">Ad slot verification with proof-first reporting.</p>
+                    <p class="muted" style="margin-top: 0.5rem; font-size: 0.85rem;">MVP / Early Access · No commercial activity</p>
                 </div>
                 <div class="footer__links">
                     <a href="/privacy-policy/">Privacy Policy</a>
