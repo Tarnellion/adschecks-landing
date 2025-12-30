@@ -3,3 +3,30 @@ node_modules/
 test-results/
 playwright-report/
 *.log
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Package manager lock files (optional - uncomment if you don't want to commit them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Internal working files
+AGENTS.md
+Todo.md
+README.md
+package.json
+playwright.config.js
+tests/

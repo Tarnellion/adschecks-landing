@@ -542,6 +542,7 @@ li {
 
 .hero__actions > * {
     min-width: 0;
+    width: 100%;
 }
 
 .btn {
