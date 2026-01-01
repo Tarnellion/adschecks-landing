@@ -75,8 +75,8 @@
                         <p class="eyebrow">Ad slot verification</p>
                         <h1>Verify ad placement across geo and device with technical proof.</h1>
                         <p class="lead">
-                            AdsChecks inspects live pages and documents where ad slots appear. The output is a technical report
-                            with location, device context, and visual evidence for each check.
+                            AdsChecks runs page checks to verify ad slot placement. Each page check validates up to 5 slots per page load.
+                            The output is a technical report with location, device context, and visual evidence.
                         </p>
                         <!-- 
                             Allowed CTAs (MVP compliance):
@@ -107,12 +107,16 @@
                 <div class="container">
                     <div class="hero__meta">
                         <div class="meta-card">
+                            <span class="meta-title">Unit</span>
+                            <span class="meta-value">Page checks per month</span>
+                        </div>
+                        <div class="meta-card">
                             <span class="meta-title">Coverage</span>
                             <span class="meta-value">GEO + device + slot</span>
                         </div>
                         <div class="meta-card">
                             <span class="meta-title">Output</span>
-                            <span class="meta-value">Structured report + visuals</span>
+                            <span class="meta-value">Evidence bundle (ZIP)</span>
                         </div>
                         <div class="meta-card">
                             <span class="meta-title">Tone</span>
@@ -172,9 +176,9 @@
                         <div class="list-card">
                             <h3>Evidence bundle</h3>
                             <ul>
-                                <li>Structured report output</li>
-                                <li>Visual proof for each slot</li>
-                                <li>Audit trail for review</li>
+                                <li>Screenshots for each slot</li>
+                                <li>JSON metadata and timestamps</li>
+                                <li>ZIP download format</li>
                             </ul>
                         </div>
                         <div class="list-card">
@@ -197,21 +201,21 @@
                             <div class="step__index">01</div>
                             <div>
                                 <h3>Define targets</h3>
-                                <p>Provide URLs and the ad slots you want verified, along with required geographies.</p>
+                                <p>Provide URLs and the ad slots you want verified (up to 5 slots per page), along with required geographies.</p>
                             </div>
                         </div>
                         <div class="step">
                             <div class="step__index">02</div>
                             <div>
-                                <h3>Run checks</h3>
-                                <p>AdsChecks runs slot verification across geo/device combinations and captures evidence.</p>
+                                <h3>Run page check</h3>
+                                <p>AdsChecks loads the page and verifies all specified slots across geo/device combinations. Each page load is one page check.</p>
                             </div>
                         </div>
                         <div class="step">
                             <div class="step__index">03</div>
                             <div>
-                                <h3>Review report</h3>
-                                <p>Get a structured report with status, metadata, and visuals that support audit workflows.</p>
+                                <h3>Review evidence bundle</h3>
+                                <p>Download screenshots, JSON metadata, and timestamps (ZIP). Reports include status flags and visual proof for each slot.</p>
                             </div>
                         </div>
                     </div>
@@ -244,8 +248,8 @@
                         <div>
                             <h2>Report preview</h2>
                             <p class="section__lead">
-                                A technical snapshot of what the report includes. Values are illustrative and represent structure
-                                rather than live data.
+                                A technical snapshot of what the report includes. Each page check can validate up to 5 slots per page.
+                                Values are illustrative and represent structure rather than live data.
                             </p>
                         </div>
                         <div class="tag">Sample output</div>
