@@ -17,13 +17,6 @@
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Instrument+Sans:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap"
-            rel="stylesheet"
-        />
-
         <link rel="stylesheet" href="styles.css" />
 
         <meta property="og:type" content="website" />
@@ -43,10 +36,9 @@
         />
     </head>
     <body>
-        <a class="skip-link" href="#main">Skip to content</a>
-        <div class="decor-layer" aria-hidden="true"></div>
+        <a class="skip" href="#main">Skip to content</a>
 
-        <header class="site-header">
+        <header class="header">
             <div class="container header__inner">
                 <div class="brand">AdsChecks</div>
                 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
@@ -60,7 +52,6 @@
                     <a href="#what-we-check">What we check</a>
                     <a href="#how-it-works">How it works</a>
                     <a href="#use-cases">Use cases</a>
-                    <a href="#report-preview">Report preview</a>
                     <span class="nav-divider" aria-hidden="true"></span>
                     <a href="#early-access" class="nav__cta">Early access</a>
                 </nav>
@@ -69,94 +60,171 @@
         <div class="nav-overlay" aria-hidden="true"></div>
 
         <main id="main">
-            <section id="hero" class="section hero">
+            <section id="hero" class="hero">
                 <div class="container hero__inner">
-                    <div class="hero__content">
-                        <p class="eyebrow">Ad slot verification</p>
-                        <h1>Verify ad placement across geo and device with technical proof.</h1>
+                    <div class="hero__copy">
+                        <p class="eyebrow">Ad slot verification & evidence</p>
+                        <h1>Verify what’s on the page at the time of the check.</h1>
                         <p class="lead">
-                            AdsChecks runs page checks to verify ad slot placement. Each page check validates up to 5 slots per page load.
-                            The output is a technical report with location, device context, and visual evidence.
+                            A <span class="pill pill--ink">verified page</span> is one page load that validates up to
+                            <span class="pill pill--ink">5 slots</span>. Each verified page produces statuses, screenshots,
+                            JSON metadata, and a timestamped evidence bundle.
                         </p>
-                        <!-- 
-                            Allowed CTAs (MVP compliance):
-                            - Request early access
-                            - Request walkthrough
-                            - Discuss use case
-                            
-                            Prohibited CTAs:
-                            - Get started, Book a demo, Start using, Trial, Subscribe
-                        -->
+
                         <div class="hero__actions">
                             <a class="btn" href="#early-access">Request early access</a>
-                            <a class="btn btn--ghost" href="#report-preview">Report preview</a>
+                            <a class="btn btn--ghost" href="#how-it-works">How it works</a>
                         </div>
+
+                        <p class="fineprint">Map view is illustrative and uses an animated SVG layer.</p>
                     </div>
-                    <div class="hero__media">
-                        <img
-                            class="hero__graphic"
-                            src="/assets/graphics/hero-graphic.png"
-                            alt="Illustration of dashboards across devices"
-                            loading="lazy"
-                        />
+
+                    <div class="hero__viz map-viz" aria-label="Global verification map">
+                        <div class="map-viz__inner">
+                            <div class="map-viz__map" aria-hidden="true"></div>
+                            <span class="sr-only">World map for geo verification coverage</span>
+
+                            <div class="map-viz__line line-1" aria-hidden="true"></div>
+                            <div class="map-viz__line line-2" aria-hidden="true"></div>
+                            <div class="map-viz__line line-3" aria-hidden="true"></div>
+                            <div class="map-viz__line line-4" aria-hidden="true"></div>
+
+                            <div class="map-viz__location loc-ny is-track" aria-hidden="true">
+                                <span class="map-viz__point"></span>
+                                <span class="map-viz__city">New York</span>
+                            </div>
+                            <div class="map-viz__location loc-lon is-track" aria-hidden="true">
+                                <span class="map-viz__point"></span>
+                                <span class="map-viz__city">London</span>
+                            </div>
+                            <div class="map-viz__location loc-sgp is-track" aria-hidden="true">
+                                <span class="map-viz__point"></span>
+                                <span class="map-viz__city">Singapore</span>
+                            </div>
+                            <div class="map-viz__location loc-tok is-track" aria-hidden="true">
+                                <span class="map-viz__point"></span>
+                                <span class="map-viz__city">Tokyo</span>
+                            </div>
+                            <div class="map-viz__location loc-syd" aria-hidden="true">
+                                <span class="map-viz__point"></span>
+                                <span class="map-viz__city">Sydney</span>
+                            </div>
+
+                            <div class="map-viz__pointer ptr-1" data-from="loc-lon" data-to="b1" data-corner="auto" aria-hidden="true">
+                                <span class="map-viz__pointer-dot"></span>
+                                <span class="map-viz__pointer-beam"></span>
+                            </div>
+                            <div class="map-viz__pointer ptr-2" data-from="loc-tok" data-to="b2" data-corner="auto" aria-hidden="true">
+                                <span class="map-viz__pointer-dot"></span>
+                                <span class="map-viz__pointer-beam"></span>
+                            </div>
+                            <div class="map-viz__pointer ptr-3" data-from="loc-ny" data-to="b3" data-corner="auto" aria-hidden="true">
+                                <span class="map-viz__pointer-dot"></span>
+                                <span class="map-viz__pointer-beam"></span>
+                            </div>
+                            <div class="map-viz__pointer ptr-4" data-from="loc-sgp" data-to="b4" data-corner="auto" aria-hidden="true">
+                                <span class="map-viz__pointer-dot"></span>
+                                <span class="map-viz__pointer-beam"></span>
+                            </div>
+
+                            <div class="map-viz__browser b1" aria-hidden="true">
+                                <div class="map-viz__browser-head">
+                                    <span></span><span></span><span></span>
+                                    <span class="map-viz__browser-mode map-viz__browser-mode--desktop">Desktop</span>
+                                </div>
+                                <div class="map-viz__browser-body">
+                                    <div class="map-viz__browser-row w90"></div>
+                                    <div class="map-viz__browser-row w72"></div>
+                                    <div class="map-viz__scanline"></div>
+                                    <div class="map-viz__slot slot-main"><span>SLOT 01 · 970×250</span></div>
+                                </div>
+                            </div>
+                            <div class="map-viz__browser map-viz__browser--mobile b2" aria-hidden="true">
+                                <div class="map-viz__browser-head">
+                                    <span></span><span></span><span></span>
+                                    <span class="map-viz__browser-mode map-viz__browser-mode--mobile">Mobile</span>
+                                </div>
+                                <div class="map-viz__browser-body">
+                                    <div class="map-viz__browser-row w86"></div>
+                                    <div class="map-viz__browser-row w64"></div>
+                                    <div class="map-viz__scanline"></div>
+                                    <div class="map-viz__slot slot-mobile-top"><span>MOBILE SLOT · 300×250</span></div>
+                                    <div class="map-viz__slot slot-mobile-bottom"><span>MOBILE SLOT · 320×100</span></div>
+                                </div>
+                            </div>
+                            <div class="map-viz__browser b3" aria-hidden="true">
+                                <div class="map-viz__browser-head">
+                                    <span></span><span></span><span></span>
+                                    <span class="map-viz__browser-mode map-viz__browser-mode--desktop">Desktop</span>
+                                </div>
+                                <div class="map-viz__browser-body">
+                                    <div class="map-viz__browser-row w88"></div>
+                                    <div class="map-viz__browser-row w70"></div>
+                                    <div class="map-viz__scanline"></div>
+                                    <div class="map-viz__slot slot-square"><span>SLOT 03 · 336×280</span></div>
+                                </div>
+                            </div>
+                            <div class="map-viz__browser map-viz__browser--mobile b4" aria-hidden="true">
+                                <div class="map-viz__browser-head">
+                                    <span></span><span></span><span></span>
+                                    <span class="map-viz__browser-mode map-viz__browser-mode--mobile">Mobile</span>
+                                </div>
+                                <div class="map-viz__browser-body">
+                                    <div class="map-viz__browser-row w90"></div>
+                                    <div class="map-viz__browser-row w76"></div>
+                                    <div class="map-viz__scanline"></div>
+                                    <div class="map-viz__slot slot-mobile-top"><span>MOBILE SLOT · 300×250</span></div>
+                                    <div class="map-viz__slot slot-mobile-bottom"><span>MOBILE SLOT · 320×100</span></div>
+                                </div>
+                            </div>
+
+                            <div class="map-viz__ambient-scan" aria-hidden="true"></div>
+                            <div class="map-viz__noise" aria-hidden="true"></div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="hero-meta">
+            <section id="problem" class="section section--alt">
                 <div class="container">
-                    <div class="hero__meta">
-                        <div class="meta-card">
-                            <span class="meta-title">Unit</span>
-                            <span class="meta-value">Page checks per month</span>
+                    <div class="section__head">
+                        <h2>Problem</h2>
+                        <div class="muted mono">Why proof matters</div>
+                    </div>
+                    <div class="cards">
+                        <div class="case">
+                            <div class="case__head">
+                                <div class="case__role">Geo uncertainty</div>
+                                <div class="case__tag">Coverage</div>
+                            </div>
+                            <p>Ad slots can render differently across countries, devices, and sessions.</p>
                         </div>
-                        <div class="meta-card">
-                            <span class="meta-title">Coverage</span>
-                            <span class="meta-value">GEO + device + slot</span>
+                        <div class="case">
+                            <div class="case__head">
+                                <div class="case__role">Disputes without evidence</div>
+                                <div class="case__tag">Trust</div>
+                            </div>
+                            <p>Without consistent proof, QA findings are hard to share, compare, or resolve.</p>
                         </div>
-                        <div class="meta-card">
-                            <span class="meta-title">Output</span>
-                            <span class="meta-value">Evidence bundle (ZIP)</span>
-                        </div>
-                        <div class="meta-card">
-                            <span class="meta-title">Tone</span>
-                            <span class="meta-value">Technical, audit-ready</span>
+                        <div class="case">
+                            <div class="case__head">
+                                <div class="case__role">Operational drag</div>
+                                <div class="case__tag">Time</div>
+                            </div>
+                            <p>Manual checks take time and still leave gaps in coverage and repeatability.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="problem" class="section">
+            <section id="what-we-check" class="section">
                 <div class="container">
-                    <h2>Problem: ad slots are hard to verify at scale</h2>
-                    <p class="section__lead">
-                        Manual QA is slow, and screenshots without context are hard to audit. Teams need a consistent way to verify
-                        placement across locations and devices, with clear evidence of what was shown.
-                    </p>
-                    <div class="grid grid--3">
-                        <div class="card">
-                            <h3>Opaque placement</h3>
-                            <p>Ad slots render differently by geography, device type, and layout variants.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Fragmented proof</h3>
-                            <p>Unstructured screenshots make it difficult to compare checks or track issues.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Operational drag</h3>
-                            <p>Manual verification consumes time and still leaves gaps in coverage.</p>
-                        </div>
+                    <div class="section__head">
+                        <h2>What we check</h2>
+                        <div class="muted">Each check ties to a slot, device, and location with consistent output.</div>
                     </div>
-                </div>
-            </section>
 
-            <section id="what-we-check" class="section section--alt">
-                <div class="container">
-                    <h2>What we check</h2>
-                    <p class="section__lead">
-                        Every check ties back to a specific slot, device, and location with a consistent report format.
-                    </p>
-                    <div class="grid grid--2">
+                    <div class="grid2">
                         <div class="list-card">
                             <h3>Slot presence and visibility</h3>
                             <ul>
@@ -178,7 +246,7 @@
                             <ul>
                                 <li>Screenshots for each slot</li>
                                 <li>JSON metadata and timestamps</li>
-                                <li>ZIP download format</li>
+                                <li>Export-ready ZIP bundle</li>
                             </ul>
                         </div>
                         <div class="list-card">
@@ -186,255 +254,129 @@
                             <ul>
                                 <li>Repeatable checks</li>
                                 <li>Clear issue flags</li>
-                                <li>Export-ready structure</li>
+                                <li>Structured results</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="how-it-works" class="section">
+            <section id="how-it-works" class="section section--alt">
                 <div class="container">
-                    <h2>How it works</h2>
-                    <div class="steps">
-                        <div class="step">
-                            <div class="step__index">01</div>
-                            <div>
-                                <h3>Define targets</h3>
-                                <p>Provide URLs and the ad slots you want verified (up to 5 slots per page), along with required geographies.</p>
+                    <div class="section__head">
+                        <h2>How it works</h2>
+                        <div class="muted mono">Template → Run → Evidence</div>
+                    </div>
+
+                    <div class="flow">
+                        <div class="flow__item">
+                            <div class="flow__n">01 · Template</div>
+                            <p class="fine">Provide URLs, slot selectors, device, GEO, and optional proxy routing settings.</p>
+                            <div class="mini">
+                                <div><span class="muted mono">URLs</span> · List</div>
+                                <div><span class="muted mono">Slots</span> · Up to 5</div>
+                                <div><span class="muted mono">GEO</span> · ISO codes</div>
                             </div>
                         </div>
-                        <div class="step">
-                            <div class="step__index">02</div>
-                            <div>
-                                <h3>Run page check</h3>
-                                <p>AdsChecks loads the page and verifies all specified slots across geo/device combinations. Each page load is one page check.</p>
+                        <div class="flow__item">
+                            <div class="flow__n">02 · Run</div>
+                            <p class="fine">Run a manual check or schedule it. Each page load becomes one verified page.</p>
+                            <div class="mini">
+                                <div><span class="muted mono">Mode</span> · Manual / Weekly</div>
+                                <div><span class="muted mono">Device</span> · Desktop / Mobile</div>
+                                <div><span class="muted mono">Proxy</span> · Optional</div>
                             </div>
                         </div>
-                        <div class="step">
-                            <div class="step__index">03</div>
-                            <div>
-                                <h3>Review evidence bundle</h3>
-                                <p>Download screenshots, JSON metadata, and timestamps (ZIP). Reports include status flags and visual proof for each slot.</p>
+                        <div class="flow__item">
+                            <div class="flow__n">03 · Evidence</div>
+                            <p class="fine">Output includes slot statuses, screenshots, JSON metadata, and a timestamped evidence bundle.</p>
+                            <div class="mini">
+                                <div><span class="muted mono">Artifacts</span> · Screens + JSON</div>
+                                <div><span class="muted mono">Timestamp</span> · Included</div>
+                                <div><span class="muted mono">Structure</span> · Consistent</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="use-cases" class="section section--alt">
+            <section id="use-cases" class="section">
                 <div class="container">
-                    <h2>Use cases</h2>
-                    <div class="grid grid--3">
-                        <div class="card">
-                            <h3>Affiliate QA</h3>
-                            <p>Confirm placement compliance across affiliate networks and regional placements.</p>
+                    <div class="section__head">
+                        <h2>Use cases</h2>
+                        <div class="muted">Teams that need repeatable verification with proof.</div>
+                    </div>
+                    <div class="cards">
+                        <div class="case">
+                            <div class="case__head">
+                                <div class="case__role">Affiliate QA</div>
+                                <div class="case__tag">Ops</div>
+                            </div>
+                            <p>Confirm placement compliance across networks and regional placements.</p>
                         </div>
-                        <div class="card">
-                            <h3>Media buying QA</h3>
+                        <div class="case">
+                            <div class="case__head">
+                                <div class="case__role">Media buying QA</div>
+                                <div class="case__tag">Spend</div>
+                            </div>
                             <p>Verify high-value placements before spend escalates.</p>
                         </div>
-                        <div class="card">
-                            <h3>Publisher audits</h3>
+                        <div class="case">
+                            <div class="case__head">
+                                <div class="case__role">Publisher audits</div>
+                                <div class="case__tag">Delivery</div>
+                            </div>
                             <p>Document slot delivery and layout integrity with consistent proof.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="report-preview" class="section">
-                <div class="container">
-                    <div class="section__header">
-                        <div>
-                            <h2>Report preview</h2>
-                            <p class="section__lead">
-                                A technical snapshot of what the report includes. Each page check can validate up to 5 slots per page.
-                                Values are illustrative and represent structure rather than live data.
-                            </p>
-                        </div>
-                        <div class="tag">Sample output</div>
-                    </div>
-
-                    <div class="report">
-                        <div class="report__summary">
-                            <div>
-                                <div class="report__title">Ad Slot Verification Report</div>
-                                <div class="report__meta">Campaign: Global Display Audit · June 2025</div>
-                            </div>
-                            <div class="report__meta">Generated by AdsChecks</div>
-                        </div>
-                        <div class="report__kpis">
-                            <div class="kpi">
-                                <div class="kpi__label">GEO checks</div>
-                                <div class="kpi__value">6</div>
-                            </div>
-                            <div class="kpi">
-                                <div class="kpi__label">Devices</div>
-                                <div class="kpi__value">Desktop + Mobile</div>
-                            </div>
-                            <div class="kpi">
-                                <div class="kpi__label">Slots verified</div>
-                                <div class="kpi__value">18</div>
-                            </div>
-                            <div class="kpi">
-                                <div class="kpi__label">Flags</div>
-                                <div class="kpi__value kpi__value--alert">3</div>
-                            </div>
-                        </div>
-                        <div class="report__grid">
-                            <div class="report__table">
-                                <div class="table__head">
-                                    <div>GEO</div>
-                                    <div>Device</div>
-                                    <div>Slot</div>
-                                    <div>Status</div>
-                                    <div>Proof</div>
-                                </div>
-                                <div class="table__row">
-                                    <div class="mono">DE</div>
-                                    <div>Desktop</div>
-                                    <div>Header banner</div>
-                                    <div><span class="pill pill--ok">Visible</span></div>
-                                    <div><span class="proof">Screenshot</span></div>
-                                </div>
-                                <div class="table__row">
-                                    <div class="mono">FR</div>
-                                    <div>Mobile</div>
-                                    <div>In-content</div>
-                                    <div><span class="pill pill--warn">Partial</span></div>
-                                    <div><span class="proof">Screenshot</span></div>
-                                </div>
-                                <div class="table__row">
-                                    <div class="mono">BR</div>
-                                    <div>Desktop</div>
-                                    <div>Sidebar</div>
-                                    <div><span class="pill pill--bad">Missing</span></div>
-                                    <div><span class="proof">Screenshot</span></div>
-                                </div>
-                            </div>
-                            <div class="report__proof">
-                                <div class="proof__title">Visual proof samples</div>
-                                <div class="proof__stack">
-                                    <div class="proof-card">
-                                        <div class="proof-card__badge">Desktop · DE</div>
-                                        <div class="proof-card__frame">
-                                            <div class="mock-page">
-                                                <div class="mock-header"></div>
-                                                <div class="mock-ad"></div>
-                                                <div class="mock-lines">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span class="short"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="proof-card">
-                                        <div class="proof-card__badge">Mobile · FR</div>
-                                        <div class="proof-card__frame proof-card__frame--mobile">
-                                            <div class="mock-page">
-                                                <div class="mock-header small"></div>
-                                                <div class="mock-lines">
-                                                    <span></span>
-                                                    <span class="short"></span>
-                                                </div>
-                                                <div class="mock-ad"></div>
-                                                <div class="mock-lines">
-                                                    <span></span>
-                                                    <span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="proof-card proof-card--extra">
-                                        <div class="proof-card__badge">Desktop · UK</div>
-                                        <div class="proof-card__frame">
-                                            <div class="mock-page">
-                                                <div class="mock-header"></div>
-                                                <div class="mock-lines">
-                                                    <span></span>
-                                                    <span class="short"></span>
-                                                </div>
-                                                <div class="mock-ad"></div>
-                                                <div class="mock-lines">
-                                                    <span></span>
-                                                    <span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="proof-card proof-card--extra">
-                                        <div class="proof-card__badge">Mobile · US</div>
-                                        <div class="proof-card__frame proof-card__frame--mobile">
-                                            <div class="mock-page">
-                                                <div class="mock-header small"></div>
-                                                <div class="mock-lines">
-                                                    <span></span>
-                                                    <span></span>
-                                                </div>
-                                                <div class="mock-ad"></div>
-                                                <div class="mock-lines">
-                                                    <span></span>
-                                                    <span class="short"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="proof__note">Preview layout. Real checks include full page context.</p>
-                            </div>
-                        </div>
-                        <div class="report__foot">Sample output. Illustrative values for structure only.</div>
-                    </div>
-                </div>
-            </section>
-
             <section id="early-access" class="section section--alt">
-                <div class="container early-access">
-                    <div>
+                <div class="container">
+                    <div class="section__head">
                         <h2>Early access</h2>
-                        <p class="section__lead">
-                            Submit your work email to join the early access list. We will contact you when the technical preview is
-                            ready.
-                        </p>
-                        <ul class="checklist">
-                            <li>Owner notification only</li>
-                            <li>No automated replies</li>
-                            <li>Consent required for processing</li>
-                        </ul>
+                        <div class="muted mono">MVP / Proof-first</div>
                     </div>
-                    <form class="form" data-form action="https://formspree.io/f/xojakbla" method="POST">
-                        <input type="text" name="_gotcha" style="display: none" />
-                        <label class="field">
-                            <span>Work email</span>
-                            <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" />
-                        </label>
-                        <label class="field">
-                            <span>Company (optional)</span>
-                            <input type="text" name="company" placeholder="Company name" autocomplete="organization" />
-                        </label>
-                        <label class="field">
-                            <span>Role (optional)</span>
-                            <input type="text" name="role" placeholder="Role" autocomplete="organization-title" />
-                        </label>
-                        <label class="consent">
-                            <input type="checkbox" name="consent" required />
-                            <span>I agree to the processing of my data for early access communication. See our <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</span>
-                        </label>
-                        <button class="btn" type="submit">Request early access</button>
-                        <p class="form-status" data-form-status aria-live="polite"></p>
-                    </form>
+
+                    <div class="cta">
+                        <div>
+                            <p class="lead">Request access for your workflow. We’ll ask about URLs, slots, GEOs, and evidence requirements.</p>
+                            <p class="fine">Submit your work email to join the early access list.</p>
+                        </div>
+
+                        <form class="form" data-form action="https://formspree.io/f/xojakbla" method="POST">
+                            <input type="text" name="_gotcha" style="display: none" />
+                            <label class="field">
+                                <span class="muted">Email</span>
+                                <input type="email" name="email" placeholder="name@company.com" autocomplete="email" required />
+                            </label>
+                            <label class="field">
+                                <span class="muted">Company</span>
+                                <input type="text" name="company" placeholder="Company" autocomplete="organization" />
+                            </label>
+                            <label class="field">
+                                <span class="muted">Role</span>
+                                <input type="text" name="role" placeholder="Role" autocomplete="organization-title" />
+                            </label>
+                            <label class="consent">
+                                <input type="checkbox" name="consent" required />
+                                <span>
+                                    I agree to the processing of my data for early access communication.
+                                    See our <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.
+                                </span>
+                            </label>
+                            <button class="btn" type="submit">Request early access</button>
+                            <p class="form-status muted" data-form-status aria-live="polite"></p>
+                        </form>
+                    </div>
                 </div>
             </section>
         </main>
 
-        <footer class="site-footer">
+        <footer class="footer">
             <div class="container footer__inner">
-                <div>
-                    <div class="brand">AdsChecks</div>
-                    <p class="muted">Ad slot verification with proof-first reporting.</p>
-                    <p class="muted" style="margin-top: 0.5rem; font-size: 0.85rem;">MVP / Early Access · No commercial activity</p>
-                </div>
+                <div class="muted">Ad slot verification with proof-first reporting.</div>
                 <div class="footer__links">
                     <a href="/privacy-policy/">Privacy Policy</a>
                     <a href="/legal-notice/">Legal Notice</a>
@@ -442,105 +384,6 @@
             </div>
         </footer>
 
-        <script>
-            ;(() => {
-                const form = document.querySelector('[data-form]')
-                const status = document.querySelector('[data-form-status]')
-
-                if (!form || !status) return
-
-                const setStatus = (message, type) => {
-                    status.textContent = message
-                    status.dataset.status = type || ''
-                }
-
-                form.addEventListener('submit', async (event) => {
-                    event.preventDefault()
-                    setStatus('Sending...', 'pending')
-
-                    try {
-                        const response = await fetch(form.action, {
-                            method: form.method,
-                            body: new FormData(form),
-                            headers: { Accept: 'application/json' }
-                        })
-
-                        if (response.ok) {
-                            form.reset()
-                            setStatus('Request received. We will reach out when early access opens.', 'success')
-                            return
-                        }
-
-                        setStatus('Submission failed. Please try again later.', 'error')
-                    } catch (error) {
-                        setStatus('Network error. Please try again later.', 'error')
-                    }
-                })
-                })()
-        </script>
-        <script>
-            ;(() => {
-                const toggle = document.querySelector('.nav-toggle')
-                const nav = document.querySelector('#primary-nav')
-                const overlay = document.querySelector('.nav-overlay')
-                if (!toggle || !nav || !overlay) return
-                const compactBreakpoint = 1024
-
-                const openNav = () => {
-                    nav.classList.add('nav--open')
-                    nav.setAttribute('aria-hidden', 'false')
-                    toggle.classList.add('nav-toggle--open')
-                    toggle.setAttribute('aria-expanded', 'true')
-                    document.body.classList.add('nav-open')
-                }
-
-                const closeNav = () => {
-                    nav.classList.remove('nav--open')
-                    nav.setAttribute('aria-hidden', 'true')
-                    toggle.classList.remove('nav-toggle--open')
-                    toggle.setAttribute('aria-expanded', 'false')
-                    document.body.classList.remove('nav-open')
-                }
-
-                const updateNavCompact = () => {
-                    const ua = navigator.userAgent || ''
-                    const uaData = navigator.userAgentData
-                    const isMobileUA = uaData?.mobile || /Android|iPhone|iPod/i.test(ua)
-                    const isTabletUA =
-                        /iPad|Tablet|Silk|Kindle|PlayBook/i.test(ua) ||
-                        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-                    const isSmallViewport = window.matchMedia(`(max-width: ${compactBreakpoint}px)`).matches
-                    const isCompact = isMobileUA || isTabletUA || isSmallViewport
-
-                    document.body.classList.toggle('nav-compact', isCompact)
-                    if (!isCompact) closeNav()
-                }
-
-                nav.setAttribute('aria-hidden', 'true')
-                updateNavCompact()
-
-                toggle.addEventListener('click', () => {
-                    if (nav.classList.contains('nav--open')) {
-                        closeNav()
-                        return
-                    }
-                    openNav()
-                })
-
-                overlay.addEventListener('click', closeNav)
-
-                document.addEventListener('keydown', (event) => {
-                    if (event.key === 'Escape') closeNav()
-                })
-
-                nav.querySelectorAll('a').forEach((link) => {
-                    link.addEventListener('click', () => {
-                        if (document.body.classList.contains('nav-compact')) closeNav()
-                    })
-                })
-
-                window.addEventListener('resize', updateNavCompact)
-            })()
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>

@@ -12,59 +12,63 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
-            rel="stylesheet"
-        />
         <link rel="stylesheet" href="../styles.css" />
     </head>
     <body>
-        <a class="skip-link" href="#main">Skip to content</a>
+        <a class="skip" href="#main">Skip to content</a>
 
-        <header class="site-header">
+        <header class="header">
             <div class="container header__inner">
                 <div class="brand">AdsChecks</div>
-                <nav class="nav" aria-label="Primary">
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="nav-toggle__line"></span>
+                    <span class="nav-toggle__line"></span>
+                    <span class="nav-toggle__line"></span>
+                </button>
+                <nav id="primary-nav" class="nav" aria-label="Primary">
                     <a href="/">Back to home</a>
+                    <a href="/privacy-policy/">Privacy policy</a>
                 </nav>
             </div>
         </header>
+        <div class="nav-overlay" aria-hidden="true"></div>
 
         <main id="main">
             <section class="section">
-                <div class="container legal">
+                <div class="container legal-page">
                     <h1>Legal Notice</h1>
-                    <p class="section__lead">Last updated: 27 December 2025</p>
+                    <p class="lead">Last updated: 27 December 2025</p>
 
-                    <h2>Project information</h2>
-                    <p class="section__lead">AdsChecks</p>
-                    <p class="section__lead">Private individual</p>
-                    <p class="section__lead">Address on request</p>
+                    <div class="doc-card">
+                        <h2>Project information</h2>
+                        <p>AdsChecks</p>
+                        <p>Private individual</p>
+                        <p>Address on request</p>
+                    </div>
 
-                    <h2>Contact</h2>
-                    <p class="section__lead">contact@adschecks.com</p>
+                    <div class="doc-card">
+                        <h2>Contact</h2>
+                        <p>contact@adschecks.com</p>
+                    </div>
 
-                    <h2>Responsible for content</h2>
-                    <p class="section__lead">Taras</p>
+                    <div class="doc-card">
+                        <h2>Responsible for content</h2>
+                        <p>Taras</p>
+                    </div>
                 </div>
             </section>
         </main>
 
-        <footer class="site-footer">
+        <footer class="footer">
             <div class="container footer__inner">
-                <div>
-                    <div class="brand">AdsChecks</div>
-                    <p class="muted">Ad slot verification with proof-first reporting.</p>
-                    <p class="muted" style="margin-top: 0.5rem; font-size: 0.85rem;">MVP / Early Access · No commercial activity</p>
-                </div>
+                <div class="muted">Ad slot verification with proof-first reporting.</div>
                 <div class="footer__links">
                     <a href="/privacy-policy/">Privacy Policy</a>
                     <a href="/legal-notice/">Legal Notice</a>
                 </div>
             </div>
         </footer>
+        <script src="../script.js"></script>
     </body>
 </html>

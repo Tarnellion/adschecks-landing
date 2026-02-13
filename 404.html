@@ -12,57 +12,50 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Instrument+Sans:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap"
-            rel="stylesheet"
-        />
-
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <a class="skip-link" href="#main">Skip to content</a>
+        <a class="skip" href="#main">Skip to content</a>
 
-        <header class="site-header">
+        <header class="header">
             <div class="container header__inner">
                 <div class="brand">AdsChecks</div>
-                <nav class="nav" aria-label="Primary">
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="nav-toggle__line"></span>
+                    <span class="nav-toggle__line"></span>
+                    <span class="nav-toggle__line"></span>
+                </button>
+                <nav id="primary-nav" class="nav" aria-label="Primary">
                     <a href="/">Back to home</a>
                 </nav>
             </div>
         </header>
+        <div class="nav-overlay" aria-hidden="true"></div>
 
         <main id="main">
             <section class="section">
-                <div class="container" style="text-align: center; max-width: 600px; margin: 0 auto;">
-                    <h1 style="font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 1rem;">404</h1>
-                    <h2 style="margin-bottom: 1rem;">Page not found</h2>
-                    <p class="section__lead" style="margin-bottom: 2rem;">
-                        The page you are looking for could not be found. It may have been moved or removed.
-                    </p>
-                    <a class="btn" href="/">Go to homepage</a>
+                <div class="container not-found">
+                    <p class="eyebrow">Error</p>
+                    <h1>404</h1>
+                    <p class="lead">Page not found.</p>
+                    <p class="fine">The page you are looking for could not be found. It may have been moved or removed.</p>
+                    <div class="hero__actions">
+                        <a class="btn" href="/">Go to homepage</a>
+                    </div>
                 </div>
             </section>
         </main>
 
-        <footer class="site-footer">
+        <footer class="footer">
             <div class="container footer__inner">
-                <div>
-                    <div class="brand">AdsChecks</div>
-                    <p class="muted">Ad slot verification with proof-first reporting.</p>
-                    <p class="muted" style="margin-top: 0.5rem; font-size: 0.85rem;">MVP / Early Access · No commercial activity</p>
-                </div>
+                <div class="muted">Ad slot verification with proof-first reporting.</div>
                 <div class="footer__links">
                     <a href="/privacy-policy/">Privacy Policy</a>
                     <a href="/legal-notice/">Legal Notice</a>
                 </div>
             </div>
         </footer>
+        <script src="script.js"></script>
     </body>
 </html>
-
-
-
-
