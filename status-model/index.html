@@ -3,10 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>AdsChecks — Legal Notice</title>
-        <meta name="description" content="Legal Notice for AdsChecks." />
+        <title>AdsChecks — Status Model</title>
+        <meta
+            name="description"
+            content="AdsChecks status model: OK, SLOT_EMPTY, CHALLENGE_DETECTED, BLOCKED and interpretation rules."
+        />
         <meta name="robots" content="noindex, follow" />
-        <link rel="canonical" href="https://adschecks.com/legal-notice/" />
+        <link rel="canonical" href="https://adschecks.com/status-model/" />
         <link rel="icon" href="/assets/favicons/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
@@ -27,6 +30,7 @@
                 <nav id="primary-nav" class="nav" aria-label="Primary">
                     <a href="/">Back to home</a>
                     <a href="/privacy-policy/">Privacy policy</a>
+                    <a href="/legal-notice/">Legal notice</a>
                 </nav>
             </div>
         </header>
@@ -35,37 +39,32 @@
         <main id="main">
             <section class="section">
                 <div class="container legal-page">
-                    <h1>Legal Notice</h1>
-                    <p class="lead">Last updated: 27 December 2025</p>
+                    <h1>Status model</h1>
+                    <p class="lead">Last updated: 14 February 2026</p>
 
                     <div class="doc-card">
-                        <h2>Project information</h2>
-                        <p>AdsChecks</p>
-                        <p>Private individual</p>
-                        <p>Address on request</p>
+                        <p>AdsChecks statuses are verification outcomes for a completed page load in the selected check context.</p>
                     </div>
 
                     <div class="doc-card">
-                        <h2>Contact</h2>
-                        <p>contact@adschecks.com</p>
-                    </div>
-
-                    <div class="doc-card">
-                        <h2>Responsible for content</h2>
-                        <p>Taras</p>
-                    </div>
-
-                    <div class="doc-card">
-                        <h2>Service terms references</h2>
-                        <p>
-                            Scope of verification, status interpretation, pricing usage rules, and refund/dispute rules are published here:
-                        </p>
+                        <h2>Status definitions</h2>
                         <ul>
-                            <li><a href="/what-we-verify/">What we verify</a></li>
-                            <li><a href="/status-model/">Status model</a></li>
-                            <li><a href="/pricing-usage/">Pricing &amp; usage</a></li>
-                            <li><a href="/refunds-disputes/">Refunds &amp; disputes</a></li>
+                            <li><strong>OK</strong> — slot matched expected selector/state.</li>
+                            <li><strong>SLOT_EMPTY</strong> — slot selector matched, but no ad content at check time.</li>
+                            <li><strong>CHALLENGE_DETECTED</strong> — anti-bot challenge or interstitial page was detected.</li>
+                            <li><strong>BLOCKED</strong> — access was blocked or page verification could not proceed in the target environment.</li>
                         </ul>
+                    </div>
+
+                    <div class="doc-card">
+                        <h2>Interpretation rule</h2>
+                        <p>CHALLENGE_DETECTED and BLOCKED are valid verification outcomes, not platform errors.</p>
+                    </div>
+
+                    <div class="doc-card">
+                        <h2>Service boundary</h2>
+                        <p>AdsChecks provides audit, evidence, and verification.</p>
+                        <p>AdsChecks does not guarantee ad delivery, ad availability, impressions, or revenue outcomes.</p>
                     </div>
                 </div>
             </section>

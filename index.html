@@ -36,11 +36,9 @@
         />
     </head>
     <body>
-        <a class="skip" href="#main">Skip to content</a>
-
         <header class="header">
             <div class="container header__inner">
-                <div class="brand">AdsChecks</div>
+                <a class="brand" href="/">AdsChecks</a>
                 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="nav-toggle__line"></span>
@@ -63,7 +61,7 @@
             <section id="hero" class="hero">
                 <div class="container hero__inner">
                     <div class="hero__copy">
-                        <p class="eyebrow">Ad slot verification & evidence</p>
+                        <p class="eyebrow eyebrow--signal">Ad slot verification & evidence</p>
                         <h1>Verify what’s on the page at the time of the check.</h1>
                         <p class="lead">
                             A <span class="pill pill--ink">verified page</span> is one page load that validates up to
@@ -76,7 +74,6 @@
                             <a class="btn btn--ghost" href="#how-it-works">How it works</a>
                         </div>
 
-                        <p class="fineprint">Map view is illustrative and uses an animated SVG layer.</p>
                     </div>
 
                     <div class="hero__viz map-viz" aria-label="Global verification map">
@@ -300,6 +297,63 @@
                 </div>
             </section>
 
+            <section id="terms-overview" class="section">
+                <div class="container">
+                    <div class="section__head">
+                        <h2>Terms overview</h2>
+                        <div class="muted">Operational rules for verification status, usage, and disputes.</div>
+                    </div>
+
+                    <div class="grid2">
+                        <article class="list-card">
+                            <h3>What we verify</h3>
+                            <p class="fine">
+                                AdsChecks is an audit and verification service. A Verified page means one completed page load for a target
+                                URL in a selected check context (GEO + device) and verification of up to 5 predefined ad slots.
+                            </p>
+                            <p class="fine">Each result includes slot statuses, screenshots, JSON metadata, and UTC timestamp.</p>
+                            <a class="card-link" href="/what-we-verify/">Read details</a>
+                        </article>
+
+                        <article class="list-card">
+                            <h3>Status model</h3>
+                            <p class="fine">
+                                Statuses: OK, SLOT_EMPTY, CHALLENGE_DETECTED, BLOCKED. CHALLENGE_DETECTED and BLOCKED are valid
+                                verification outcomes, not system errors.
+                            </p>
+                            <a class="card-link" href="/status-model/">Read details</a>
+                        </article>
+
+                        <article class="list-card">
+                            <h3>Pricing &amp; usage</h3>
+                            <p class="fine">
+                                Plans are based on monthly verification capacity (tiered + custom). Usage is charged when a page load is
+                                completed. Charged outcomes: OK, SLOT_EMPTY, CHALLENGE_DETECTED, BLOCKED.
+                            </p>
+                            <p class="fine">When account capacity is reached, new runs pause until plan update or add-on.</p>
+                            <a class="card-link" href="/pricing-usage/">Read details</a>
+                        </article>
+
+                        <article class="list-card">
+                            <h3>Refunds &amp; disputes</h3>
+                            <p class="fine">
+                                For completed verified pages, including CHALLENGE_DETECTED and BLOCKED, refunds are not provided.
+                            </p>
+                            <p class="fine">
+                                Dispute review basis: run ID, verification status, artifacts (screenshots/JSON), timestamp, and check
+                                context (GEO/device).
+                            </p>
+                            <a class="card-link" href="/refunds-disputes/">Read details</a>
+                        </article>
+                    </div>
+
+                    <p class="fine">
+                        AdsChecks provides audit, evidence, and verification. AdsChecks does not guarantee ad delivery, ad availability,
+                        impressions, or revenue outcomes.
+                    </p>
+                </div>
+            </section>
+
             <section id="use-cases" class="section">
                 <div class="container">
                     <div class="section__head">
@@ -319,7 +373,7 @@
                                 <div class="case__role">Media buying QA</div>
                                 <div class="case__tag">Spend</div>
                             </div>
-                            <p>Verify high-value placements before spend escalates.</p>
+                            <p>Verify high-value placements before campaign launch decisions.</p>
                         </div>
                         <div class="case">
                             <div class="case__head">
@@ -378,6 +432,10 @@
             <div class="container footer__inner">
                 <div class="muted">Ad slot verification with proof-first reporting.</div>
                 <div class="footer__links">
+                    <a href="/what-we-verify/">What we verify</a>
+                    <a href="/status-model/">Status model</a>
+                    <a href="/pricing-usage/">Pricing &amp; usage</a>
+                    <a href="/refunds-disputes/">Refunds &amp; disputes</a>
                     <a href="/privacy-policy/">Privacy Policy</a>
                     <a href="/legal-notice/">Legal Notice</a>
                 </div>
