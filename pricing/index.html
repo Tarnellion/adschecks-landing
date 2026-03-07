@@ -3,10 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>AdsChecks — Legal Notice</title>
-        <meta name="description" content="Legal Notice for AdsChecks with operator and contact information." />
+        <title>AdsChecks - Pricing</title>
+        <meta
+            name="description"
+            content="Pricing structure for AdsChecks: verified page billing model, plan capacity tiers, included deliverables, and billing rules."
+        />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://adschecks.com/legal-notice/" />
+        <link rel="canonical" href="https://adschecks.com/pricing/" />
         <link rel="icon" href="/assets/favicons/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
@@ -38,39 +41,54 @@
         <main id="main">
             <section class="section">
                 <div class="container legal-page">
-                    <h1>Legal Notice</h1>
-                    <p class="lead">Last updated: 7 March 2026</p>
+                    <h1>Pricing</h1>
+                    <p class="lead">Commercial structure for AdsChecks verification plans.</p>
 
                     <div class="doc-card">
-                        <h2>Project information</h2>
-                        <p>AdsChecks</p>
-                        <p>Operated by Taras Hovorukha</p>
-                        <p>Ukraine</p>
-                        <p>Address on request</p>
-                    </div>
-
-                    <div class="doc-card">
-                        <h2>Contact</h2>
-                        <p><a href="mailto:contact@adschecks.com">contact@adschecks.com</a></p>
-                    </div>
-
-                    <div class="doc-card">
-                        <h2>Responsible for content</h2>
-                        <p>Taras Hovorukha</p>
-                    </div>
-
-                    <div class="doc-card">
-                        <h2>Service terms references</h2>
+                        <h2>Billing unit</h2>
                         <p>
-                            Scope of verification, status interpretation, pricing usage rules, and refund/dispute rules are published here:
+                            AdsChecks bills by verified page. A verified page means one completed page load for a target URL in a selected
+                            check context (GEO + device), with verification of up to 5 predefined ad slots.
                         </p>
+                    </div>
+
+                    <div class="doc-card">
+                        <h2>Plan structure</h2>
                         <ul>
-                            <li><a href="/what-we-verify/">What we verify</a></li>
-                            <li><a href="/status-model/">Status model</a></li>
-                            <li><a href="/pricing/">Pricing</a></li>
-                            <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
-                            <li><a href="/refund-policy/">Refund Policy</a></li>
+                            <li><strong>Free Trial</strong> - $0, limited to 1 run per day, 1 page per run, and 1 slot per page.</li>
+                            <li><strong>Starter</strong> - $39/month, up to 500 verified pages per month.</li>
+                            <li><strong>Standard</strong> - $99/month, up to 2,000 verified pages per month.</li>
+                            <li><strong>Custom</strong> - contact sales for higher-volume usage.</li>
                         </ul>
+                        <p>Free Trial does not convert to a paid plan automatically.</p>
+                    </div>
+
+                    <div class="doc-card">
+                        <h2>What is included</h2>
+                        <ul>
+                            <li>slot statuses for up to 5 predefined ad slots per verified page</li>
+                            <li>screenshots and JSON metadata</li>
+                            <li>UTC timestamp and check context (GEO/device)</li>
+                            <li>evidence references for review and dispute handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="doc-card">
+                        <h2>Charging rules</h2>
+                        <p>Usage is charged when a page load is completed.</p>
+                        <p>Charged outcomes: OK, SLOT_EMPTY, CHALLENGE_DETECTED, BLOCKED.</p>
+                        <p>
+                            When monthly plan capacity is reached, AdsChecks uses a hard cap. New runs remain blocked until the plan is
+                            upgraded or additional capacity is added.
+                        </p>
+                    </div>
+
+                    <div class="doc-card">
+                        <h2>Commercial note</h2>
+                        <p>
+                            Public plan pricing is shown above. Custom commercial terms, higher-volume capacity, and operational scope can be
+                            discussed via <a href="mailto:contact@adschecks.com">contact@adschecks.com</a>.
+                        </p>
                     </div>
                 </div>
             </section>

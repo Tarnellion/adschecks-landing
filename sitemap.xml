@@ -7,6 +7,15 @@
         <loc>https://adschecks.com/privacy-policy/</loc>
     </url>
     <url>
+        <loc>https://adschecks.com/pricing/</loc>
+    </url>
+    <url>
+        <loc>https://adschecks.com/terms-and-conditions/</loc>
+    </url>
+    <url>
+        <loc>https://adschecks.com/refund-policy/</loc>
+    </url>
+    <url>
         <loc>https://adschecks.com/legal-notice/</loc>
     </url>
     <url>
@@ -14,11 +23,5 @@
     </url>
     <url>
         <loc>https://adschecks.com/status-model/</loc>
-    </url>
-    <url>
-        <loc>https://adschecks.com/pricing-usage/</loc>
-    </url>
-    <url>
-        <loc>https://adschecks.com/refunds-disputes/</loc>
     </url>
 </urlset>
