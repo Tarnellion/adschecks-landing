@@ -1,0 +1,9 @@
+# Retired aliases
+/pricing-usage /pricing/ 301
+/pricing-usage/ /pricing/ 301
+/refunds-disputes /refund-policy/ 301
+/refunds-disputes/ /refund-policy/ 301
+
+# Canonical HTML entrypoints
+/index.html / 301
+/:page/index.html /:page/ 301

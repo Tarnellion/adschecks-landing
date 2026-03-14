@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>AdsChecks — Ad Slot Verification Reports</title>
+        <title>AdsChecks | Ad Slot Verification Evidence Across GEO and Device</title>
 
         <meta
             name="description"
-            content="AdsChecks provides technical verification of ad slot placement across geo and device, with proof-focused reporting."
+            content="Verify ad slots across GEO and device with proof-focused reporting, screenshots, JSON metadata, and UTC timestamps."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://adschecks.com/" />
@@ -17,23 +17,84 @@
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
 
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles/index.css" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="AdsChecks — Ad Slot Verification Reports" />
+        <meta property="og:title" content="AdsChecks | Ad Slot Verification Evidence Across GEO and Device" />
         <meta
             property="og:description"
-            content="Technical verification of ad slots across geo and device, with proof-focused reporting."
+            content="Verify ad slots across GEO and device with proof-focused reporting, screenshots, JSON metadata, and UTC timestamps."
         />
         <meta property="og:url" content="https://adschecks.com/" />
         <meta property="og:image" content="https://adschecks.com/og.png" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AdsChecks — Ad Slot Verification Reports" />
+        <meta name="twitter:title" content="AdsChecks | Ad Slot Verification Evidence Across GEO and Device" />
         <meta
             name="twitter:description"
-            content="Technical verification of ad slots across geo and device, with proof-focused reporting."
+            content="Verify ad slots across GEO and device with proof-focused reporting, screenshots, JSON metadata, and UTC timestamps."
         />
+        <meta name="twitter:image" content="https://adschecks.com/og.png" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "AdsChecks",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "description": "Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.",
+                "url": "https://adschecks.com",
+                "author": {
+                    "@type": "Person",
+                    "name": "Taras Hovorukha",
+                    "url": "https://adschecks.com/about/"
+                },
+                "offers": [
+                    {
+                        "@type": "Offer",
+                        "name": "Free Trial",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Starter",
+                        "price": "39",
+                        "priceCurrency": "USD"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Growth",
+                        "price": "79",
+                        "priceCurrency": "USD"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Standard",
+                        "price": "149",
+                        "priceCurrency": "USD"
+                    }
+                ]
+            }
+        </script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "AdsChecks",
+                "url": "https://adschecks.com",
+                "email": "contact@adschecks.com",
+                "description": "Ad slot verification with proof-first reporting."
+            }
+        </script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "AdsChecks",
+                "url": "https://adschecks.com/"
+            }
+        </script>
     </head>
     <body>
         <header class="header">
@@ -45,14 +106,16 @@
                     <span class="nav-toggle__line"></span>
                     <span class="nav-toggle__line"></span>
                 </button>
-                <nav id="primary-nav" class="nav" aria-label="Primary">
-                    <a href="#problem">Problem</a>
-                    <a href="#what-we-check">What we check</a>
-                    <a href="#how-it-works">How it works</a>
+                <nav id="primary-nav" class="nav" aria-label="Primary" aria-hidden="false">
+                    <a href="/" aria-current="page">Home</a>
+                    <a href="/what-we-verify/">What we verify</a>
+                    <a href="/status-model/">Status model</a>
+                    <a href="/about/">About</a>
+                    <a href="/faq/">FAQ</a>
                     <a href="/pricing/">Pricing</a>
-                    <a href="#use-cases">Use cases</a>
                     <span class="nav-divider" aria-hidden="true"></span>
-                    <a href="#early-access" class="nav__cta">Early access</a>
+                    <a href="https://app.adschecks.com/signin" class="nav__login">Log in</a>
+                    <a href="https://app.adschecks.com/signup" class="nav__cta">Start free trial</a>
                 </nav>
             </div>
         </header>
@@ -71,10 +134,9 @@
                         </p>
 
                         <div class="hero__actions">
-                            <a class="btn" href="#early-access">Request early access</a>
+                            <a class="btn" href="https://app.adschecks.com/signup">Start free trial</a>
                             <a class="btn btn--ghost" href="#how-it-works">How it works</a>
                         </div>
-
                     </div>
 
                     <div class="hero__viz map-viz" aria-label="Global verification map">
@@ -108,19 +170,19 @@
                                 <span class="map-viz__city">Sydney</span>
                             </div>
 
-                            <div class="map-viz__pointer ptr-1" data-from="loc-lon" data-to="b1" data-corner="auto" aria-hidden="true">
+                            <div class="map-viz__pointer ptr-1" data-from="loc-lon" data-to="b1" data-corner="bl" aria-hidden="true">
                                 <span class="map-viz__pointer-dot"></span>
                                 <span class="map-viz__pointer-beam"></span>
                             </div>
-                            <div class="map-viz__pointer ptr-2" data-from="loc-tok" data-to="b2" data-corner="auto" aria-hidden="true">
+                            <div class="map-viz__pointer ptr-2" data-from="loc-tok" data-to="b2" data-corner="tr" aria-hidden="true">
                                 <span class="map-viz__pointer-dot"></span>
                                 <span class="map-viz__pointer-beam"></span>
                             </div>
-                            <div class="map-viz__pointer ptr-3" data-from="loc-ny" data-to="b3" data-corner="auto" aria-hidden="true">
+                            <div class="map-viz__pointer ptr-3" data-from="loc-ny" data-to="b3" data-corner="tl" aria-hidden="true">
                                 <span class="map-viz__pointer-dot"></span>
                                 <span class="map-viz__pointer-beam"></span>
                             </div>
-                            <div class="map-viz__pointer ptr-4" data-from="loc-sgp" data-to="b4" data-corner="auto" aria-hidden="true">
+                            <div class="map-viz__pointer ptr-4" data-from="loc-sgp" data-to="b4" data-corner="tl" aria-hidden="true">
                                 <span class="map-viz__pointer-dot"></span>
                                 <span class="map-viz__pointer-beam"></span>
                             </div>
@@ -146,8 +208,8 @@
                                     <div class="map-viz__browser-row w86"></div>
                                     <div class="map-viz__browser-row w64"></div>
                                     <div class="map-viz__scanline"></div>
-                                    <div class="map-viz__slot slot-mobile-top"><span>MOBILE SLOT · 300×250</span></div>
-                                    <div class="map-viz__slot slot-mobile-bottom"><span>MOBILE SLOT · 320×100</span></div>
+                                    <div class="map-viz__slot slot-mobile-top"><span>SLOT · 300×250</span></div>
+                                    <div class="map-viz__slot slot-mobile-bottom"><span>SLOT · 320×100</span></div>
                                 </div>
                             </div>
                             <div class="map-viz__browser b3" aria-hidden="true">
@@ -159,7 +221,7 @@
                                     <div class="map-viz__browser-row w88"></div>
                                     <div class="map-viz__browser-row w70"></div>
                                     <div class="map-viz__scanline"></div>
-                                    <div class="map-viz__slot slot-square"><span>SLOT 03 · 336×280</span></div>
+                                    <div class="map-viz__slot slot-square"><span>336×280</span></div>
                                 </div>
                             </div>
                             <div class="map-viz__browser map-viz__browser--mobile b4" aria-hidden="true">
@@ -171,8 +233,8 @@
                                     <div class="map-viz__browser-row w90"></div>
                                     <div class="map-viz__browser-row w76"></div>
                                     <div class="map-viz__scanline"></div>
-                                    <div class="map-viz__slot slot-mobile-top"><span>MOBILE SLOT · 300×250</span></div>
-                                    <div class="map-viz__slot slot-mobile-bottom"><span>MOBILE SLOT · 320×100</span></div>
+                                    <div class="map-viz__slot slot-mobile-top"><span>SLOT · 300×250</span></div>
+                                    <div class="map-viz__slot slot-mobile-bottom"><span>SLOT · 320×100</span></div>
                                 </div>
                             </div>
 
@@ -186,8 +248,16 @@
             <section id="problem" class="section section--alt">
                 <div class="container">
                     <div class="section__head">
-                        <h2>Problem</h2>
-                        <div class="muted mono">Why proof matters</div>
+                        <div class="section__copy">
+                            <p class="section__eyebrow mono">Why proof matters</p>
+                            <h2>Problem</h2>
+                            <p class="section__intro">
+                                Verification breaks down when geo, device, and slot state shift faster than a team can document them.
+                            </p>
+                        </div>
+                        <div class="section__aside">
+                            Proof-first checks give the same structure every time: context, slot outcome, and evidence artifacts.
+                        </div>
                     </div>
                     <div class="cards">
                         <div class="case">
@@ -196,6 +266,7 @@
                                 <div class="case__tag">Coverage</div>
                             </div>
                             <p>Ad slots can render differently across countries, devices, and sessions.</p>
+                            <div class="case__out">Different render context means different proof requirements.</div>
                         </div>
                         <div class="case">
                             <div class="case__head">
@@ -203,6 +274,7 @@
                                 <div class="case__tag">Trust</div>
                             </div>
                             <p>Without consistent proof, QA findings are hard to share, compare, or resolve.</p>
+                            <div class="case__out">Screenshots and metadata reduce ambiguity in reviews.</div>
                         </div>
                         <div class="case">
                             <div class="case__head">
@@ -210,6 +282,7 @@
                                 <div class="case__tag">Time</div>
                             </div>
                             <p>Manual checks take time and still leave gaps in coverage and repeatability.</p>
+                            <div class="case__out">Templates and structured runs remove repetitive setup work.</div>
                         </div>
                     </div>
                 </div>
@@ -218,42 +291,59 @@
             <section id="what-we-check" class="section">
                 <div class="container">
                     <div class="section__head">
-                        <h2>What we check</h2>
-                        <div class="muted">Each check ties to a slot, device, and location with consistent output.</div>
+                        <div class="section__copy">
+                            <p class="section__eyebrow mono">Evidence scope</p>
+                            <h2>What we check</h2>
+                            <p class="section__intro">
+                                Each verified page is constrained on purpose: one completed page load, selected context, and up to five
+                                predefined slots.
+                            </p>
+                        </div>
+                        <div class="section__aside">
+                            Every block below maps to a concrete output that can be reviewed later by operations, QA, or commercial teams.
+                        </div>
                     </div>
 
                     <div class="grid2">
                         <div class="list-card">
+                            <div class="list-card__eyebrow">01 · Verification layer</div>
                             <h3>Slot presence and visibility</h3>
                             <ul>
                                 <li>Slot detected on page</li>
                                 <li>Position and layout context</li>
                                 <li>Visibility state (visible, partial, missing)</li>
                             </ul>
+                            <p class="list-card__meta">Designed for predefined selectors, not discovery or crawler-style scanning.</p>
                         </div>
                         <div class="list-card">
+                            <div class="list-card__eyebrow">02 · Context layer</div>
                             <h3>Geo and device coverage</h3>
                             <ul>
                                 <li>Region-specific render checks</li>
                                 <li>Desktop and mobile snapshots</li>
                                 <li>Viewport and breakpoint metadata</li>
                             </ul>
+                            <p class="list-card__meta">Runs stay tied to the selected GEO and device context for comparison.</p>
                         </div>
                         <div class="list-card">
+                            <div class="list-card__eyebrow">03 · Artifact layer</div>
                             <h3>Evidence bundle</h3>
                             <ul>
                                 <li>Screenshots for each slot</li>
                                 <li>JSON metadata and timestamps</li>
                                 <li>Export-ready ZIP bundle</li>
                             </ul>
+                            <p class="list-card__meta">Outputs stay consistent across repeated runs, reviews, and disputes.</p>
                         </div>
                         <div class="list-card">
+                            <div class="list-card__eyebrow">04 · Ops layer</div>
                             <h3>Operational integrity</h3>
                             <ul>
                                 <li>Repeatable checks</li>
                                 <li>Clear issue flags</li>
                                 <li>Structured results</li>
                             </ul>
+                            <p class="list-card__meta">Built for teams that need repeatability rather than one-off screenshots.</p>
                         </div>
                     </div>
                 </div>
@@ -262,8 +352,17 @@
             <section id="how-it-works" class="section section--alt">
                 <div class="container">
                     <div class="section__head">
-                        <h2>How it works</h2>
-                        <div class="muted mono">Template → Run → Evidence</div>
+                        <div class="section__copy">
+                            <p class="section__eyebrow mono">Template → Run → Evidence</p>
+                            <h2>How it works</h2>
+                            <p class="section__intro">
+                                The workflow stays compact: define the check context once, run it manually or on schedule, then review a
+                                structured evidence package.
+                            </p>
+                        </div>
+                        <div class="section__aside">
+                            The product promise stays narrow on purpose: verify the page state at the moment of the check, then retain proof.
+                        </div>
                     </div>
 
                     <div class="flow">
@@ -301,12 +400,100 @@
             <section id="terms-overview" class="section">
                 <div class="container">
                     <div class="section__head">
-                        <h2>Terms overview</h2>
-                        <div class="muted">Operational rules for verification status, usage, and disputes.</div>
+                        <div class="section__copy">
+                            <p class="section__eyebrow mono">Commercial and legal baseline</p>
+                            <h2>Plans and policy</h2>
+                            <p class="section__intro">
+                                The commercial model stays explicit: clear plan tiers, a narrow verification scope, and policy pages built
+                                around the same billing unit.
+                            </p>
+                        </div>
+                        <div class="section__aside">
+                            Plans are priced publicly. Policy pages stay aligned with the delivered output: verified pages and evidence
+                            artifacts.
+                        </div>
+                    </div>
+
+                    <div class="pricing-preview pricing-preview--home">
+                        <article class="plan-card plan-card--trial">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Free Trial</div>
+                                <div class="plan-card__badge">Entry</div>
+                            </div>
+                            <div class="plan-card__price">$0</div>
+                            <div class="plan-card__meta">3-day trial · No credit card · No auto-conversion</div>
+                            <ul class="plan-card__list">
+                                <li>1 run per day</li>
+                                <li>1 page per run</li>
+                                <li>1 slot per page</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Starter</div>
+                                <div class="plan-card__badge">Core</div>
+                            </div>
+                            <div class="plan-card__price">$39<span>/month</span></div>
+                            <div class="plan-card__meta">500 pages · Schedule · No GEO</div>
+                            <ul class="plan-card__list">
+                                <li>Up to 500 verified pages per month</li>
+                                <li>Scheduled runs included</li>
+                                <li>No GEO routing</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Growth</div>
+                                <div class="plan-card__badge">Team</div>
+                            </div>
+                            <div class="plan-card__price">$79<span>/month</span></div>
+                            <div class="plan-card__meta">1,000 pages · Schedule + GEO</div>
+                            <ul class="plan-card__list">
+                                <li>Up to 1,000 verified pages per month</li>
+                                <li>Scheduled runs included</li>
+                                <li>GEO routing included</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card plan-card--featured">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Standard</div>
+                                <div class="plan-card__badge">Best fit</div>
+                            </div>
+                            <div class="plan-card__price">$149<span>/month</span></div>
+                            <div class="plan-card__meta">3,000 pages · Schedule + GEO</div>
+                            <ul class="plan-card__list">
+                                <li>Up to 3,000 verified pages per month</li>
+                                <li>Scheduled runs included</li>
+                                <li>GEO routing included</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card plan-card--wide">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Custom</div>
+                                <div class="plan-card__badge">Scale</div>
+                            </div>
+                            <div class="plan-card__price">Contact<span> sales</span></div>
+                            <div class="plan-card__meta">Higher-volume usage</div>
+                            <ul class="plan-card__list">
+                                <li>Commercial scoping by workflow</li>
+                                <li>Custom monthly capacity</li>
+                                <li>Setup aligned to operational needs</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="mailto:contact@adschecks.com">Contact sales</a>
+                        </article>
                     </div>
 
                     <div class="grid2">
                         <article class="list-card">
+                            <div class="list-card__eyebrow">Scope</div>
                             <h3>What we verify</h3>
                             <p class="fine">
                                 AdsChecks is an audit and verification service. A Verified page means one completed page load for a target
@@ -317,6 +504,7 @@
                         </article>
 
                         <article class="list-card">
+                            <div class="list-card__eyebrow">Statuses</div>
                             <h3>Status model</h3>
                             <p class="fine">
                                 Statuses: OK, SLOT_EMPTY, CHALLENGE_DETECTED, BLOCKED. CHALLENGE_DETECTED and BLOCKED are valid
@@ -326,16 +514,7 @@
                         </article>
 
                         <article class="list-card">
-                            <h3>Pricing</h3>
-                            <p class="fine">
-                                AdsChecks plans are structured by monthly verified page capacity. Billing is based on completed page loads,
-                                with charged outcomes including OK, SLOT_EMPTY, CHALLENGE_DETECTED, and BLOCKED.
-                            </p>
-                            <p class="fine">Free Trial, Starter ($39/month), Standard ($99/month), and Custom plans are available.</p>
-                            <a class="card-link" href="/pricing/">Read details</a>
-                        </article>
-
-                        <article class="list-card">
+                            <div class="list-card__eyebrow">Disputes</div>
                             <h3>Refund policy</h3>
                             <p class="fine">
                                 For completed verified pages, including CHALLENGE_DETECTED and BLOCKED, refunds are not provided.
@@ -346,20 +525,30 @@
                             </p>
                             <a class="card-link" href="/refund-policy/">Read details</a>
                         </article>
+
+                        <article class="list-card">
+                            <div class="list-card__eyebrow">Terms</div>
+                            <h3>Terms &amp; Conditions</h3>
+                            <p class="fine">
+                                Public terms define service scope, billing rules, acceptable use, refunds, limitation of liability, and
+                                governing law.
+                            </p>
+                            <a class="card-link" href="/terms-and-conditions/">Read details</a>
+                        </article>
                     </div>
 
-                    <p class="fine">
-                        AdsChecks provides audit, evidence, and verification. AdsChecks does not guarantee ad delivery, ad availability,
-                        impressions, or revenue outcomes.
-                    </p>
                 </div>
             </section>
 
             <section id="use-cases" class="section">
                 <div class="container">
                     <div class="section__head">
-                        <h2>Use cases</h2>
-                        <div class="muted">Teams that need repeatable verification with proof.</div>
+                        <div class="section__copy">
+                            <p class="section__eyebrow mono">Operational teams</p>
+                            <h2>Use cases</h2>
+                            <p class="section__intro">Teams that need repeatable verification with proof, not adtech promises.</p>
+                        </div>
+                        <div class="section__aside">Each use case below maps to a repeatable review workflow rather than a one-time audit.</div>
                     </div>
                     <div class="cards">
                         <div class="case">
@@ -368,6 +557,7 @@
                                 <div class="case__tag">Ops</div>
                             </div>
                             <p>Confirm placement compliance across networks and regional placements.</p>
+                            <div class="case__out">Use repeatable runs to compare expected vs observed page state.</div>
                         </div>
                         <div class="case">
                             <div class="case__head">
@@ -375,6 +565,7 @@
                                 <div class="case__tag">Spend</div>
                             </div>
                             <p>Verify high-value placements before campaign launch decisions.</p>
+                            <div class="case__out">Give buyers evidence before escalations become billing disputes.</div>
                         </div>
                         <div class="case">
                             <div class="case__head">
@@ -382,64 +573,139 @@
                                 <div class="case__tag">Delivery</div>
                             </div>
                             <p>Document slot delivery and layout integrity with consistent proof.</p>
+                            <div class="case__out">Keep screenshots, JSON, and timestamps aligned across repeated audits.</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="early-access" class="section section--alt">
+            <section id="faq" class="section">
                 <div class="container">
                     <div class="section__head">
-                        <h2>Early access</h2>
-                        <div class="muted mono">MVP / Proof-first</div>
+                        <div class="section__copy">
+                            <p class="section__eyebrow mono">Common questions</p>
+                            <h2>FAQ</h2>
+                            <p class="section__intro">
+                                Answers to the most common questions about verification scope, billing, and setup.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-list">
+                        <details class="faq-item">
+                            <summary>What counts as a verified page?</summary>
+                            <p>
+                                One completed page load for a target URL in a selected check context (GEO + device), with
+                                verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots,
+                                JSON metadata, and a UTC timestamp.
+                            </p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>What happens if my page has more than 5 ad slots?</summary>
+                            <p>
+                                Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can
+                                run multiple checks with different selector sets for the same URL.
+                            </p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>What does CHALLENGE_DETECTED or BLOCKED mean?</summary>
+                            <p>
+                                These are valid verification outcomes, not errors. CHALLENGE_DETECTED means an anti-bot challenge
+                                or interstitial was encountered. BLOCKED means access was prevented in that environment. Both are
+                                billable because the page load was completed and evidence was captured.
+                            </p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Does the Free Trial convert to a paid plan automatically?</summary>
+                            <p>No. The Free Trial stays at $0 and does not convert automatically. You choose when and whether to upgrade.</p>
+                        </details>
+                    </div>
+                    <p class="fine">
+                        More questions about trial limits, result speed, supported devices, or refunds:
+                        <a href="/faq/">see the full FAQ</a>.
+                    </p>
+                </div>
+            </section>
+
+            <section id="get-started" class="section section--alt">
+                <div class="container">
+                    <div class="section__head">
+                        <div class="section__copy">
+                            <p class="section__eyebrow mono">Start now</p>
+                            <h2>Get started</h2>
+                            <p class="section__intro">
+                                Create a free account and run your first verification in minutes. No credit card required.
+                            </p>
+                        </div>
                     </div>
 
                     <div class="cta">
-                        <div>
-                            <p class="lead">Request access for your workflow. We’ll ask about URLs, slots, GEOs, and evidence requirements.</p>
-                            <p class="fine">Submit your work email to join the early access list.</p>
+                        <div class="cta__copy">
+                            <p class="lead">
+                                The 3-day AdsChecks Free Trial includes 1 run per day, 1 page per run, and 1 slot per page — enough to see how
+                                verification works before upgrading.
+                            </p>
+                            <div class="cta__steps">
+                                <div class="cta-step">
+                                    <div class="cta-step__n">01</div>
+                                    <div>
+                                        <div class="cta-step__title">Create account</div>
+                                        <p class="fine">Sign up with Google or email. No credit card, no commitment.</p>
+                                    </div>
+                                </div>
+                                <div class="cta-step">
+                                    <div class="cta-step__n">02</div>
+                                    <div>
+                                        <div class="cta-step__title">Set up a template</div>
+                                        <p class="fine">Add a URL, choose selectors, device, and GEO context.</p>
+                                    </div>
+                                </div>
+                                <div class="cta-step">
+                                    <div class="cta-step__n">03</div>
+                                    <div>
+                                        <div class="cta-step__title">Run and review</div>
+                                        <p class="fine">Get statuses, screenshots, and JSON metadata in a timestamped evidence bundle.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cta__actions">
+                                <a class="btn" href="https://app.adschecks.com/signup">Start free trial</a>
+                                <p class="fine">
+                                    For custom volume, enterprise setup, or workflow scoping —
+                                    <a href="mailto:contact@adschecks.com">contact sales</a>.
+                                </p>
+                            </div>
                         </div>
-
-                        <form class="form" data-form action="https://formspree.io/f/xojakbla" method="POST">
-                            <input type="text" name="_gotcha" style="display: none" />
-                            <label class="field">
-                                <span class="muted">Email</span>
-                                <input type="email" name="email" placeholder="name@company.com" autocomplete="email" required />
-                            </label>
-                            <label class="field">
-                                <span class="muted">Company</span>
-                                <input type="text" name="company" placeholder="Company" autocomplete="organization" />
-                            </label>
-                            <label class="field">
-                                <span class="muted">Role</span>
-                                <input type="text" name="role" placeholder="Role" autocomplete="organization-title" />
-                            </label>
-                            <label class="consent">
-                                <input type="checkbox" name="consent" required />
-                                <span>
-                                    I agree to the processing of my data for early access communication.
-                                    See our <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.
-                                </span>
-                            </label>
-                            <button class="btn" type="submit">Request early access</button>
-                            <p class="form-status muted" data-form-status aria-live="polite"></p>
-                        </form>
                     </div>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
-            <div class="container footer__inner">
-                <div class="muted">Ad slot verification with proof-first reporting.</div>
-                <div class="footer__links">
-                    <a href="/pricing/">Pricing</a>
-                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
-                    <a href="/refund-policy/">Refund Policy</a>
-                    <a href="/privacy-policy/">Privacy Policy</a>
-                    <a href="/what-we-verify/">What we verify</a>
-                    <a href="/status-model/">Status model</a>
-                    <a href="/legal-notice/">Legal Notice</a>
+            <div class="container footer__grid">
+                <div class="footer__brand">
+                    <a class="footer__brand-link" href="/">AdsChecks</a>
+                    <p class="muted">Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.</p>
+                    <p class="footer__note">AdsChecks provides audit, evidence, and verification. It does not guarantee delivery, impressions, or revenue outcomes.</p>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Product</div>
+                    <div class="footer__links">
+                        <a href="/pricing/">Pricing</a>
+                        <a href="/what-we-verify/">What we verify</a>
+                        <a href="/status-model/">Status model</a>
+                        <a href="/about/">About</a>
+                        <a href="/faq/">FAQ</a>
+                        <a href="https://app.adschecks.com/signup">Start free trial</a>
+                    </div>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Policies</div>
+                    <div class="footer__links">
+                        <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+                        <a href="/refund-policy/">Refund Policy</a>
+                        <a href="/privacy-policy/">Privacy Policy</a>
+                        <a href="/legal-notice/">Legal Notice</a>
+                    </div>
                 </div>
             </div>
         </footer>

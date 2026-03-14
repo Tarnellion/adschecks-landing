@@ -26,6 +26,36 @@ const initMobileNav = () => {
         document.body.classList.remove('nav-open')
     }
 
+    const scrollToHash = hash => {
+        const target = document.querySelector(hash)
+        const header = document.querySelector('.header')
+        if (!target || !header) return
+
+        const performScroll = () => {
+            const headerHeight = header.getBoundingClientRect().height
+            const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16
+            const root = document.documentElement
+            const previousBehavior = root.style.scrollBehavior
+
+            root.style.scrollBehavior = 'auto'
+            window.scrollTo({
+                top: Math.max(0, top),
+                behavior: 'auto'
+            })
+            root.style.scrollBehavior = previousBehavior
+        }
+
+        performScroll()
+        window.requestAnimationFrame(() => {
+            performScroll()
+            window.setTimeout(performScroll, 40)
+        })
+
+        if (window.location.hash !== hash) {
+            window.history.replaceState(null, '', hash)
+        }
+    }
+
     const updateNavCompact = () => {
         const ua = navigator.userAgent || ''
         const uaData = navigator.userAgentData
@@ -37,10 +67,19 @@ const initMobileNav = () => {
         const isCompact = isMobileUA || isTabletUA || isSmallViewport
 
         document.body.classList.toggle('nav-compact', isCompact)
-        if (!isCompact) closeNav()
+        if (!isCompact) {
+            nav.classList.remove('nav--open')
+            nav.setAttribute('aria-hidden', 'false')
+            toggle.classList.remove('nav-toggle--open')
+            toggle.setAttribute('aria-expanded', 'false')
+            document.body.classList.remove('nav-open')
+            return
+        }
+
+        nav.setAttribute('aria-hidden', nav.classList.contains('nav--open') ? 'false' : 'true')
     }
 
-    nav.setAttribute('aria-hidden', 'true')
+    nav.setAttribute('aria-hidden', 'false')
     updateNavCompact()
 
     toggle.addEventListener('click', () => {
@@ -58,11 +97,38 @@ const initMobileNav = () => {
     })
 
     nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (document.body.classList.contains('nav-compact')) closeNav()
+        link.addEventListener('click', event => {
+            const href = link.getAttribute('href') || ''
+            const isInPageHash = href.startsWith('#')
+
+            if (document.body.classList.contains('nav-compact')) {
+                if (isInPageHash) {
+                    event.preventDefault()
+                    closeNav()
+                    window.setTimeout(() => scrollToHash(href), 20)
+                    return
+                }
+
+                closeNav()
+            }
+
+            if (!document.body.classList.contains('nav-compact') && isInPageHash) {
+                event.preventDefault()
+                scrollToHash(href)
+                return
+            }
         })
     })
 
+    const syncInitialHash = () => {
+        if (!window.location.hash) return
+        window.requestAnimationFrame(() => {
+            window.setTimeout(() => scrollToHash(window.location.hash), 40)
+        })
+    }
+
+    window.addEventListener('load', syncInitialHash)
+    syncInitialHash()
     window.addEventListener('resize', updateNavCompact)
 }
 
@@ -259,7 +325,7 @@ const initEarlyAccessForm = () => {
             }
 
             form.reset()
-            setStatus('Request received. We will reach out when early access opens.', 'success')
+            setStatus('Request received. We will follow up with next setup steps.', 'success')
         } catch {
             setStatus('Network error. Please try again later.', 'error')
         }

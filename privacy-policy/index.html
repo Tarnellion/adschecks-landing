@@ -3,21 +3,70 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>AdsChecks — Privacy Policy</title>
+        <title>AdsChecks Privacy Policy | Data Handling and Processors</title>
         <meta
             name="description"
-            content="Privacy Policy for AdsChecks covering contact data, service inquiries, billing-related processing, and processors."
+            content="Read how AdsChecks handles contact data, service inquiries, billing-related processing, and third-party processors."
         />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="noindex, follow" />
         <link rel="canonical" href="https://adschecks.com/privacy-policy/" />
         <link rel="icon" href="/assets/favicons/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
-        <link rel="stylesheet" href="../styles.css" />
+        <link rel="stylesheet" href="../styles/index.css" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AdsChecks Privacy Policy | Data Handling and Processors" />
+        <meta
+            property="og:description"
+            content="Read how AdsChecks handles contact data, service inquiries, billing-related processing, and third-party processors."
+        />
+        <meta property="og:url" content="https://adschecks.com/privacy-policy/" />
+        <meta property="og:image" content="https://adschecks.com/og.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AdsChecks Privacy Policy | Data Handling and Processors" />
+        <meta
+            name="twitter:description"
+            content="Read how AdsChecks handles contact data, service inquiries, billing-related processing, and third-party processors."
+        />
+        <meta name="twitter:image" content="https://adschecks.com/og.png" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "AdsChecks",
+                "url": "https://adschecks.com",
+                "email": "contact@adschecks.com",
+                "description": "Ad slot verification with proof-first reporting."
+            }
+        </script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@id": "https://adschecks.com/",
+                            "name": "AdsChecks"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://adschecks.com/privacy-policy/",
+                            "name": "Privacy Policy"
+                        }
+                    }
+                ]
+            }
+        </script>
     </head>
-    <body>
+    <body class="page-privacy-policy">
         <header class="header">
             <div class="container header__inner">
                 <a class="brand" href="/">AdsChecks</a>
@@ -27,12 +76,16 @@
                     <span class="nav-toggle__line"></span>
                     <span class="nav-toggle__line"></span>
                 </button>
-                <nav id="primary-nav" class="nav" aria-label="Primary">
+                                <nav id="primary-nav" class="nav" aria-label="Primary" aria-hidden="false">
                     <a href="/">Home</a>
+                    <a href="/what-we-verify/">What we verify</a>
+                    <a href="/status-model/">Status model</a>
+                    <a href="/about/">About</a>
+                    <a href="/faq/">FAQ</a>
                     <a href="/pricing/">Pricing</a>
-                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
-                    <a href="/refund-policy/">Refund Policy</a>
-                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <span class="nav-divider" aria-hidden="true"></span>
+                    <a href="https://app.adschecks.com/signin" class="nav__login">Log in</a>
+                    <a href="https://app.adschecks.com/signup" class="nav__cta">Start free trial</a>
                 </nav>
             </div>
         </header>
@@ -40,11 +93,31 @@
 
         <main id="main">
             <section class="section">
-                <div class="container legal-page">
-                    <h1>Privacy Policy</h1>
-                    <p class="lead">Last updated: 7 March 2026</p>
+                <div class="container legal-page legal-page--wide">
+                    <div class="doc-hero">
+                        <div class="doc-hero__copy">
+                            <p class="section__eyebrow mono">Data handling</p>
+                            <h1>Privacy Policy</h1>
+                            <p class="lead">How AdsChecks handles contact, setup, support, and billing-related personal data.</p>
+                        </div>
+                        <div class="doc-hero__meta">
+                            <div class="doc-meta__item">
+                                <div class="doc-meta__k">Controller</div>
+                                <div class="doc-meta__v">Taras Hovorukha, Ukraine</div>
+                            </div>
+                            <div class="doc-meta__item">
+                                <div class="doc-meta__k">Primary use</div>
+                                <div class="doc-meta__v">Setup requests, service inquiries, billing support, and website security.</div>
+                            </div>
+                            <div class="doc-meta__item">
+                                <div class="doc-meta__k">Last updated</div>
+                                <div class="doc-meta__v">7 March 2026</div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="doc-card">
+                    <div class="doc-grid">
+                    <div class="doc-card doc-card--summary doc-card--accent">
                         <h2>Controller</h2>
                         <p>
                             AdsChecks is operated by Taras Hovorukha in Ukraine. Responsible contact:
@@ -52,7 +125,7 @@
                         </p>
                     </div>
 
-                    <div class="doc-card">
+                    <div class="doc-card doc-card--span-2">
                         <h2>Data we collect</h2>
                         <p>
                             We may collect your email address, company information, role, inquiry details, and other information you choose to
@@ -63,7 +136,7 @@
                     <div class="doc-card">
                         <h2>How we use data</h2>
                         <p>
-                            We use your data to manage early access requests, respond to inquiries, provide commercial communication related to
+                            We use your data to manage setup requests, respond to inquiries, provide commercial communication related to
                             the requested service, support account or billing setup, and maintain the security and reliability of the website.
                         </p>
                     </div>
@@ -87,7 +160,7 @@
                     <div class="doc-card">
                         <h2>Retention</h2>
                         <p>
-                            We retain early access data only for as long as necessary to manage the early access program or until you request
+                            We retain setup-request data only for as long as necessary to manage onboarding, support, and service evaluation or until you request
                             deletion, unless a longer retention period is required by law.
                         </p>
                     </div>
@@ -100,7 +173,7 @@
                         </p>
                     </div>
 
-                    <div class="doc-card">
+                    <div class="doc-card doc-card--span-2">
                         <h2>Service terms references</h2>
                         <p>
                             Verification scope, status outcomes, pricing usage rules, and refund/dispute rules are defined on these pages:
@@ -113,21 +186,37 @@
                             <li><a href="/refund-policy/">Refund Policy</a></li>
                         </ul>
                     </div>
+                    </div>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
-            <div class="container footer__inner">
-                <div class="muted">Ad slot verification with proof-first reporting.</div>
-                <div class="footer__links">
-                    <a href="/pricing/">Pricing</a>
-                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
-                    <a href="/refund-policy/">Refund Policy</a>
-                    <a href="/privacy-policy/">Privacy Policy</a>
-                    <a href="/what-we-verify/">What we verify</a>
-                    <a href="/status-model/">Status model</a>
-                    <a href="/legal-notice/">Legal Notice</a>
+            <div class="container footer__grid">
+                <div class="footer__brand">
+                    <a class="footer__brand-link" href="/">AdsChecks</a>
+                    <p class="muted">Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.</p>
+                    <p class="footer__note">AdsChecks provides audit, evidence, and verification. It does not guarantee delivery, impressions, or revenue outcomes.</p>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Product</div>
+                    <div class="footer__links">
+                        <a href="/pricing/">Pricing</a>
+                        <a href="/what-we-verify/">What we verify</a>
+                        <a href="/status-model/">Status model</a>
+                        <a href="/about/">About</a>
+                        <a href="/faq/">FAQ</a>
+                        <a href="https://app.adschecks.com/signup">Start free trial</a>
+                    </div>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Policies</div>
+                    <div class="footer__links">
+                        <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+                        <a href="/refund-policy/">Refund Policy</a>
+                        <a href="/privacy-policy/">Privacy Policy</a>
+                        <a href="/legal-notice/">Legal Notice</a>
+                    </div>
                 </div>
             </div>
         </footer>

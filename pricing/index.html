@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>AdsChecks - Pricing</title>
+        <title>AdsChecks Pricing | Ad Slot Verification Plans</title>
         <meta
             name="description"
-            content="Pricing structure for AdsChecks: verified page billing model, plan capacity tiers, included deliverables, and billing rules."
+            content="See AdsChecks pricing, verified page billing, plan limits, and what is included in each ad verification plan."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://adschecks.com/pricing/" />
@@ -15,9 +15,104 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
-        <link rel="stylesheet" href="../styles.css" />
+        <link rel="stylesheet" href="../styles/index.css" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AdsChecks Pricing | Ad Verification Plans and Billing" />
+        <meta
+            property="og:description"
+            content="See AdsChecks pricing, verified page billing, plan limits, and what is included in each ad verification plan."
+        />
+        <meta property="og:url" content="https://adschecks.com/pricing/" />
+        <meta property="og:image" content="https://adschecks.com/og.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AdsChecks Pricing | Ad Verification Plans and Billing" />
+        <meta
+            name="twitter:description"
+            content="See AdsChecks pricing, verified page billing, plan limits, and what is included in each ad verification plan."
+        />
+        <meta name="twitter:image" content="https://adschecks.com/og.png" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "AdsChecks",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "description": "Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.",
+                "url": "https://adschecks.com/pricing/",
+                "author": {
+                    "@type": "Person",
+                    "name": "Taras Hovorukha",
+                    "url": "https://adschecks.com/about/"
+                },
+                "offers": [
+                    {
+                        "@type": "Offer",
+                        "name": "Free Trial",
+                        "price": "0",
+                        "priceCurrency": "USD",
+                        "description": "3-day trial, no credit card, no auto-conversion"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Starter",
+                        "price": "39",
+                        "priceCurrency": "USD",
+                        "description": "500 verified pages/month"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Growth",
+                        "price": "79",
+                        "priceCurrency": "USD",
+                        "description": "1000 verified pages/month"
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Standard",
+                        "price": "149",
+                        "priceCurrency": "USD",
+                        "description": "3000 verified pages/month"
+                    }
+                ]
+            }
+        </script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "AdsChecks",
+                "url": "https://adschecks.com",
+                "email": "contact@adschecks.com",
+                "description": "Ad slot verification with proof-first reporting."
+            }
+        </script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@id": "https://adschecks.com/",
+                            "name": "AdsChecks"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://adschecks.com/pricing/",
+                            "name": "Pricing"
+                        }
+                    }
+                ]
+            }
+        </script>
     </head>
-    <body>
+    <body class="page-pricing">
         <header class="header">
             <div class="container header__inner">
                 <a class="brand" href="/">AdsChecks</a>
@@ -27,12 +122,16 @@
                     <span class="nav-toggle__line"></span>
                     <span class="nav-toggle__line"></span>
                 </button>
-                <nav id="primary-nav" class="nav" aria-label="Primary">
+                <nav id="primary-nav" class="nav" aria-label="Primary" aria-hidden="false">
                     <a href="/">Home</a>
-                    <a href="/pricing/">Pricing</a>
-                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
-                    <a href="/refund-policy/">Refund Policy</a>
-                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <a href="/what-we-verify/">What we verify</a>
+                    <a href="/status-model/">Status model</a>
+                    <a href="/about/">About</a>
+                    <a href="/faq/">FAQ</a>
+                    <a href="/pricing/" aria-current="page">Pricing</a>
+                    <span class="nav-divider" aria-hidden="true"></span>
+                    <a href="https://app.adschecks.com/signin" class="nav__login">Log in</a>
+                    <a href="https://app.adschecks.com/signup" class="nav__cta">Start free trial</a>
                 </nav>
             </div>
         </header>
@@ -40,71 +139,190 @@
 
         <main id="main">
             <section class="section">
-                <div class="container legal-page">
-                    <h1>Pricing</h1>
-                    <p class="lead">Commercial structure for AdsChecks verification plans.</p>
-
-                    <div class="doc-card">
-                        <h2>Billing unit</h2>
-                        <p>
-                            AdsChecks bills by verified page. A verified page means one completed page load for a target URL in a selected
-                            check context (GEO + device), with verification of up to 5 predefined ad slots.
-                        </p>
+                <div class="container legal-page legal-page--wide">
+                    <div class="doc-hero">
+                        <div class="doc-hero__copy">
+                            <p class="section__eyebrow mono">Commercial structure</p>
+                            <h1>Pricing</h1>
+                            <p class="lead">Clear plan tiers built around verified pages, repeatable checks, and evidence outputs.</p>
+                        </div>
+                        <div class="doc-hero__meta">
+                            <div class="doc-meta__item">
+                                <div class="doc-meta__k">Billing unit</div>
+                                <div class="doc-meta__v">One verified page = one completed page load in a selected GEO/device context.</div>
+                            </div>
+                            <div class="doc-meta__item">
+                                <div class="doc-meta__k">Included output</div>
+                                <div class="doc-meta__v">Statuses, screenshots, JSON metadata, UTC timestamp, and evidence references.</div>
+                            </div>
+                            <div class="doc-meta__item">
+                                <div class="doc-meta__k">Conversion rule</div>
+                                <div class="doc-meta__v">Free Trial stays at $0 and does not convert automatically.</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="doc-card">
-                        <h2>Plan structure</h2>
-                        <ul>
-                            <li><strong>Free Trial</strong> - $0, limited to 1 run per day, 1 page per run, and 1 slot per page.</li>
-                            <li><strong>Starter</strong> - $39/month, up to 500 verified pages per month.</li>
-                            <li><strong>Standard</strong> - $99/month, up to 2,000 verified pages per month.</li>
-                            <li><strong>Custom</strong> - contact sales for higher-volume usage.</li>
-                        </ul>
-                        <p>Free Trial does not convert to a paid plan automatically.</p>
+                    <div class="pricing-preview pricing-preview--full">
+                        <article class="plan-card plan-card--trial">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Free Trial</div>
+                                <div class="plan-card__badge">Entry</div>
+                            </div>
+                            <div class="plan-card__price">$0</div>
+                            <div class="plan-card__meta">3-day trial · No credit card · No auto-conversion</div>
+                            <ul class="plan-card__list">
+                                <li>1 run per day</li>
+                                <li>1 page per run</li>
+                                <li>1 slot per page</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Starter</div>
+                                <div class="plan-card__badge">Core</div>
+                            </div>
+                            <div class="plan-card__price">$39<span>/month</span></div>
+                            <div class="plan-card__meta">500 pages · Schedule · No GEO</div>
+                            <ul class="plan-card__list">
+                                <li>Up to 500 verified pages per month</li>
+                                <li>Scheduled runs included</li>
+                                <li>No GEO routing</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Growth</div>
+                                <div class="plan-card__badge">Team</div>
+                            </div>
+                            <div class="plan-card__price">$79<span>/month</span></div>
+                            <div class="plan-card__meta">1,000 pages · Schedule + GEO</div>
+                            <ul class="plan-card__list">
+                                <li>Up to 1,000 verified pages per month</li>
+                                <li>Scheduled runs included</li>
+                                <li>GEO routing included</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card plan-card--featured">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Standard</div>
+                                <div class="plan-card__badge">Best fit</div>
+                            </div>
+                            <div class="plan-card__price">$149<span>/month</span></div>
+                            <div class="plan-card__meta">3,000 pages · Schedule + GEO</div>
+                            <ul class="plan-card__list">
+                                <li>Up to 3,000 verified pages per month</li>
+                                <li>Scheduled runs included</li>
+                                <li>GEO routing included</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="https://app.adschecks.com/signup">Start free trial</a>
+                        </article>
+
+                        <article class="plan-card">
+                            <div class="plan-card__head">
+                                <div class="plan-card__tier">Custom</div>
+                                <div class="plan-card__badge">Scale</div>
+                            </div>
+                            <div class="plan-card__price">Contact<span> sales</span></div>
+                            <div class="plan-card__meta">Higher-volume usage and commercial scoping</div>
+                            <ul class="plan-card__list">
+                                <li>Custom monthly capacity</li>
+                                <li>Commercial setup by workflow</li>
+                                <li>Operational fit review before rollout</li>
+                            </ul>
+                            <a class="card-link plan-card__cta" href="mailto:contact@adschecks.com">Contact sales</a>
+                        </article>
                     </div>
 
-                    <div class="doc-card">
-                        <h2>What is included</h2>
-                        <ul>
-                            <li>slot statuses for up to 5 predefined ad slots per verified page</li>
-                            <li>screenshots and JSON metadata</li>
-                            <li>UTC timestamp and check context (GEO/device)</li>
-                            <li>evidence references for review and dispute handling</li>
-                        </ul>
+                    <div class="pricing-summary">
+                        <div class="pricing-summary__item">
+                            <div class="pricing-summary__k">Included with paid plans</div>
+                            <div class="pricing-summary__v">Paid plans add scheduling; GEO routing starts on Growth and stays included on Standard.</div>
+                        </div>
+                        <div class="pricing-summary__item">
+                            <div class="pricing-summary__k">Billing model</div>
+                            <div class="pricing-summary__v">Charged per completed verified page, with a hard cap when monthly capacity is reached.</div>
+                        </div>
+                        <div class="pricing-summary__item">
+                            <div class="pricing-summary__k">Commercial setup</div>
+                            <div class="pricing-summary__v">Custom plans stay guided: workflow review first, rollout second.</div>
+                        </div>
                     </div>
 
-                    <div class="doc-card">
-                        <h2>Charging rules</h2>
-                        <p>Usage is charged when a page load is completed.</p>
-                        <p>Charged outcomes: OK, SLOT_EMPTY, CHALLENGE_DETECTED, BLOCKED.</p>
-                        <p>
-                            When monthly plan capacity is reached, AdsChecks uses a hard cap. New runs remain blocked until the plan is
-                            upgraded or additional capacity is added.
-                        </p>
+                    <div class="doc-grid">
+                        <div class="doc-card">
+                            <h2>What is included</h2>
+                            <ul>
+                                <li>slot statuses for up to 5 predefined ad slots per verified page</li>
+                                <li>screenshots and JSON metadata</li>
+                                <li>UTC timestamp and selected check context</li>
+                                <li>evidence references for review and dispute handling</li>
+                            </ul>
+                        </div>
+
+                        <div class="doc-card">
+                            <h2>Charging rules</h2>
+                            <p>Usage is charged when a page load is completed.</p>
+                            <p>Charged outcomes: OK, SLOT_EMPTY, CHALLENGE_DETECTED, BLOCKED.</p>
+                            <p>At capacity limit AdsChecks uses a hard cap: new runs stay blocked until capacity is increased.</p>
+                        </div>
+
+                        <div class="doc-card">
+                            <h2>Verification boundary</h2>
+                            <p>
+                                AdsChecks bills by verified page. A verified page means one completed page load for a target URL in a selected
+                                check context (GEO + device), with verification of up to 5 predefined ad slots.
+                            </p>
+                        </div>
+
+                        <div class="doc-card">
+                            <h2>Commercial note</h2>
+                            <p>
+                                Custom terms, higher-volume usage, and rollout scope can be discussed via
+                                <a href="mailto:contact@adschecks.com">contact@adschecks.com</a>.
+                            </p>
+                            <p>Refund handling and dispute review follow the published <a href="/refund-policy/">Refund Policy</a>.</p>
+                        </div>
                     </div>
 
-                    <div class="doc-card">
-                        <h2>Commercial note</h2>
-                        <p>
-                            Public plan pricing is shown above. Custom commercial terms, higher-volume capacity, and operational scope can be
-                            discussed via <a href="mailto:contact@adschecks.com">contact@adschecks.com</a>.
-                        </p>
+                    <div class="cta__actions">
+                        <p>Already have an account? <a href="https://app.adschecks.com/signin">Log in →</a></p>
                     </div>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
-            <div class="container footer__inner">
-                <div class="muted">Ad slot verification with proof-first reporting.</div>
-                <div class="footer__links">
-                    <a href="/pricing/">Pricing</a>
-                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
-                    <a href="/refund-policy/">Refund Policy</a>
-                    <a href="/privacy-policy/">Privacy Policy</a>
-                    <a href="/what-we-verify/">What we verify</a>
-                    <a href="/status-model/">Status model</a>
-                    <a href="/legal-notice/">Legal Notice</a>
+            <div class="container footer__grid">
+                <div class="footer__brand">
+                    <a class="footer__brand-link" href="/">AdsChecks</a>
+                    <p class="muted">Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.</p>
+                    <p class="footer__note">AdsChecks provides audit, evidence, and verification. It does not guarantee delivery, impressions, or revenue outcomes.</p>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Product</div>
+                    <div class="footer__links">
+                        <a href="/pricing/">Pricing</a>
+                        <a href="/what-we-verify/">What we verify</a>
+                        <a href="/status-model/">Status model</a>
+                        <a href="/about/">About</a>
+                        <a href="/faq/">FAQ</a>
+                        <a href="https://app.adschecks.com/signup">Start free trial</a>
+                    </div>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Policies</div>
+                    <div class="footer__links">
+                        <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+                        <a href="/refund-policy/">Refund Policy</a>
+                        <a href="/privacy-policy/">Privacy Policy</a>
+                        <a href="/legal-notice/">Legal Notice</a>
+                    </div>
                 </div>
             </div>
         </footer>

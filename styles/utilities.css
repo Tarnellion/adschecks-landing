@@ -1,0 +1,43 @@
+.eyebrow {
+    font-size: var(--xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(var(--accent-rgb), 0.92);
+    margin-bottom: var(--space-12);
+}
+
+.badge {
+    font-size: var(--xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(var(--text-rgb), 0.7);
+    white-space: nowrap;
+}
+
+.lead {
+    font-size: var(--lead);
+    color: rgba(var(--text-rgb), 0.88);
+    max-width: 56ch;
+    line-height: 1.68;
+}
+
+.fine {
+    font-size: var(--small);
+    margin-top: var(--space-12);
+}
+
+:focus-visible {
+    outline: 3px solid rgba(var(--accent-2-rgb), 0.55);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

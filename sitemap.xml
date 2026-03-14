@@ -2,26 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://adschecks.com/</loc>
-    </url>
-    <url>
-        <loc>https://adschecks.com/privacy-policy/</loc>
+        <lastmod>2026-03-14</lastmod>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://adschecks.com/pricing/</loc>
-    </url>
-    <url>
-        <loc>https://adschecks.com/terms-and-conditions/</loc>
-    </url>
-    <url>
-        <loc>https://adschecks.com/refund-policy/</loc>
-    </url>
-    <url>
-        <loc>https://adschecks.com/legal-notice/</loc>
+        <lastmod>2026-03-14</lastmod>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://adschecks.com/what-we-verify/</loc>
+        <lastmod>2026-03-14</lastmod>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://adschecks.com/status-model/</loc>
+        <lastmod>2026-03-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://adschecks.com/about/</loc>
+        <lastmod>2026-03-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://adschecks.com/faq/</loc>
+        <lastmod>2026-03-14</lastmod>
+        <priority>0.6</priority>
     </url>
 </urlset>

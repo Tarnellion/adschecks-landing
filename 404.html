@@ -12,7 +12,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles/index.css" />
     </head>
     <body>
         <header class="header">
@@ -25,7 +25,13 @@
                     <span class="nav-toggle__line"></span>
                 </button>
                 <nav id="primary-nav" class="nav" aria-label="Primary">
-                    <a href="/">Back to home</a>
+                    <a href="/">Home</a>
+                    <a href="/pricing/">Pricing</a>
+                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+                    <a href="/refund-policy/">Refund Policy</a>
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <span class="nav-divider" aria-hidden="true"></span>
+                    <a href="/#get-started" class="nav__cta">Get started</a>
                 </nav>
             </div>
         </header>
@@ -46,16 +52,29 @@
         </main>
 
         <footer class="footer">
-            <div class="container footer__inner">
-                <div class="muted">Ad slot verification with proof-first reporting.</div>
-                <div class="footer__links">
-                    <a href="/pricing/">Pricing</a>
-                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
-                    <a href="/refund-policy/">Refund Policy</a>
-                    <a href="/privacy-policy/">Privacy Policy</a>
-                    <a href="/what-we-verify/">What we verify</a>
-                    <a href="/status-model/">Status model</a>
-                    <a href="/legal-notice/">Legal Notice</a>
+            <div class="container footer__grid">
+                <div class="footer__brand">
+                    <a class="footer__brand-link" href="/">AdsChecks</a>
+                    <p class="muted">Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.</p>
+                    <p class="footer__note">AdsChecks provides audit, evidence, and verification. It does not guarantee delivery, impressions, or revenue outcomes.</p>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Product</div>
+                    <div class="footer__links">
+                        <a href="/pricing/">Pricing</a>
+                        <a href="/what-we-verify/">What we verify</a>
+                        <a href="/status-model/">Status model</a>
+                        <a href="/#get-started">Get started</a>
+                    </div>
+                </div>
+                <div class="footer__group">
+                    <div class="footer__title">Policies</div>
+                    <div class="footer__links">
+                        <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+                        <a href="/refund-policy/">Refund Policy</a>
+                        <a href="/privacy-policy/">Privacy Policy</a>
+                        <a href="/legal-notice/">Legal Notice</a>
+                    </div>
                 </div>
             </div>
         </footer>
