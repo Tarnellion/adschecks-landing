@@ -3,6 +3,7 @@ node_modules/
 test-results/
 playwright-report/
 *.log
+playwright.offline.config.js
 
 # macOS
 .DS_Store
@@ -19,7 +20,7 @@ playwright-report/
 *~
 
 # Package manager lock files (optional - uncomment if you don't want to commit them)
-# package-lock.json
+package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
 
