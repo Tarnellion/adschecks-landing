@@ -98,12 +98,6 @@
     transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
-.plan-card--trial {
-    background:
-        linear-gradient(180deg, rgba(var(--surface-rgb), 0.72), rgba(var(--surface-rgb), 0.54)),
-        linear-gradient(135deg, rgba(var(--accent-rgb), 0.045), transparent 58%);
-}
-
 .plan-card--featured {
     border-color: rgba(var(--accent-2-rgb), 0.28);
     background:
@@ -153,12 +147,6 @@
 
 .plan-card--featured .plan-card__badge {
     min-width: 74px;
-}
-
-.plan-card--trial .plan-card__badge {
-    color: rgba(var(--accent-rgb), 0.92);
-    border-color: rgba(var(--accent-rgb), 0.18);
-    background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.14), rgba(var(--accent-rgb), 0.08));
 }
 
 .plan-card--featured .plan-card__badge {
@@ -216,11 +204,6 @@
     border-radius: 999px;
     background: rgba(var(--accent-2-rgb), 0.9);
     box-shadow: 0 0 12px rgba(var(--accent-2-rgb), 0.48);
-}
-
-.plan-card--trial .plan-card__list li::before {
-    background: rgba(var(--accent-rgb), 0.9);
-    box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.42);
 }
 
 .plan-card__cta {
