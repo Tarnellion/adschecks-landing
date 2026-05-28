@@ -401,7 +401,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         <div class="section__copy">
           <p class="section__eyebrow mono">Platform capabilities</p>
           <h2>Everything you need for repeatable ad slot QA</h2>
-          <p class="section__intro">From automatic slot discovery to scheduled runs, GEO-routed checks, and API-driven workflows — one platform, structured evidence every time.</p>
+          <p class="section__intro">Slot discovery, scheduled runs, and GEO-routed checks — one platform, structured evidence every time.</p>
         </div>
       </div>
       <div class="bento reveal-group">
@@ -411,8 +411,10 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           <div class="bento__eyebrow">Discovery</div>
           <h3 class="bento__title">Slot discovery scan</h3>
           <p class="bento__desc">Automatically detect ad slot selectors on any page before setting up a template. No manual DOM inspection or CSS selector hunting required.</p>
-          <div class="bento__screenshot" aria-hidden="true">
-            <img src="/assets/screenshots/discovery-detail.png" alt="" loading="lazy" width="1200" height="950">
+          <div class="bento__mock" aria-hidden="true">
+            <div class="bento__mock-row"><span class="bento__mock-dot bento__mock-dot--ok"></span><span class="bento__mock-selector">#div-gpt-ad-leaderboard</span><span class="bento__mock-status bento__mock-status--ok">OK</span></div>
+            <div class="bento__mock-row"><span class="bento__mock-dot bento__mock-dot--empty"></span><span class="bento__mock-selector">.ad-slot-sidebar</span><span class="bento__mock-status bento__mock-status--empty">SLOT_EMPTY</span></div>
+            <div class="bento__mock-row"><span class="bento__mock-dot bento__mock-dot--ok"></span><span class="bento__mock-selector">#ad-unit-footer</span><span class="bento__mock-status bento__mock-status--ok">OK</span></div>
           </div>
         </article>
 
@@ -437,35 +439,19 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           </div>
         </article>
 
-        <!-- 4 small cards -->
-        <article class="bento__item bento__item--sm reveal">
+        <!-- 2 half cards -->
+        <article class="bento__item bento__item--half reveal">
           <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
           <div class="bento__eyebrow">Coverage</div>
           <h3 class="bento__title">GEO-routed proxy</h3>
           <p class="bento__desc">Verify from US, EU, APAC and other regions. Isolate geo-specific delivery issues with residential proxies.</p>
         </article>
 
-        <article class="bento__item bento__item--sm bento__item--soon reveal">
-          <div class="bento__soon-badge">Coming soon</div>
-          <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-          <div class="bento__eyebrow">Alerting</div>
-          <h3 class="bento__title">Webhook notifications</h3>
-          <p class="bento__desc">Receive a payload when slot status changes — no dashboard polling required.</p>
-        </article>
-
-        <article class="bento__item bento__item--sm reveal">
+        <article class="bento__item bento__item--half reveal">
           <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
           <div class="bento__eyebrow">Analysis</div>
           <h3 class="bento__title">Result diff</h3>
           <p class="bento__desc">Compare any two runs side-by-side. Spot regressions, slot drops, or layout changes between cycles.</p>
-        </article>
-
-        <article class="bento__item bento__item--sm bento__item--soon reveal">
-          <div class="bento__soon-badge">Coming soon</div>
-          <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-          <div class="bento__eyebrow">Integration</div>
-          <h3 class="bento__title">API access</h3>
-          <p class="bento__desc">Trigger runs, fetch results, and pull evidence bundles programmatically into CI pipelines.</p>
         </article>
 
       </div>
@@ -619,7 +605,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         <details class="faq-item"><summary>What happens if my page has more than 5 ad slots?</summary><p>Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL.</p></details>
         <details class="faq-item"><summary>When does billing start?</summary><p>All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required.</p></details>
         <details class="faq-item"><summary>What does BLOCKED or CHALLENGE_DETECTED mean?</summary><p>Both are valid verification outcomes, not platform errors. CHALLENGE_DETECTED means an anti-bot page (Cloudflare, hCaptcha) was returned instead of the page content. BLOCKED means the CDN denied access from that GEO or IP range. Both are billable because the page load completed and evidence was captured — the result itself is the finding.</p></details>
-        <details class="faq-item"><summary>How fast do results come back?</summary><p>Most runs complete in under 2 minutes. Results appear in the dashboard immediately after the run finishes, and any configured webhooks fire at the same time. There's no batch delay.</p></details>
+        <details class="faq-item"><summary>How fast do results come back?</summary><p>Most runs complete in under 2 minutes. Results appear in the dashboard immediately after the run finishes. There's no batch delay.</p></details>
         <details class="faq-item"><summary>Can I use AdsChecks for multiple clients or domains?</summary><p>Yes. You can run checks across any number of domains and URLs within one account. Each check is scoped to a specific URL and context — which makes AdsChecks practical for agencies managing verification across multiple publisher or advertiser accounts.</p></details>
       </div>
       <p class="fine">More questions about access, result speed, supported devices, or refunds: <a href="/faq/">see the full FAQ</a>.</p>
