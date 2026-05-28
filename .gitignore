@@ -32,3 +32,8 @@ Todo.md
 README.md
 playwright.config.js
 tests/
+
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
