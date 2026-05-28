@@ -22,6 +22,10 @@ playwright.offline.config.js
 *.swo
 *~
 
+# Claude Code
+.claude/
+.playwright-mcp/
+
 # Internal working files
 AGENTS.md
 Todo.md
