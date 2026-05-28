@@ -1,0 +1,79 @@
+/* Gradient text — key words in H1/H2 */
+.u-grad-text {
+    background: linear-gradient(135deg, var(--scene-accent) 0%, color-mix(in srgb, var(--scene-accent) 60%, var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: background 0.8s ease;
+}
+
+.eyebrow {
+    font-size: var(--xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(var(--accent-rgb), 0.92);
+    margin-bottom: var(--space-12);
+}
+
+.badge {
+    font-size: var(--xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(var(--text-rgb), 0.7);
+    white-space: nowrap;
+}
+
+.lead {
+    font-size: var(--lead);
+    color: rgba(var(--text-rgb), 0.88);
+    max-width: 56ch;
+    line-height: 1.68;
+}
+
+.fine {
+    font-size: var(--small);
+    margin-top: var(--space-12);
+}
+
+:focus-visible {
+    outline: 3px solid rgba(var(--accent-2-rgb), 0.55);
+    outline-offset: 3px;
+}
+
+/* --- Scroll-triggered reveal animations --- */
+@media (prefers-reduced-motion: no-preference) {
+    .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 400ms ease-out, transform 400ms ease-out;
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .reveal-group > .reveal:nth-child(2) { transition-delay: 80ms; }
+    .reveal-group > .reveal:nth-child(3) { transition-delay: 160ms; }
+    .reveal-group > .reveal:nth-child(4) { transition-delay: 240ms; }
+
+    /* Timeline steps slide in from left */
+    .timeline .reveal {
+        transform: translateX(-20px);
+    }
+    .timeline .reveal.is-visible {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+        transition: none !important;
+    }
+
+    *:not(html) {
+        animation: none !important;
+        transition: none !important;
+    }
+}

@@ -1,5 +1,8 @@
 node_modules/
+.wrangler/
 .playwright/
+.astro/
+dist/
 test-results/
 playwright-report/
 *.log
@@ -19,15 +22,9 @@ playwright.offline.config.js
 *.swo
 *~
 
-# Package manager lock files (optional - uncomment if you don't want to commit them)
-package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
-
 # Internal working files
 AGENTS.md
 Todo.md
 README.md
-package.json
 playwright.config.js
 tests/

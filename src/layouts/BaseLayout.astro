@@ -1,0 +1,149 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  robots?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  robots = 'index, follow',
+  ogTitle,
+  ogDescription,
+  bodyClass,
+} = Astro.props;
+
+const resolvedOgTitle = ogTitle ?? title;
+const resolvedOgDesc = ogDescription ?? description;
+const currentPath = new URL(canonical).pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#0a0e13" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/favicons/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AdsChecks" />
+    <meta name="twitter:image:alt" content="AdsChecks — Ad Slot Verification Tool" />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://adschecks.com/og.png?v=20260317" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDesc} />
+    <meta name="twitter:image" content="https://adschecks.com/og.png?v=20260317" />
+    <link rel="preconnect" href="https://app.adschecks.com" />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <div class="read-progress" aria-hidden="true"></div>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="/">AdsChecks</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Primary">
+          <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
+          <a href="/pricing/" aria-current={currentPath.startsWith('/pricing') ? 'page' : undefined}>Pricing</a>
+          <a href="/blog/" aria-current={currentPath.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+          <a href="/faq/" aria-current={currentPath.startsWith('/faq') ? 'page' : undefined}>FAQ</a>
+          <a href="/what-we-verify/" aria-current={currentPath.startsWith('/what-we-verify') ? 'page' : undefined}>What we verify</a>
+          <a href="/status-model/" aria-current={currentPath.startsWith('/status-model') ? 'page' : undefined}>Status model</a>
+          <a href="/about/" aria-current={currentPath.startsWith('/about') ? 'page' : undefined}>About</a>
+          <span class="nav-divider" aria-hidden="true"></span>
+          <a href="https://app.adschecks.com/signin" class="nav__login">Log in</a>
+          <a href="https://app.adschecks.com/signup?plan=starter" class="nav__cta">Try free</a>
+        </nav>
+      </div>
+    </header>
+    <div class="nav-overlay" aria-hidden="true"></div>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a class="footer__brand-link" href="/">AdsChecks</a>
+          <p class="muted">Ad slot verification with screenshot proof — across any GEO and device. For affiliate managers, media buyers, and publishers.</p>
+        </div>
+        <div class="footer__group">
+          <div class="footer__title">Product</div>
+          <div class="footer__links">
+            <a href="/pricing/">Pricing</a>
+            <a href="/what-we-verify/">What we verify</a>
+            <a href="/status-model/">Status model</a>
+            <a href="/ad-slot-verification/">Ad slot verification</a>
+            <a href="/blog/">Blog</a>
+            <a href="/about/">About</a>
+            <a href="/faq/">FAQ</a>
+            <a href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+          </div>
+        </div>
+        <div class="footer__group">
+          <div class="footer__title">Policies</div>
+          <div class="footer__links">
+            <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+            <a href="/refund-policy/">Refund Policy</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/legal-notice/">Legal Notice</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+
+    <div id="cookie-bar" class="cookie-bar" hidden>
+      <p class="cookie-bar__text">
+        We use only essential cookies. <a href="/privacy-policy/">Privacy Policy</a>
+      </p>
+      <button id="cookie-dismiss" class="cookie-bar__btn" type="button">Got it</button>
+    </div>
+    <script>
+      (function () {
+        if (localStorage.getItem('cookie-ok')) return;
+        var bar = document.getElementById('cookie-bar');
+        if (!bar) return;
+        bar.removeAttribute('hidden');
+        document.getElementById('cookie-dismiss').addEventListener('click', function () {
+          localStorage.setItem('cookie-ok', '1');
+          bar.setAttribute('hidden', '');
+        });
+      })();
+    </script>
+  </body>
+</html>

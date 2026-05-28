@@ -1,0 +1,105 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="How Ad Slot Verification Works — AdsChecks"
+  description="Each check = one page load in your chosen GEO and device. Up to 5 ad slots verified per run. Screenshots, JSON metadata, and timestamped proof included."
+  canonical="https://adschecks.com/what-we-verify/"
+  bodyClass="page-what-we-verify"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AdsChecks",
+      "url": "https://adschecks.com",
+      "email": "contact@adschecks.com",
+      "description": "Ad slot verification with proof-first reporting.",
+      "logo": "https://adschecks.com/assets/favicons/favicon-512.png",
+      "address": { "@type": "PostalAddress", "addressCountry": "UA" },
+      "contactPoint": { "@type": "ContactPoint", "email": "contact@adschecks.com", "contactType": "customer support" }
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/what-we-verify/", "name": "What we verify" } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section class="section">
+    <div class="container legal-page">
+      <div class="doc-hero">
+        <div class="doc-hero__copy">
+          <p class="section__eyebrow mono">Scope definition</p>
+          <h1>What AdsChecks Verifies on Each Page Load</h1>
+          <p class="lead">The public scope of AdsChecks is intentionally narrow: one verified page, selected context, and evidence outputs.</p>
+        </div>
+        <div class="doc-hero__meta">
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Unit</div>
+            <div class="doc-meta__v">One completed page load in a selected GEO/device context.</div>
+          </div>
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Slot limit</div>
+            <div class="doc-meta__v">Up to 5 predefined ad slots per verified page.</div>
+          </div>
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Outputs</div>
+            <div class="doc-meta__v">Statuses, screenshots, JSON metadata, UTC timestamp.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card doc-card--summary doc-card--accent doc-card--span-2">
+          <p>AdsChecks is an audit and verification service.</p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Verified page unit</h2>
+          <p>
+            A Verified page means one completed page load for a target URL in a selected check context (GEO + device) and
+            verification of up to 5 predefined ad slots.
+          </p>
+          <p>Each verified page returns one of four statuses — <a href="/status-model/">see the full status model →</a></p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Delivered evidence</h2>
+          <p>Each verified page result includes:</p>
+          <ul>
+            <li>slot statuses</li>
+            <li>screenshots</li>
+            <li>JSON metadata</li>
+            <li>UTC timestamp</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__copy">
+          <h2>Ready to verify your ad slots?</h2>
+          <p class="section__intro">Start a 3-day free trial — no charge until day 4.</p>
+        </div>
+      </div>
+      <div class="cta">
+        <div class="cta__copy">
+          <div class="cta__actions">
+            <a href="https://app.adschecks.com/signup?plan=starter" class="btn">Start free trial</a>
+            <a href="https://app.adschecks.com/signin" class="btn btn--ghost">Log in</a>
+          </div>
+          <p class="fine">3-day free trial &middot; Cancel any time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

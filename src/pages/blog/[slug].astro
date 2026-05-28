@@ -1,0 +1,97 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const canonical = `https://adschecks.com/blog/${post.id}/`;
+---
+
+<BaseLayout
+  title={`${post.data.title} — AdsChecks Blog`}
+  description={post.data.description}
+  canonical={canonical}
+  ogTitle={post.data.ogTitle ?? post.data.title}
+  bodyClass="page-blog-post"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.data.title,
+      "description": post.data.description,
+      "datePublished": post.data.pubDate.toISOString(),
+      "dateModified": (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+      "author": {
+        "@type": "Person",
+        "name": "Taras Hovorukha",
+        "url": "https://adschecks.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AdsChecks",
+        "url": "https://adschecks.com",
+        "logo": { "@type": "ImageObject", "url": "https://adschecks.com/assets/favicons/favicon-512.png" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": canonical }
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/blog/", "name": "Blog" } },
+        { "@type": "ListItem", "position": 3, "item": { "@id": canonical, "name": post.data.title } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section class="section">
+    <div class="container legal-page">
+      <div class="post-hero">
+        <div class="post-hero__meta mono">
+          <a href="/blog/" class="post-hero__back">← Blog</a>
+          <span class="post-hero__sep" aria-hidden="true">/</span>
+          <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          {post.data.tags.map(tag => (
+            <span class="post-hero__tag">{tag}</span>
+          ))}
+        </div>
+        <h1>{post.data.title}</h1>
+        <p class="lead">{post.data.description}</p>
+      </div>
+
+      <div class="post-body prose">
+        <Content />
+      </div>
+
+      <script>
+        // Wrap all prose tables in a scroll container for mobile
+        document.querySelectorAll('.post-body table').forEach(table => {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'table-scroll';
+          table.parentNode?.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        });
+      </script>
+
+      <div class="post-footer">
+        <a href="/blog/" class="btn btn--ghost">← Back to blog</a>
+        <a href="https://app.adschecks.com/signup?plan=starter" class="btn">Start free trial</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

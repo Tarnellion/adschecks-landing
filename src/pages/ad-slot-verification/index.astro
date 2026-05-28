@@ -1,0 +1,437 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Ad Slot Verification Tool — Verify Ad Delivery with Screenshot Proof"
+  description="AdsChecks is an ad slot verification tool that checks whether your ad slots are rendering, which GEOs are blocked, and what the page looks like at the time of each check."
+  canonical="https://adschecks.com/ad-slot-verification/"
+  ogTitle="Ad Slot Verification Tool — AdsChecks"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AdsChecks — Ad Slot Verification Tool",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Ad slot verification tool that checks whether ad slots are rendering with screenshot proof, JSON metadata, and UTC timestamps across any GEO and device context.",
+      "url": "https://adschecks.com",
+      "offers": [
+        { "@type": "Offer", "name": "Starter", "price": "39", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "39", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } },
+        { "@type": "Offer", "name": "Growth", "price": "79", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } },
+        { "@type": "Offer", "name": "Standard", "price": "149", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "149", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } }
+      ]
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an ad slot verification tool?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An ad slot verification tool checks whether ad placements on a web page are actually rendering at the time of a check. It loads a target URL in a controlled environment (specific GEO and device), inspects predefined CSS selectors, captures a screenshot, and records the slot status — OK, SLOT_EMPTY, BLOCKED, or CHALLENGE_DETECTED." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is ad slot verification different from ad fraud detection?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ad slot verification confirms whether a slot is present and rendering on a given page at check time. Ad fraud detection looks for invalid traffic, bot impressions, and click fraud. They solve different problems — verification is about placement delivery and page state; fraud detection is about traffic quality." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I verify ad slots across different GEO regions?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. AdsChecks routes checks through residential proxies in 12+ regions. You can run the same check from US, UK, DE, JP, and other GEOs to compare slot rendering across markets." }
+        },
+        {
+          "@type": "Question",
+          "name": "What statuses does an ad slot verification tool return?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AdsChecks returns four statuses: OK (slot matched expected selector and state), SLOT_EMPTY (selector found but no ad content at check time), CHALLENGE_DETECTED (anti-bot interstitial was returned instead of the page), and BLOCKED (access was prevented in the target GEO or environment)." }
+        },
+        {
+          "@type": "Question",
+          "name": "What evidence is captured per check?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Each check produces a full-page screenshot, per-slot status codes, JSON metadata with selector data and viewport information, and a UTC timestamp. All artifacts are bundled into a downloadable ZIP for sharing with ad ops, publishers, or legal teams." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many ad slots can be verified per page load?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AdsChecks verifies up to 5 predefined ad slot selectors per page load. If you need to check more slots, you can run multiple checks with different selector sets for the same URL." }
+        }
+      ]
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/ad-slot-verification/", "name": "Ad Slot Verification" } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section class="section lp-hero">
+    <div class="container">
+      <div class="lp-hero__inner">
+        <div class="lp-hero__copy">
+          <p class="section__eyebrow mono">Purpose-built tool</p>
+          <h1>Ad slot verification tool — check what's actually on the page</h1>
+          <p class="lead">
+            AdsChecks loads your target URL in a real GEO context, inspects your predefined ad slot
+            selectors, captures a full-page screenshot, and returns a structured evidence bundle
+            you can use for QA, commercial review, or dispute support.
+          </p>
+          <div class="lp-hero__actions">
+            <a class="btn" href="https://app.adschecks.com/signup">Start free trial</a>
+            <a class="btn btn--ghost" href="/pricing/">See plans from $39/mo</a>
+          </div>
+          <p class="fine">3-day free trial &middot; No charge until day 4 &middot; Cancel any time</p>
+        </div>
+        <div class="lp-hero__card" aria-hidden="true">
+          <div class="lp-card">
+            <div class="lp-card__head mono">chk_8f3k2x &middot; US &middot; Desktop</div>
+            <div class="lp-card__rows">
+              <div class="lp-card__row">
+                <span class="lp-card__selector mono">#div-gpt-ad-header-0</span>
+                <span class="lp-card__status lp-card__status--ok">OK</span>
+              </div>
+              <div class="lp-card__row">
+                <span class="lp-card__selector mono">#sidebar-ad-300x250</span>
+                <span class="lp-card__status lp-card__status--ok">OK</span>
+              </div>
+              <div class="lp-card__row">
+                <span class="lp-card__selector mono">#sticky-footer-ad</span>
+                <span class="lp-card__status lp-card__status--empty">SLOT_EMPTY</span>
+              </div>
+              <div class="lp-card__row">
+                <span class="lp-card__selector mono">#interstitial-banner</span>
+                <span class="lp-card__status lp-card__status--blocked">BLOCKED</span>
+              </div>
+            </div>
+            <div class="lp-card__foot mono">Screenshot + JSON + ZIP &middot; 2026-03-15T09:22:41Z</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt lp-section">
+    <div class="container lp-container">
+      <h2>What is ad slot verification?</h2>
+      <p>
+        Ad slot verification is the process of checking whether an ad placement on a web page is
+        actually rendering — in a specific GEO, on a specific device, at a specific point in time.
+        It is distinct from ad fraud detection (which targets invalid traffic) and from ad serving
+        analytics (which tracks impressions in aggregate). Verification answers a simpler, more
+        direct question: <strong>is this slot rendering right now, in this context?</strong>
+      </p>
+      <p>
+        Without a dedicated tool, teams rely on manual screenshots, VPNs, and informal reports from
+        partners. These methods produce inconsistent evidence that is hard to compare across runs and
+        difficult to share in a structured format. A purpose-built ad slot verification tool replaces
+        this manual workflow with repeatable, structured checks that produce the same output every time.
+      </p>
+
+      <h3>What a verification check includes</h3>
+      <p>A single verification run in AdsChecks covers:</p>
+      <ul class="lp-list">
+        <li><strong>Page load</strong> — the target URL is loaded in a Chromium-based environment with the selected GEO proxy and device emulation active</li>
+        <li><strong>Slot inspection</strong> — up to 5 predefined CSS selectors are checked for presence, visibility, and render state</li>
+        <li><strong>Screenshot capture</strong> — a full-page screenshot is taken at check time and stored as part of the evidence bundle</li>
+        <li><strong>Status assignment</strong> — each slot receives a status code: <code>OK</code>, <code>SLOT_EMPTY</code>, <code>CHALLENGE_DETECTED</code>, or <code>BLOCKED</code></li>
+        <li><strong>Metadata output</strong> — a JSON file is generated with selector data, viewport dimensions, GEO context, and a UTC timestamp</li>
+        <li><strong>Evidence bundle</strong> — all artifacts are packaged into a downloadable ZIP</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section lp-section">
+    <div class="container lp-container">
+      <h2>Why teams use an ad slot verification tool</h2>
+      <p>
+        Ad slot delivery problems are common and often go undetected until a billing dispute or a
+        missed campaign target surfaces them. The core problem is that ad rendering is
+        context-dependent: the same page can serve ads correctly in one region and return an empty
+        slot or a blocked page in another. Without systematic verification, this gap is invisible.
+      </p>
+
+      <div class="lp-cards">
+        <div class="lp-card-item">
+          <h3>Billing disputes</h3>
+          <p>
+            When a publisher reports full delivery but a buyer sees empty slots, neither side has
+            consistent evidence. An ad slot verification tool produces timestamped screenshots and
+            JSON metadata from the exact GEO and device context in dispute — giving both parties a
+            documented record to work from instead of conflicting reports.
+          </p>
+        </div>
+        <div class="lp-card-item">
+          <h3>Pre-launch QA</h3>
+          <p>
+            Before a campaign goes live, ad ops teams need to confirm that slots are rendering in
+            all target markets. A verification run across 6 GEOs and 2 device types takes minutes
+            and surfaces configuration issues — a misconfigured selector, a WAF blocking a specific
+            IP range, or a slot that renders on desktop but not mobile — before spend begins.
+          </p>
+        </div>
+        <div class="lp-card-item">
+          <h3>Scheduled compliance audits</h3>
+          <p>
+            Publishers and agencies with ongoing agreements need repeatable proof that slots are
+            delivering as contracted. Scheduled verification runs produce a consistent evidence
+            record each cycle. Diff reports flag regressions between runs — a slot that was
+            rendering last week and is now returning <code>SLOT_EMPTY</code> is immediately visible.
+          </p>
+        </div>
+        <div class="lp-card-item">
+          <h3>Publisher delivery documentation</h3>
+          <p>
+            Publishers can use ad slot verification to proactively document delivery on their own
+            properties — providing advertisers with structured proof rather than relying on
+            dashboard screenshots that are difficult to verify independently.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt lp-section">
+    <div class="container lp-container">
+      <h2>How the AdsChecks verification tool works</h2>
+
+      <div class="lp-steps">
+        <div class="lp-step">
+          <div class="lp-step__num">01</div>
+          <div class="lp-step__body">
+            <h3>Define a check template</h3>
+            <p>
+              Set a target URL, select a GEO region and device type, and specify up to 5 CSS
+              selectors for the ad slots you want to verify. Templates are reusable — define once,
+              run manually or on a schedule.
+            </p>
+          </div>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__num">02</div>
+          <div class="lp-step__body">
+            <h3>Run the check</h3>
+            <p>
+              AdsChecks routes the request through a residential proxy in the selected GEO, loads
+              the page in Chromium, and inspects each slot selector. The check completes in seconds
+              to a few minutes depending on page complexity and GEO routing.
+            </p>
+          </div>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__num">03</div>
+          <div class="lp-step__body">
+            <h3>Review the evidence bundle</h3>
+            <p>
+              Each check produces a full-page screenshot, per-slot status codes, a JSON metadata
+              file, and a UTC timestamp. The complete bundle is available for download as a ZIP.
+              Results appear in the dashboard immediately after completion.
+            </p>
+          </div>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step__num">04</div>
+          <div class="lp-step__body">
+            <h3>Compare, export, or escalate</h3>
+            <p>
+              Use the diff view to compare any two runs side-by-side. Export the evidence bundle for
+              use in dispute documentation, publisher reporting, or internal QA records. Set up
+              webhook notifications to receive alerts when slot status changes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-section">
+    <div class="container lp-container">
+      <h2>Ad slot statuses explained</h2>
+      <p>
+        AdsChecks returns four status codes, each representing a distinct verification outcome.
+        All four are valid results — they describe what happened on the page at check time,
+        not whether the tool succeeded or failed.
+      </p>
+      <div class="lp-statuses">
+        <div class="lp-status">
+          <span class="lp-status__code lp-status__code--ok">OK</span>
+          <div class="lp-status__body">
+            <strong>Slot matched expected selector and state.</strong> The CSS selector was found,
+            the slot element was visible, and ad content was detected at check time. This is the
+            expected outcome for a correctly configured, delivering slot.
+          </div>
+        </div>
+        <div class="lp-status">
+          <span class="lp-status__code lp-status__code--empty">SLOT_EMPTY</span>
+          <div class="lp-status__body">
+            <strong>Selector matched but no ad content at check time.</strong> The slot element was
+            present in the DOM but contained no ad creative. Common causes: unfilled impression,
+            misconfigured selector targeting, or a floor price preventing delivery in the requested
+            context.
+          </div>
+        </div>
+        <div class="lp-status">
+          <span class="lp-status__code lp-status__code--challenge">CHALLENGE_DETECTED</span>
+          <div class="lp-status__body">
+            <strong>Anti-bot challenge or interstitial returned.</strong> A Cloudflare Turnstile,
+            hCaptcha, or JS challenge page was encountered instead of the actual page content. The
+            screenshot captures the challenge state as documented proof. This is a billable outcome
+            because a page load was completed and evidence was captured.
+          </div>
+        </div>
+        <div class="lp-status">
+          <span class="lp-status__code lp-status__code--blocked">BLOCKED</span>
+          <div class="lp-status__body">
+            <strong>Access was prevented in the target environment.</strong> The CDN, WAF, or server
+            denied access from the check's GEO region or IP range. BLOCKED is commercially relevant
+            information — it confirms that ad content is not being served to that audience segment.
+          </div>
+        </div>
+      </div>
+      <p class="lp-note">
+        For the full status model documentation, see the <a href="/status-model/">Status model page →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt lp-section">
+    <div class="container lp-container">
+      <h2>Who uses an ad slot verification tool</h2>
+
+      <div class="lp-roles">
+        <div class="lp-role">
+          <div class="lp-role__label">Advertisers</div>
+          <p>
+            Confirm that bought placements are actually rendering on publisher pages. Use
+            geo-routed checks to verify delivery in specific target markets. Produce timestamped
+            evidence for billing review when delivery reporting doesn't match observed performance.
+          </p>
+        </div>
+        <div class="lp-role">
+          <div class="lp-role__label">Ad-ops &amp; agencies</div>
+          <p>
+            Run pre-launch verification across all target GEOs before campaign spend begins.
+            Schedule recurring checks during campaign flight. Use diff reports to catch regressions
+            between runs. Manage verification across multiple clients and domains under one account.
+          </p>
+        </div>
+        <div class="lp-role">
+          <div class="lp-role__label">Publishers</div>
+          <p>
+            Verify that ad slots are rendering as configured across regions and device types.
+            Proactively document delivery on your own properties. Identify configuration issues —
+            blocked GEOs, empty slots in specific contexts — before advertisers raise disputes.
+          </p>
+        </div>
+        <div class="lp-role">
+          <div class="lp-role__label">Affiliate managers</div>
+          <p>
+            Verify placement compliance across publisher networks. Use repeatable checks to
+            compare expected vs observed slot state. Produce structured evidence for partner
+            reviews rather than relying on one-off screenshots.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-section">
+    <div class="container lp-container">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is an ad slot verification tool?</summary>
+          <p>
+            An ad slot verification tool checks whether ad placements on a web page are rendering —
+            in a specific GEO, on a specific device, at a specific point in time. It loads the
+            target URL in a controlled environment, inspects predefined CSS selectors, captures a
+            screenshot, and returns a structured evidence bundle with status codes and metadata.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>How is ad slot verification different from ad fraud detection?</summary>
+          <p>
+            Ad slot verification confirms whether a slot is present and rendering on a given page
+            at check time. Ad fraud detection looks for invalid traffic, bot impressions, and click
+            fraud. They solve different problems — verification is about placement delivery and page
+            state; fraud detection is about traffic quality.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I verify ad slots across different GEO regions?</summary>
+          <p>
+            Yes. AdsChecks routes checks through residential proxies in 12+ regions. You can run
+            the same check from US, UK, DE, JP, and other GEOs to compare slot rendering across
+            markets — or to isolate delivery issues that only appear in specific regions.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>What statuses does an ad slot verification tool return?</summary>
+          <p>
+            AdsChecks returns four statuses: <strong>OK</strong> (slot matched expected selector
+            and state), <strong>SLOT_EMPTY</strong> (selector found but no ad content at check
+            time), <strong>CHALLENGE_DETECTED</strong> (anti-bot interstitial was returned instead
+            of the page), and <strong>BLOCKED</strong> (access was prevented in the target GEO or
+            environment). All four are valid, documented outcomes — not tool errors.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>What evidence is captured per check?</summary>
+          <p>
+            Each check produces a full-page screenshot, per-slot status codes, JSON metadata with
+            selector data and viewport information, and a UTC timestamp. All artifacts are bundled
+            into a downloadable ZIP for sharing with ad ops, publishers, or legal teams.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>How many ad slots can be verified per page load?</summary>
+          <p>
+            AdsChecks verifies up to 5 predefined ad slot selectors per page load. If you need to
+            check more slots on the same URL, you can run multiple checks with different selector
+            sets.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I schedule recurring verification checks?</summary>
+          <p>
+            Yes. Checks can be scheduled to run daily or weekly. Each run produces a fresh evidence
+            bundle. The diff view lets you compare any two runs side-by-side to surface regressions
+            between check cycles.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>Does AdsChecks integrate with other tools?</summary>
+          <p>
+            AdsChecks provides a REST API for triggering runs, fetching results, and pulling
+            evidence bundles programmatically. Webhook notifications can be configured to push
+            status changes to your own systems. This makes it possible to integrate verification
+            into CI/CD pipelines, monitoring workflows, or custom reporting tools.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__copy">
+          <h2>Start verifying your ad slots</h2>
+          <p class="section__intro">3-day free trial. No charge until day 4. Starts at $39/mo.</p>
+        </div>
+      </div>
+      <div class="cta">
+        <div class="cta__copy">
+          <div class="cta__actions">
+            <a href="https://app.adschecks.com/signup?plan=starter" class="btn">Start free trial</a>
+            <a href="/pricing/" class="btn btn--ghost">See pricing</a>
+          </div>
+          <p class="fine">3-day free trial &middot; Cancel any time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

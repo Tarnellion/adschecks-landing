@@ -1,0 +1,159 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="AdsChecks Terms and Conditions | Service Scope and Billing"
+  description="Read the AdsChecks terms covering service scope, billing, refunds, acceptable use, account rules, and liability."
+  canonical="https://adschecks.com/terms-and-conditions/"
+  bodyClass="page-terms-and-conditions"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AdsChecks",
+      "url": "https://adschecks.com",
+      "email": "contact@adschecks.com",
+      "description": "Ad slot verification with proof-first reporting."
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/terms-and-conditions/", "name": "Terms and Conditions" } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section class="section">
+    <div class="container legal-page legal-page--wide">
+      <div class="doc-hero">
+        <div class="doc-hero__copy">
+          <p class="section__eyebrow mono">Contract baseline</p>
+          <h1>Terms &amp; Conditions</h1>
+          <p class="lead">Terms governing service scope, account use, billing, refunds, and liability for AdsChecks.</p>
+        </div>
+        <div class="doc-hero__meta">
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Provider</div>
+            <div class="doc-meta__v">Taras Hovorukha, Ukraine</div>
+          </div>
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Contact</div>
+            <div class="doc-meta__v"><a href="mailto:contact@adschecks.com">contact@adschecks.com</a></div>
+          </div>
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Cross-reference</div>
+            <div class="doc-meta__v">Pricing and refund rules are published on dedicated public pages.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card doc-card--summary doc-card--accent">
+          <h2>Service provider</h2>
+          <p>AdsChecks is operated by Taras Hovorukha.</p>
+          <p>Contact: <a href="mailto:contact@adschecks.com">contact@adschecks.com</a>.</p>
+        </div>
+
+        <div class="doc-card doc-card--span-2">
+          <h2>Service scope</h2>
+          <p>
+            AdsChecks is an audit and verification service for page and ad-slot checks. A verified page means one completed
+            page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined
+            ad slots.
+          </p>
+          <p>
+            Delivered results may include slot statuses, screenshots, JSON metadata, UTC timestamp, and related evidence
+            references.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Accounts and access</h2>
+          <p>
+            You must provide accurate information when requesting access or using the service. You are responsible for your
+            account credentials and for all use under your account.
+          </p>
+          <p>
+            You may use AdsChecks only for lawful verification and audit purposes and only in environments you are authorized
+            to test.
+          </p>
+        </div>
+
+        <div class="doc-card doc-card--span-2">
+          <h2>Billing and plan use</h2>
+          <p>
+            AdsChecks offers paid plans structured by monthly verified page capacity: Starter at $39/month for up to 500 pages
+            with scheduling and no GEO routing, Growth at $79/month for up to 1,000 pages with scheduling and GEO routing,
+            Standard at $149/month for up to 3,000 pages with scheduling and GEO routing, and Custom plans for higher-volume
+            usage. Usage is charged when a page load is completed. Charged outcomes include OK, SLOT_EMPTY,
+            CHALLENGE_DETECTED, and BLOCKED.
+          </p>
+          <p>Accounts are provisioned immediately after checkout. Billing starts at the point of payment.</p>
+          <p>
+            <strong>Merchant of Record:</strong> All purchases are processed by <strong>Paddle.com Market Limited</strong>
+            as Merchant of Record. Your billing contract is with Paddle. Paddle handles payment processing, invoicing,
+            VAT/sales tax collection, and subscription management.
+            Paddle's terms: <a href="https://www.paddle.com/legal/terms">paddle.com/legal/terms</a>.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Refunds</h2>
+          <p>
+            Refund eligibility is governed by the <a href="/refund-policy/">Refund Policy</a>, which forms part of these
+            terms.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Acceptable use</h2>
+          <ul>
+            <li>no unlawful access, scraping, or interference with third-party systems</li>
+            <li>no use of the service to misrepresent verification outcomes or evidence</li>
+            <li>no abuse of infrastructure, automation, or access credentials</li>
+          </ul>
+        </div>
+
+        <div class="doc-card">
+          <h2>Suspension and termination</h2>
+          <p>
+            Access may be suspended or terminated if your use creates operational risk, breaches these terms, or exceeds the
+            authorized plan scope without upgrade or additional capacity.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Intellectual property and customer materials</h2>
+          <p>
+            AdsChecks and its software, site content, and service materials remain the property of the service provider or its
+            licensors. You retain rights in the URLs, selectors, and other materials you submit for checks, subject to the
+            rights required for service delivery.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Limitation of liability</h2>
+          <p>
+            To the maximum extent permitted by law, AdsChecks is provided on an as-available basis. Liability is limited to
+            the amount paid for the relevant service period giving rise to the claim.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Governing law and notices</h2>
+          <p>
+            These terms shall be governed by the laws of Ukraine, unless mandatory law requires otherwise.
+          </p>
+          <p>
+            If you need formal commercial or legal contact details before purchase, request them at
+            <a href="mailto:contact@adschecks.com">contact@adschecks.com</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

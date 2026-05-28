@@ -1,0 +1,148 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="AdsChecks Refund Policy | Completed Checks and Billing Errors"
+  description="Read the AdsChecks refund policy for completed checks, duplicate purchases, billing disputes, and manual review cases."
+  canonical="https://adschecks.com/refund-policy/"
+  bodyClass="page-refund-policy"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AdsChecks",
+      "url": "https://adschecks.com",
+      "email": "contact@adschecks.com",
+      "description": "Ad slot verification with proof-first reporting."
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/refund-policy/", "name": "Refund Policy" } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section class="section">
+    <div class="container legal-page legal-page--wide">
+      <div class="doc-hero">
+        <div class="doc-hero__copy">
+          <p class="section__eyebrow mono">Billing review</p>
+          <h1>Refund Policy</h1>
+          <p class="lead">Refund rules for verified page plans, delivered verification outcomes, and billing disputes.</p>
+        </div>
+        <div class="doc-hero__meta">
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Non-refundable unit</div>
+            <div class="doc-meta__v">Completed verified pages, including CHALLENGE_DETECTED and BLOCKED.</div>
+          </div>
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Manual review</div>
+            <div class="doc-meta__v">Duplicate or clearly accidental charges can be reviewed.</div>
+          </div>
+          <div class="doc-meta__item">
+            <div class="doc-meta__k">Contact</div>
+            <div class="doc-meta__v"><a href="mailto:contact@adschecks.com">contact@adschecks.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card doc-card--span-2">
+          <h2>Merchant of Record</h2>
+          <p>
+            All purchases are processed by <strong>Paddle.com Market Limited</strong> as Merchant of Record.
+            Refund requests can be submitted to Paddle via your account dashboard or at
+            <a href="mailto:support@paddle.com">support@paddle.com</a>.
+          </p>
+          <p>
+            This policy defines AdsChecks' approach to refund eligibility. Final refund processing is handled
+            by Paddle in accordance with their merchant policies and applicable consumer protection laws.
+          </p>
+        </div>
+
+        <div class="doc-card doc-card--span-2">
+          <h2>EU right of withdrawal</h2>
+          <p>
+            EU consumers have 14 days from purchase to cancel for any reason under Directive 2011/83/EU.
+            If you explicitly request that verification services begin immediately during the withdrawal period,
+            you acknowledge that:
+          </p>
+          <ul>
+            <li>You waive the right to cancel once checks commence</li>
+            <li>You are liable for completed verified pages on a pro-rata basis</li>
+          </ul>
+          <p>
+            To exercise your withdrawal right, contact
+            <a href="mailto:contact@adschecks.com">contact@adschecks.com</a> or Paddle support within 14 days of purchase.
+          </p>
+        </div>
+
+        <div class="doc-card doc-card--summary doc-card--accent doc-card--span-2">
+          <h2>General rule</h2>
+          <p>
+            AdsChecks is an evidence service. Verification outcomes and evidence artifacts form part of the delivered result.
+          </p>
+        </div>
+
+        <div class="doc-card doc-card--span-2">
+          <h2>Completed verified pages</h2>
+          <p>
+            Completed verified pages are not refundable, including results with statuses OK, SLOT_EMPTY,
+            CHALLENGE_DETECTED, and BLOCKED.
+          </p>
+          <p>
+            CHALLENGE_DETECTED and BLOCKED are valid verification outcomes, not platform errors. If the page load completed
+            and the result package was produced, the job is treated as delivered.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Non-use and unused capacity</h2>
+          <p>
+            Unused monthly capacity, unused access time, or a decision not to run checks does not create a right to refund.
+          </p>
+          <p>Pre-purchase discussions, access review, or onboarding coordination do not create a refund entitlement.</p>
+          <p>Billing starts only after a paid plan or other commercial terms are confirmed.</p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Duplicate purchases and billing mistakes</h2>
+          <p>
+            If you believe you were charged twice in error or billed incorrectly, contact
+            <a href="mailto:contact@adschecks.com">contact@adschecks.com</a> promptly with the billing reference and any
+            relevant account details.
+          </p>
+          <p>
+            Duplicate or clearly accidental charges may be reviewed individually and, where confirmed, may be corrected or
+            refunded.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Dispute review basis</h2>
+          <p>For commercial or billing disputes, AdsChecks reviews the following evidence package references:</p>
+          <ul>
+            <li>run ID</li>
+            <li>verification status</li>
+            <li>artifacts such as screenshots and JSON metadata</li>
+            <li>timestamp</li>
+            <li>check context including GEO and device</li>
+          </ul>
+        </div>
+
+        <div class="doc-card">
+          <h2>Contact route</h2>
+          <p>
+            Send refund or billing questions to <a href="mailto:contact@adschecks.com">contact@adschecks.com</a>. Include
+            enough detail for the charge and run to be identified and reviewed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,169 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Ad Slot Verification Pricing — From $39/mo — AdsChecks"
+  description="Ad slot verification from $39/mo. 500–3,000 verified pages, GEO routing, and JSON+PNG evidence bundles. 3-day free trial on all plans."
+  canonical="https://adschecks.com/pricing/"
+  ogTitle="Ad Slot Verification Pricing — From $39/mo — AdsChecks"
+  bodyClass="page-pricing"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AdsChecks",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.",
+      "url": "https://adschecks.com/pricing/",
+      "author": { "@type": "Person", "name": "Taras Hovorukha", "url": "https://adschecks.com/about/" },
+      "offers": [
+        { "@type": "Offer", "name": "Starter", "price": "39", "priceCurrency": "USD", "description": "500 verified pages/month" },
+        { "@type": "Offer", "name": "Growth", "price": "79", "priceCurrency": "USD", "description": "1000 verified pages/month" },
+        { "@type": "Offer", "name": "Standard", "price": "149", "priceCurrency": "USD", "description": "3000 verified pages/month" }
+      ]
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/pricing/", "name": "Pricing" } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section class="section">
+    <div class="container legal-page legal-page--wide">
+
+      <div class="pricing-hero">
+        <p class="section__eyebrow mono">Pricing</p>
+        <h1>Ad Slot Verification Plans</h1>
+        <p>3-day free trial on all plans. Billed per verified page after trial ends. No hidden fees, no automatic upsells. Cancel any time.</p>
+        <div class="pricing-trust">
+          <span class="pricing-trust__item">🔒 Secured by Paddle</span>
+          <span class="pricing-trust__sep" aria-hidden="true">·</span>
+          <span class="pricing-trust__item">Visa · Mastercard · Apple Pay · Google Pay</span>
+          <span class="pricing-trust__sep" aria-hidden="true">·</span>
+          <span class="pricing-trust__item">Cancel any time, no questions asked</span>
+        </div>
+      </div>
+
+      <div class="pt-grid">
+
+        <article class="pt-card">
+          <div class="pt-card__label">
+            <span class="pt-card__name">Starter</span>
+          </div>
+          <div class="pt-card__price">
+            <div class="pt-card__amount">
+              <span class="pt-card__currency">$</span>
+              <span class="pt-card__num" data-count="39">39</span>
+              <span class="pt-card__per">/mo</span>
+            </div>
+            <div class="pt-card__volume">500 verified pages / month</div>
+          </div>
+          <div class="pt-card__divider"></div>
+          <ul class="pt-card__features">
+            <li>500 verified pages per month</li>
+            <li>Scheduled runs</li>
+            <li>Screenshots + JSON evidence</li>
+            <li class="limit">No GEO routing</li>
+            <li>Cancel any time</li>
+            <li>No overages — runs pause at limit</li>
+          </ul>
+          <p class="pt-card__nudge">GEO routing from <a href="https://app.adschecks.com/signup?plan=growth">Growth — $79/mo →</a></p>
+          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
+        </article>
+
+        <article class="pt-card">
+          <div class="pt-card__label">
+            <span class="pt-card__name">Growth</span>
+          </div>
+          <div class="pt-card__price">
+            <div class="pt-card__amount">
+              <span class="pt-card__currency">$</span>
+              <span class="pt-card__num" data-count="79">79</span>
+              <span class="pt-card__per">/mo</span>
+            </div>
+            <div class="pt-card__volume">1,000 verified pages / month</div>
+          </div>
+          <div class="pt-card__divider"></div>
+          <ul class="pt-card__features">
+            <li>1,000 verified pages per month</li>
+            <li>Scheduled runs</li>
+            <li>Screenshots + JSON evidence</li>
+            <li>GEO routing included</li>
+            <li>Cancel any time</li>
+            <li>No overages — runs pause at limit</li>
+          </ul>
+          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=growth">Start free trial</a>
+          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
+        </article>
+
+        <article class="pt-card pt-card--featured">
+          <div class="pt-card__label">
+            <span class="pt-card__name">Standard</span>
+            <span class="pt-card__pill">Most popular</span>
+          </div>
+          <div class="pt-card__price">
+            <div class="pt-card__amount">
+              <span class="pt-card__currency">$</span>
+              <span class="pt-card__num" data-count="149">149</span>
+              <span class="pt-card__per">/mo</span>
+            </div>
+            <div class="pt-card__volume">3,000 verified pages / month</div>
+          </div>
+          <div class="pt-card__divider"></div>
+          <ul class="pt-card__features">
+            <li>3,000 verified pages per month</li>
+            <li>Scheduled runs</li>
+            <li>Screenshots + JSON evidence</li>
+            <li>GEO routing included</li>
+            <li>Cancel any time</li>
+            <li>No overages — runs pause at limit</li>
+          </ul>
+          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=standard">Start free trial</a>
+          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
+        </article>
+
+      </div>
+
+      <div class="pt-custom">
+        <div class="pt-custom__copy">
+          <span class="pt-custom__name">Custom</span>
+          <span class="pt-custom__desc">Higher-volume usage, commercial scoping, and workflow review before rollout.</span>
+        </div>
+        <a class="pt-custom__cta" href="mailto:contact@adschecks.com">Contact us &rarr;</a>
+      </div>
+
+      <div class="pt-note">
+        <div class="pt-note__item">
+          <span class="pt-note__label">Billing unit</span>
+          <span class="pt-note__value">One verified page = one completed page load with up to 5 ad slot checks.</span>
+        </div>
+        <div class="pt-note__item">
+          <span class="pt-note__label">Charged outcomes</span>
+          <span class="pt-note__value">OK, SLOT_EMPTY, CHALLENGE_DETECTED, and BLOCKED are all billable.</span>
+        </div>
+        <div class="pt-note__item">
+          <span class="pt-note__label">Capacity cap</span>
+          <span class="pt-note__value">New runs are paused at the monthly limit. No overages, no surprise charges.</span>
+        </div>
+        <div class="pt-note__item">
+          <span class="pt-note__label">Checkout</span>
+          <span class="pt-note__value">Secured by Paddle — cards, Apple Pay, Google Pay accepted.</span>
+        </div>
+      </div>
+      <p class="fine" style="margin-top: var(--space-16)">
+        Billing questions? <a href="/faq/">See FAQ →</a> &middot;
+        <a href="/what-we-verify/">What counts as a verified page →</a> &middot;
+        <a href="/refund-policy/">Refund Policy →</a>
+      </p>
+
+    </div>
+  </section>
+</BaseLayout>

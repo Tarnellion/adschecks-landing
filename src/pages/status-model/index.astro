@@ -1,0 +1,143 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Ad Verification Statuses: OK, SLOT_EMPTY, BLOCKED — AdsChecks"
+  description="What does SLOT_EMPTY or CHALLENGE_DETECTED mean in ad verification? Full status model for OK, SLOT_EMPTY, BLOCKED, and CHALLENGE_DETECTED results."
+  canonical="https://adschecks.com/status-model/"
+  bodyClass="page-status-model"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AdsChecks",
+      "url": "https://adschecks.com",
+      "email": "contact@adschecks.com",
+      "description": "Ad slot verification with proof-first reporting.",
+      "logo": "https://adschecks.com/assets/favicons/favicon-512.png",
+      "address": { "@type": "PostalAddress", "addressCountry": "UA" },
+      "contactPoint": { "@type": "ContactPoint", "email": "contact@adschecks.com", "contactType": "customer support" }
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/status-model/", "name": "Status model" } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section class="section">
+    <div class="container sm-page">
+
+      <!-- Hero: full-width, no sidebar overflow -->
+      <div class="sm-hero reveal">
+        <p class="section__eyebrow mono">Verification outcomes</p>
+        <h1>Ad Verification<br>Status Model</h1>
+        <p class="lead">AdsChecks statuses describe what happened during a completed check — not a marketing interpretation of delivery.</p>
+        <div class="sm-badges">
+          <span class="sm-badge sm-badge--ok">OK</span>
+          <span class="sm-badge sm-badge--empty">SLOT_EMPTY</span>
+          <span class="sm-badge sm-badge--challenge">CHALLENGE_DETECTED</span>
+          <span class="sm-badge sm-badge--blocked">BLOCKED</span>
+        </div>
+      </div>
+
+      <!-- Status definitions: clean rows, no boxes -->
+      <div class="sm-statuses reveal-group">
+
+        <div class="sm-status reveal">
+          <div class="sm-status__code sm-status__code--ok">OK</div>
+          <div class="sm-status__body">
+            <h3>Slot matched expected selector</h3>
+            <p>The slot was found, visible, and matched the predefined selector and state at check time. This is a confirmed delivery signal for the selected GEO and device context.</p>
+          </div>
+          <div class="sm-status__meta">Positive match</div>
+        </div>
+
+        <div class="sm-status reveal">
+          <div class="sm-status__code sm-status__code--empty">SLOT_EMPTY</div>
+          <div class="sm-status__body">
+            <h3>Slot selector matched, no ad content</h3>
+            <p>The selector resolved on the page but no ad content was present at check time. The slot exists but is not delivering in this context.</p>
+          </div>
+          <div class="sm-status__meta">Empty or missing</div>
+        </div>
+
+        <div class="sm-status reveal">
+          <div class="sm-status__code sm-status__code--challenge">CHALLENGE_DETECTED</div>
+          <div class="sm-status__body">
+            <h3>Anti-bot challenge or interstitial page</h3>
+            <p>An anti-bot challenge (Cloudflare Turnstile, hCaptcha, JS challenge) was returned instead of page content. Screenshot and metadata capture the challenge event as evidence.</p>
+          </div>
+          <div class="sm-status__meta">Blocked context</div>
+        </div>
+
+        <div class="sm-status reveal">
+          <div class="sm-status__code sm-status__code--blocked">BLOCKED</div>
+          <div class="sm-status__body">
+            <h3>Access blocked in target environment</h3>
+            <p>The CDN or WAF denied access from the check's GEO region or IP range. This is evidence that the ad is not being served to that audience segment — commercially relevant information.</p>
+          </div>
+          <div class="sm-status__meta">Blocked context</div>
+        </div>
+
+      </div>
+
+      <!-- Key clarification -->
+      <div class="sm-note reveal">
+        <p>CHALLENGE_DETECTED and BLOCKED are <strong>valid verification outcomes</strong>, not platform errors. Both are billable because the page load was completed and evidence was captured.</p>
+        <a href="/what-we-verify/">Full scope of what each check includes →</a>
+      </div>
+
+      <!-- Recovery section -->
+      <div class="sm-recovery reveal">
+        <h2>Recovery path for BLOCKED &amp; CHALLENGE_DETECTED</h2>
+        <p>If you see these statuses repeatedly for a specific GEO:</p>
+        <div class="sm-steps">
+          <div class="sm-step">
+            <span class="sm-step__n mono">01</span>
+            <div>Review the screenshot evidence — it shows exactly what was returned at check time</div>
+          </div>
+          <div class="sm-step">
+            <span class="sm-step__n mono">02</span>
+            <div>Share the report with your publisher or ad ops contact as documented proof</div>
+          </div>
+          <div class="sm-step">
+            <span class="sm-step__n mono">03</span>
+            <div>Re-run the check after a configuration change to confirm resolution</div>
+          </div>
+          <div class="sm-step">
+            <span class="sm-step__n mono">04</span>
+            <div>Use the JSON metadata to cross-reference with your campaign delivery logs</div>
+          </div>
+        </div>
+        <p class="fine" style="margin-top: var(--space-20)">For persistent access issues in a specific region, <a href="mailto:contact@adschecks.com" style="color: rgba(var(--accent-2-rgb), 0.9)">contact us</a> — some environments require check configuration adjustments.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__copy">
+          <h2>Ready to verify your ad slots?</h2>
+          <p class="section__intro">Start a 3-day free trial — no charge until day 4.</p>
+        </div>
+      </div>
+      <div class="cta">
+        <div class="cta__copy">
+          <div class="cta__actions">
+            <a href="https://app.adschecks.com/signup?plan=starter" class="btn">Start free trial</a>
+            <a href="https://app.adschecks.com/signin" class="btn btn--ghost">Log in</a>
+          </div>
+          <p class="fine">3-day free trial &middot; Cancel any time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

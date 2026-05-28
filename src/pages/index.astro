@@ -1,0 +1,656 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Ad Slot Verification Tool — AdsChecks"
+  description="Stop trusting reports. Verify your ad slots with screenshot proof across 12+ GEOs and devices. 3-day free trial — no charge until day 4."
+  canonical="https://adschecks.com/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AdsChecks",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.",
+      "url": "https://adschecks.com",
+      "author": { "@type": "Person", "name": "Taras Hovorukha", "url": "https://adschecks.com/about/" },
+      "offers": [
+        { "@type": "Offer", "name": "Starter", "price": "39", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "39", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } },
+        { "@type": "Offer", "name": "Growth", "price": "79", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } },
+        { "@type": "Offer", "name": "Standard", "price": "149", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "149", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } }
+      ]
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AdsChecks",
+      "url": "https://adschecks.com",
+      "email": "contact@adschecks.com",
+      "description": "Ad slot verification with proof-first reporting.",
+      "logo": "https://adschecks.com/assets/favicons/favicon-512.png",
+      "address": { "@type": "PostalAddress", "addressCountry": "UA" },
+      "contactPoint": { "@type": "ContactPoint", "email": "contact@adschecks.com", "contactType": "customer support" }
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AdsChecks",
+      "url": "https://adschecks.com/"
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What counts as a verified page?", "acceptedAnswer": { "@type": "Answer", "text": "One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp." } },
+        { "@type": "Question", "name": "What happens if my page has more than 5 ad slots?", "acceptedAnswer": { "@type": "Answer", "text": "Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL." } },
+        { "@type": "Question", "name": "What does CHALLENGE_DETECTED or BLOCKED mean?", "acceptedAnswer": { "@type": "Answer", "text": "These are valid verification outcomes, not errors. CHALLENGE_DETECTED means an anti-bot challenge or interstitial was encountered. BLOCKED means access was prevented in that environment. Both are billable because the page load was completed and evidence was captured." } },
+        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your monthly capacity is available immediately — no approval step required." } },
+        { "@type": "Question", "name": "How fast do I get results?", "acceptedAnswer": { "@type": "Answer", "text": "Most verification runs complete within seconds to a few minutes depending on GEO routing and page complexity. Results are available in the dashboard immediately after completion." } },
+        { "@type": "Question", "name": "What browsers and devices do you support?", "acceptedAnswer": { "@type": "Answer", "text": "Checks run in Chromium-based environments with desktop and mobile viewport emulation. The specific device context is attached to every result for comparison." } },
+        { "@type": "Question", "name": "Can I manage multiple clients or sites under one account?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run checks across multiple domains and sites within a single account. Each check is scoped to a specific URL and context — this makes AdsChecks suitable for agencies managing verification across several publisher or advertiser accounts." } }
+      ]
+    })}</script>
+  </Fragment>
+
+  <section id="hero" class="hero" data-scene-bg="#0a0e13" data-scene-accent="#6eb8ff">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow eyebrow--signal">For affiliate managers, media buyers &amp; publishers</p>
+        <h1>Verify your ad slots with <span class="u-grad-text">screenshot proof</span> — across any GEO and device.</h1>
+        <p class="lead">
+          Know exactly what runs on your pages — verified with screenshots, status codes, and JSON
+          metadata captured in real <span class="pill pill--ink">GEO</span> and
+          <span class="pill pill--ink">device</span> context. Up to 5 slots per page load.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+          <a class="btn btn--ghost" href="#how-it-works">How it works</a>
+        </div>
+        <p class="fine">3-day free trial &middot; No charge until day 4 &middot; Cancel any time</p>
+      </div>
+
+      <div class="hero__status-card" aria-hidden="true">
+        <div class="hero__status-card-head">
+          <span class="hero__status-card-url mono">adschecks.com/lp/brand-deal</span>
+          <span class="hero__status-badge">verified</span>
+        </div>
+        <div class="hero__status-card-rows">
+          <div class="hero__status-row">
+            <span class="hero__status-slot mono">SLOT 01 · 970×250</span>
+            <span class="hero__status-ok">OK</span>
+          </div>
+          <div class="hero__status-row">
+            <span class="hero__status-slot mono">SLOT 02 · 300×250</span>
+            <span class="hero__status-ok">OK</span>
+          </div>
+          <div class="hero__status-row">
+            <span class="hero__status-slot mono">SLOT 03 · 728×90</span>
+            <span class="hero__status-empty">SLOT_EMPTY</span>
+          </div>
+        </div>
+        <div class="hero__status-card-meta mono">London, GB &middot; Desktop &middot; 14:22 UTC</div>
+      </div>
+
+
+<div class="hero__viz map-viz" aria-label="Global verification map">
+        <div class="map-viz__inner">
+          <div class="map-viz__map" aria-hidden="true"></div>
+          <span class="sr-only">World map for geo verification coverage</span>
+          <div class="map-viz__line line-1" aria-hidden="true"></div>
+          <div class="map-viz__line line-2" aria-hidden="true"></div>
+          <div class="map-viz__line line-3" aria-hidden="true"></div>
+          <div class="map-viz__line line-4" aria-hidden="true"></div>
+          <div class="map-viz__location loc-ny is-track" aria-hidden="true"><span class="map-viz__point"></span><span class="map-viz__city">New York</span></div>
+          <div class="map-viz__location loc-lon is-track" aria-hidden="true"><span class="map-viz__point"></span><span class="map-viz__city">London</span></div>
+          <div class="map-viz__location loc-sgp is-track" aria-hidden="true"><span class="map-viz__point"></span><span class="map-viz__city">Singapore</span></div>
+          <div class="map-viz__location loc-tok is-track" aria-hidden="true"><span class="map-viz__point"></span><span class="map-viz__city">Tokyo</span></div>
+          <div class="map-viz__location loc-syd" aria-hidden="true"><span class="map-viz__point"></span><span class="map-viz__city">Sydney</span></div>
+          <div class="map-viz__pointer ptr-1" data-from="loc-lon" data-to="b1" data-corner="bl" aria-hidden="true"><span class="map-viz__pointer-dot"></span><span class="map-viz__pointer-beam"></span></div>
+          <div class="map-viz__pointer ptr-2" data-from="loc-tok" data-to="b2" data-corner="tr" aria-hidden="true"><span class="map-viz__pointer-dot"></span><span class="map-viz__pointer-beam"></span></div>
+          <div class="map-viz__pointer ptr-3" data-from="loc-ny" data-to="b3" data-corner="tl" aria-hidden="true"><span class="map-viz__pointer-dot"></span><span class="map-viz__pointer-beam"></span></div>
+          <div class="map-viz__pointer ptr-4" data-from="loc-sgp" data-to="b4" data-corner="tl" aria-hidden="true"><span class="map-viz__pointer-dot"></span><span class="map-viz__pointer-beam"></span></div>
+          <div class="map-viz__browser b1" aria-hidden="true">
+            <div class="map-viz__browser-head"><span></span><span></span><span></span><span class="map-viz__browser-mode map-viz__browser-mode--desktop">Desktop</span></div>
+            <div class="map-viz__browser-body"><div class="map-viz__browser-row w90"></div><div class="map-viz__browser-row w72"></div><div class="map-viz__scanline"></div><div class="map-viz__slot slot-main"><span>SLOT 01 · 970×250</span></div></div>
+          </div>
+          <div class="map-viz__browser map-viz__browser--mobile b2" aria-hidden="true">
+            <div class="map-viz__browser-head"><span></span><span></span><span></span><span class="map-viz__browser-mode map-viz__browser-mode--mobile">Mobile</span></div>
+            <div class="map-viz__browser-body"><div class="map-viz__browser-row w86"></div><div class="map-viz__browser-row w64"></div><div class="map-viz__scanline"></div><div class="map-viz__slot slot-mobile-top"><span>SLOT · 300×250</span></div><div class="map-viz__slot slot-mobile-bottom"><span>SLOT · 320×100</span></div></div>
+          </div>
+          <div class="map-viz__browser b3" aria-hidden="true">
+            <div class="map-viz__browser-head"><span></span><span></span><span></span><span class="map-viz__browser-mode map-viz__browser-mode--desktop">Desktop</span></div>
+            <div class="map-viz__browser-body"><div class="map-viz__browser-row w88"></div><div class="map-viz__browser-row w70"></div><div class="map-viz__scanline"></div><div class="map-viz__slot slot-square"><span>336×280</span></div></div>
+          </div>
+          <div class="map-viz__browser map-viz__browser--mobile b4" aria-hidden="true">
+            <div class="map-viz__browser-head"><span></span><span></span><span></span><span class="map-viz__browser-mode map-viz__browser-mode--mobile">Mobile</span></div>
+            <div class="map-viz__browser-body"><div class="map-viz__browser-row w90"></div><div class="map-viz__browser-row w76"></div><div class="map-viz__scanline"></div><div class="map-viz__slot slot-mobile-top"><span>SLOT · 300×250</span></div><div class="map-viz__slot slot-mobile-bottom"><span>SLOT · 320×100</span></div></div>
+          </div>
+          <div class="map-viz__ambient-scan" aria-hidden="true"></div>
+          <div class="map-viz__noise" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-bar" aria-label="Platform statistics">
+    <div class="stats-bar__inner">
+      <div class="stats-bar__item">
+        <span class="stats-bar__num">12+</span>
+        <span class="stats-bar__label">GEO regions</span>
+      </div>
+      <div class="stats-bar__sep" aria-hidden="true"></div>
+      <div class="stats-bar__item">
+        <span class="stats-bar__num">5</span>
+        <span class="stats-bar__label">slots per check</span>
+      </div>
+      <div class="stats-bar__sep" aria-hidden="true"></div>
+      <div class="stats-bar__item">
+        <span class="stats-bar__num">&lt;2 min</span>
+        <span class="stats-bar__label">average run time</span>
+      </div>
+      <div class="stats-bar__sep" aria-hidden="true"></div>
+      <div class="stats-bar__item">
+        <span class="stats-bar__num">JSON + PNG</span>
+        <span class="stats-bar__label">evidence bundle</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem" class="section section--alt" data-scene-bg="#080c0f" data-scene-accent="#ff7a90">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Why proof matters</p>
+          <h2>Why ad slot QA fails without proof</h2>
+          <p class="section__intro">Verification breaks down when geo, device, and slot state shift faster than a team can document them.</p>
+        </div>
+      </div>
+      <div class="prob-list reveal-group">
+        <div class="prob-item reveal">
+          <div class="prob-item__num" aria-hidden="true">01</div>
+          <div class="prob-item__body">
+            <div class="prob-item__tag">Coverage</div>
+            <h3>Geo uncertainty</h3>
+            <p>Ad slots render differently across countries, devices, and sessions. What passes QA in one region fails silently in another.</p>
+          </div>
+        </div>
+        <div class="prob-item reveal">
+          <div class="prob-item__num" aria-hidden="true">02</div>
+          <div class="prob-item__body">
+            <div class="prob-item__tag">Trust</div>
+            <h3>Disputes without evidence</h3>
+            <p>Without consistent proof, QA findings are hard to share, compare, or escalate. Screenshots and metadata reduce ambiguity.</p>
+          </div>
+        </div>
+        <div class="prob-item reveal">
+          <div class="prob-item__num" aria-hidden="true">03</div>
+          <div class="prob-item__body">
+            <div class="prob-item__tag">Time</div>
+            <h3>Operational drag</h3>
+            <p>Manual checks take time and still leave gaps in coverage and repeatability. Templates and structured runs remove repeated setup work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="what-we-check" class="section section--alt" data-scene-bg="#0d1020" data-scene-accent="#a78bfa">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Evidence scope</p>
+          <h2>What we check</h2>
+          <p class="section__intro">Each verified page is constrained on purpose: one completed page load, selected context, and up to five predefined slots.</p>
+        </div>
+      </div>
+      <div class="check-grid reveal-group">
+        <div class="check-item reveal">
+          <div class="check-item__num" aria-hidden="true">01</div>
+          <div class="check-item__body">
+            <div class="check-item__layer">Verification layer</div>
+            <h3>Slot presence and visibility</h3>
+            <ul class="check-item__list">
+              <li>Slot detected on page</li>
+              <li>Position and layout context</li>
+              <li>Visibility state — visible, partial, or missing</li>
+            </ul>
+            <p class="check-item__note">Predefined selectors, not discovery scanning.</p>
+          </div>
+        </div>
+        <div class="check-item reveal">
+          <div class="check-item__num" aria-hidden="true">02</div>
+          <div class="check-item__body">
+            <div class="check-item__layer">Context layer</div>
+            <h3>Geo and device coverage</h3>
+            <ul class="check-item__list">
+              <li>Region-specific render checks</li>
+              <li>Desktop and mobile snapshots</li>
+              <li>Viewport and breakpoint metadata</li>
+            </ul>
+            <p class="check-item__note">Runs stay tied to the selected context for comparison.</p>
+          </div>
+        </div>
+        <div class="check-item reveal">
+          <div class="check-item__num" aria-hidden="true">03</div>
+          <div class="check-item__body">
+            <div class="check-item__layer">Artifact layer</div>
+            <h3>Evidence bundle</h3>
+            <ul class="check-item__list">
+              <li>Screenshots for each slot</li>
+              <li>JSON metadata and timestamps</li>
+              <li>Export-ready ZIP bundle</li>
+            </ul>
+            <p class="check-item__note">Consistent outputs across all runs, reviews, and disputes.</p>
+          </div>
+        </div>
+        <div class="check-item reveal">
+          <div class="check-item__num" aria-hidden="true">04</div>
+          <div class="check-item__body">
+            <div class="check-item__layer">Ops layer</div>
+            <h3>Operational integrity</h3>
+            <ul class="check-item__list">
+              <li>Repeatable checks from templates</li>
+              <li>Clear issue flags and statuses</li>
+              <li>Structured results for export</li>
+            </ul>
+            <p class="check-item__note">Built for repeatability, not one-off screenshots.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="section" data-scene-bg="#0b1220" data-scene-accent="#ffc36a">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Template → Run → Evidence</p>
+          <h2>How it works</h2>
+          <p class="section__intro">The workflow stays compact: define the check context once, run it manually or on schedule, then review a structured evidence package.</p>
+        </div>
+      </div>
+      <div class="timeline reveal-group">
+        <div class="timeline__step reveal">
+          <div class="timeline__circle" aria-hidden="true"><span>01</span></div>
+          <div class="timeline__body">
+            <div class="timeline__label mono">Template</div>
+            <h3>Define the check context</h3>
+            <p class="fine">Provide URLs, slot selectors, device, GEO, and optional proxy routing settings.</p>
+            <div class="timeline__tags">
+              <span class="timeline__tag mono">URLs · List</span>
+              <span class="timeline__tag mono">Slots · Up to 5</span>
+              <span class="timeline__tag mono">GEO · ISO codes</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline__step reveal">
+          <div class="timeline__circle" aria-hidden="true"><span>02</span></div>
+          <div class="timeline__body">
+            <div class="timeline__label mono">Run</div>
+            <h3>Execute manual or scheduled</h3>
+            <p class="fine">Run a manual check or schedule it. Each page load becomes one verified page.</p>
+            <div class="timeline__tags">
+              <span class="timeline__tag mono">Mode · Manual / Scheduled</span>
+              <span class="timeline__tag mono">Device · Desktop / Mobile</span>
+              <span class="timeline__tag mono">Proxy · Optional</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline__step reveal">
+          <div class="timeline__circle" aria-hidden="true"><span>03</span></div>
+          <div class="timeline__body">
+            <div class="timeline__label mono">Evidence</div>
+            <h3>Review the evidence bundle</h3>
+            <p class="fine">Output includes slot statuses, screenshots, JSON metadata, and a timestamped evidence bundle.</p>
+            <div class="timeline__tags">
+              <span class="timeline__tag mono">Artifacts · Screens + JSON</span>
+              <span class="timeline__tag mono">Timestamp · Included</span>
+              <span class="timeline__tag mono">Structure · Consistent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sample-output" class="section section--alt" data-scene-bg="#0b1018" data-scene-accent="#6eb8ff">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Evidence bundle</p>
+          <h2>Structured proof on every run</h2>
+          <p class="section__intro">Every run produces a consistent output — slot statuses, full-page screenshot, JSON metadata, and a UTC timestamp — regardless of what you find.</p>
+        </div>
+      </div>
+      <div class="sample-output reveal">
+        <div class="sample-output__json">
+          <div class="sample-output__bar">
+            <span class="sample-output__dot sample-output__dot--red"></span>
+            <span class="sample-output__dot sample-output__dot--yellow"></span>
+            <span class="sample-output__dot sample-output__dot--green"></span>
+            <span class="sample-output__filename mono">result.json</span>
+          </div>
+          <pre class="sample-output__code"><code>&#123;
+  <span class="tok-key">"check_id"</span>: <span class="tok-str">"chk_8f3k2x"</span>,
+  <span class="tok-key">"url"</span>: <span class="tok-str">"https://publisher.example/article"</span>,
+  <span class="tok-key">"geo"</span>: <span class="tok-str">"US"</span>,
+  <span class="tok-key">"device"</span>: <span class="tok-str">"desktop"</span>,
+  <span class="tok-key">"timestamp"</span>: <span class="tok-str">"2026-03-15T09:22:41Z"</span>,
+  <span class="tok-key">"slots"</span>: [
+    &#123;
+      <span class="tok-key">"selector"</span>: <span class="tok-str">"#div-gpt-ad-header-0"</span>,
+      <span class="tok-key">"status"</span>: <span class="tok-ok">"OK"</span>,
+      <span class="tok-key">"dimensions"</span>: <span class="tok-str">"970x250"</span>
+    &#125;,
+    &#123;
+      <span class="tok-key">"selector"</span>: <span class="tok-str">"#sidebar-ad-300x250"</span>,
+      <span class="tok-key">"status"</span>: <span class="tok-ok">"OK"</span>,
+      <span class="tok-key">"dimensions"</span>: <span class="tok-str">"300x250"</span>
+    &#125;,
+    &#123;
+      <span class="tok-key">"selector"</span>: <span class="tok-str">"#sticky-footer-ad"</span>,
+      <span class="tok-key">"status"</span>: <span class="tok-empty">"SLOT_EMPTY"</span>,
+      <span class="tok-key">"dimensions"</span>: <span class="tok-str">"728x90"</span>
+    &#125;
+  ],
+  <span class="tok-key">"evidence"</span>: &#123;
+    <span class="tok-key">"screenshot"</span>: <span class="tok-str">"chk_8f3k2x/full.png"</span>,
+    <span class="tok-key">"zip"</span>: <span class="tok-str">"chk_8f3k2x/bundle.zip"</span>
+  &#125;
+&#125;</code></pre>
+        </div>
+        <div class="sample-output__preview">
+          <div class="sample-output__bar">
+            <span class="sample-output__dot sample-output__dot--red"></span>
+            <span class="sample-output__dot sample-output__dot--yellow"></span>
+            <span class="sample-output__dot sample-output__dot--green"></span>
+            <span class="sample-output__filename mono">full.png &middot; US &middot; Desktop</span>
+          </div>
+          <div class="sample-output__screen" aria-hidden="true">
+            <div class="sample-output__nav-bar"></div>
+            <div class="sample-output__slot sample-output__slot--ok">
+              <span class="sample-output__slot-label">970×250 · OK</span>
+            </div>
+            <div class="sample-output__body-lines">
+              <div class="sample-output__line sample-output__line--long"></div>
+              <div class="sample-output__line sample-output__line--med"></div>
+              <div class="sample-output__line sample-output__line--short"></div>
+              <div class="sample-output__line sample-output__line--long"></div>
+              <div class="sample-output__line sample-output__line--med"></div>
+            </div>
+            <div class="sample-output__slot sample-output__slot--empty">
+              <span class="sample-output__slot-label">728×90 · SLOT_EMPTY</span>
+            </div>
+            <div class="sample-output__body-lines">
+              <div class="sample-output__line sample-output__line--long"></div>
+              <div class="sample-output__line sample-output__line--short"></div>
+            </div>
+          </div>
+          <div class="sample-output__overlay" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section section--accent section--diag-both" data-scene-bg="#0c1218" data-scene-accent="#7ee4d2">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Platform capabilities</p>
+          <h2>Everything you need for repeatable ad slot QA</h2>
+          <p class="section__intro">From automatic slot discovery to scheduled runs, GEO-routed checks, and API-driven workflows — one platform, structured evidence every time.</p>
+        </div>
+      </div>
+      <div class="bento reveal-group">
+
+        <!-- Large card: slot discovery -->
+        <article class="bento__item bento__item--lg reveal">
+          <div class="bento__eyebrow">Discovery</div>
+          <h3 class="bento__title">Slot discovery scan</h3>
+          <p class="bento__desc">Automatically detect ad slot selectors on any page before setting up a template. No manual DOM inspection or CSS selector hunting required.</p>
+          <div class="bento__screenshot" aria-hidden="true">
+            <img src="/assets/screenshots/discovery-detail.png" alt="" loading="lazy" width="1200" height="950">
+          </div>
+        </article>
+
+        <!-- Medium card: scheduled runs -->
+        <article class="bento__item bento__item--md reveal">
+          <div class="bento__eyebrow">Automation</div>
+          <h3 class="bento__title">Scheduled runs</h3>
+          <p class="bento__desc">Set weekly or daily schedules. Checks run automatically and produce a fresh evidence bundle every cycle.</p>
+          <div class="bento__sched" aria-hidden="true">
+            <div class="bento__sched-row">
+              <span class="bento__sched-label">Mon 09:00 UTC</span>
+              <span class="bento__sched-status bento__sched-status--done">Completed ✓</span>
+            </div>
+            <div class="bento__sched-row">
+              <span class="bento__sched-label">Mon 15:00 UTC</span>
+              <span class="bento__sched-status bento__sched-status--done">Completed ✓</span>
+            </div>
+            <div class="bento__sched-row">
+              <span class="bento__sched-label">Tue 09:00 UTC</span>
+              <span class="bento__sched-status bento__sched-status--next">Scheduled →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 small cards -->
+        <article class="bento__item bento__item--sm reveal">
+          <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="bento__eyebrow">Coverage</div>
+          <h3 class="bento__title">GEO-routed proxy</h3>
+          <p class="bento__desc">Verify from US, EU, APAC and other regions. Isolate geo-specific delivery issues with residential proxies.</p>
+        </article>
+
+        <article class="bento__item bento__item--sm bento__item--soon reveal">
+          <div class="bento__soon-badge">Coming soon</div>
+          <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <div class="bento__eyebrow">Alerting</div>
+          <h3 class="bento__title">Webhook notifications</h3>
+          <p class="bento__desc">Receive a payload when slot status changes — no dashboard polling required.</p>
+        </article>
+
+        <article class="bento__item bento__item--sm reveal">
+          <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <div class="bento__eyebrow">Analysis</div>
+          <h3 class="bento__title">Result diff</h3>
+          <p class="bento__desc">Compare any two runs side-by-side. Spot regressions, slot drops, or layout changes between cycles.</p>
+        </article>
+
+        <article class="bento__item bento__item--sm bento__item--soon reveal">
+          <div class="bento__soon-badge">Coming soon</div>
+          <div class="bento__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="bento__eyebrow">Integration</div>
+          <h3 class="bento__title">API access</h3>
+          <p class="bento__desc">Trigger runs, fetch results, and pull evidence bundles programmatically into CI pipelines.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="social-proof" class="section section--diag-top" data-scene-bg="#0a1014" data-scene-accent="#34d399">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Real scenarios</p>
+          <h2>Where teams reach for AdsChecks</h2>
+          <p class="section__intro">From pre-launch QA to billing disputes — teams use AdsChecks when a screenshot and timestamp are the only arguments that matter.</p>
+        </div>
+      </div>
+      <div class="proof__scenarios reveal-group">
+        <div class="proof__scenario reveal">
+          <div class="proof__scenario-tag">Billing dispute</div>
+          <p>A campaign report shows full delivery, but the buyer's own screenshots show empty slots in DE and FR. AdsChecks GEO-routed checks produce timestamped evidence for both regions — a documented record the seller can't dismiss.</p>
+        </div>
+        <div class="proof__scenario reveal">
+          <div class="proof__scenario-tag">Pre-launch QA</div>
+          <p>Before a Q4 campaign goes live, the ad-ops team runs checks across 6 target countries and 2 device types. SLOT_EMPTY in JP (mobile) surfaces a misconfigured selector — caught before spend starts.</p>
+        </div>
+        <div class="proof__scenario reveal">
+          <div class="proof__scenario-tag">Weekly compliance audit</div>
+          <p>A programmatic manager schedules 500 page checks every Monday. The diff report flags three slots that stopped rendering in US (desktop) after a publisher CMS update — with before/after screenshots attached.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-label="Mid-page call to action">
+    <div class="container">
+      <div class="cta">
+        <div class="cta__copy">
+          <p class="lead">Ready to see exactly what runs on your pages?</p>
+          <div class="cta__actions">
+            <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+            <a class="btn btn--ghost" href="/pricing/">See pricing</a>
+          </div>
+          <p class="fine">3-day free trial &middot; No charge until day 4 &middot; Cancel any time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="terms-overview" class="section" data-scene-bg="#08080f" data-scene-accent="#fbbf24">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Pricing plans</p>
+          <h2>Pricing plans</h2>
+          <p class="section__intro">Public pricing, self-serve checkout. No sales call. No enterprise contract.</p>
+        </div>
+      </div>
+      <div class="pt-grid reveal-group">
+        <article class="pt-card reveal">
+          <div class="pt-card__label"><span class="pt-card__name">Starter</span></div>
+          <div class="pt-card__price">
+            <div class="pt-card__amount">
+              <span class="pt-card__currency">$</span>
+              <span class="pt-card__num" data-count="39">39</span>
+              <span class="pt-card__per">/mo</span>
+            </div>
+            <div class="pt-card__volume">500 verified pages / month</div>
+          </div>
+          <div class="pt-card__divider"></div>
+          <ul class="pt-card__features">
+            <li>500 verified pages/month</li>
+            <li>Scheduled runs</li>
+            <li class="limit">No GEO routing</li>
+            <li>Screenshots + JSON evidence</li>
+            <li>Cancel any time</li>
+            <li>No overages — runs pause at limit</li>
+          </ul>
+          <p class="pt-card__nudge">GEO routing from <a href="https://app.adschecks.com/signup?plan=growth">Growth — $79/mo →</a></p>
+          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
+        </article>
+        <article class="pt-card reveal">
+          <div class="pt-card__label"><span class="pt-card__name">Growth</span></div>
+          <div class="pt-card__price">
+            <div class="pt-card__amount">
+              <span class="pt-card__currency">$</span>
+              <span class="pt-card__num" data-count="79">79</span>
+              <span class="pt-card__per">/mo</span>
+            </div>
+            <div class="pt-card__volume">1,000 verified pages / month</div>
+          </div>
+          <div class="pt-card__divider"></div>
+          <ul class="pt-card__features">
+            <li>1,000 verified pages/month</li>
+            <li>Scheduled runs</li>
+            <li>GEO routing included</li>
+            <li>Screenshots + JSON evidence</li>
+            <li>Cancel any time</li>
+            <li>No overages — runs pause at limit</li>
+          </ul>
+          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=growth">Start free trial</a>
+          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
+        </article>
+        <article class="pt-card pt-card--featured reveal">
+          <div class="pt-card__label">
+            <span class="pt-card__name">Standard</span>
+            <span class="pt-card__pill">Most popular</span>
+          </div>
+          <div class="pt-card__price">
+            <div class="pt-card__amount">
+              <span class="pt-card__currency">$</span>
+              <span class="pt-card__num" data-count="149">149</span>
+              <span class="pt-card__per">/mo</span>
+            </div>
+            <div class="pt-card__volume">3,000 verified pages / month</div>
+          </div>
+          <div class="pt-card__divider"></div>
+          <ul class="pt-card__features">
+            <li>3,000 verified pages/month</li>
+            <li>Scheduled runs</li>
+            <li>GEO routing included</li>
+            <li>Screenshots + JSON evidence</li>
+            <li>Cancel any time</li>
+            <li>No overages — runs pause at limit</li>
+          </ul>
+          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=standard">Start free trial</a>
+          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
+        </article>
+      </div>
+      <div class="pt-custom">
+        <div class="pt-custom__copy">
+          <span class="pt-custom__name">Custom</span>
+          <span class="pt-custom__desc">Higher-volume usage and commercial workflow scoping.</span>
+        </div>
+        <a class="pt-custom__cta" href="mailto:contact@adschecks.com">Contact us &rarr;</a>
+      </div>
+      <p class="fine" style="margin-top: var(--space-16)">Full details: <a href="/pricing/">pricing page</a> · <a href="/what-we-verify/">what we verify</a> · <a href="/refund-policy/">refund policy</a></p>
+    </div>
+  </section>
+
+  <section id="faq" class="section" data-scene-bg="#090d12" data-scene-accent="#a78bfa">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Common questions</p>
+          <h2>FAQ</h2>
+          <p class="section__intro">Answers to the most common questions about verification scope, billing, and setup.</p>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item"><summary>What counts as a verified page?</summary><p>One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp.</p></details>
+        <details class="faq-item"><summary>What happens if my page has more than 5 ad slots?</summary><p>Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL.</p></details>
+        <details class="faq-item"><summary>When does billing start?</summary><p>All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required.</p></details>
+        <details class="faq-item"><summary>What does BLOCKED or CHALLENGE_DETECTED mean?</summary><p>Both are valid verification outcomes, not platform errors. CHALLENGE_DETECTED means an anti-bot page (Cloudflare, hCaptcha) was returned instead of the page content. BLOCKED means the CDN denied access from that GEO or IP range. Both are billable because the page load completed and evidence was captured — the result itself is the finding.</p></details>
+        <details class="faq-item"><summary>How fast do results come back?</summary><p>Most runs complete in under 2 minutes. Results appear in the dashboard immediately after the run finishes, and any configured webhooks fire at the same time. There's no batch delay.</p></details>
+        <details class="faq-item"><summary>Can I use AdsChecks for multiple clients or domains?</summary><p>Yes. You can run checks across any number of domains and URLs within one account. Each check is scoped to a specific URL and context — which makes AdsChecks practical for agencies managing verification across multiple publisher or advertiser accounts.</p></details>
+      </div>
+      <p class="fine">More questions about access, result speed, supported devices, or refunds: <a href="/faq/">see the full FAQ</a>.</p>
+    </div>
+  </section>
+
+  <section id="get-started" class="section section--alt" data-scene-bg="#060a12" data-scene-accent="#6eb8ff">
+    <div class="container">
+      <div class="section__head reveal">
+        <div class="section__copy">
+          <p class="section__eyebrow mono">Access</p>
+          <h2>Start your free trial</h2>
+          <p class="section__intro">3-day free trial on all plans. No charge until day 4 — account ready in seconds.</p>
+        </div>
+      </div>
+      <div class="cta">
+        <div class="cta__copy">
+          <p class="lead">Select a plan, complete checkout, and start running verified ad slot checks. Provisioned immediately after payment.</p>
+          <div class="cta__steps">
+            <div class="cta-step"><div class="cta-step__n">01</div><div><div class="cta-step__title">Sign up</div><p class="fine">Create an account with Google and select a plan — Starter, Growth, or Standard.</p></div></div>
+            <div class="cta-step"><div class="cta-step__n">02</div><div><div class="cta-step__title">Complete checkout</div><p class="fine">Secure checkout via Paddle. Cancel any time from your billing dashboard.</p></div></div>
+            <div class="cta-step"><div class="cta-step__n">03</div><div><div class="cta-step__title">Start verification</div><p class="fine">Run checks and review statuses, screenshots, and JSON metadata in the evidence bundle.</p></div></div>
+          </div>
+          <div class="cta__actions">
+            <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+            <p class="trust-bar"><span>🔒 Secured by Paddle</span><span>Cards · Apple Pay · Google Pay</span><span>Cancel any time</span></p>
+            <p class="fine">3-day free trial &middot; No charge until day 4</p>
+            <p class="fine">Custom volume or enterprise setup — <a href="mailto:contact@adschecks.com">contact sales</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
