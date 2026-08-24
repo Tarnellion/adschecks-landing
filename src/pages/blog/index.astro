@@ -18,7 +18,7 @@ function formatDate(date: Date) {
   bodyClass="page-blog"
 >
   <Fragment slot="head">
-    <script type="application/ld+json">{JSON.stringify({
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "AdsChecks Blog",
@@ -30,15 +30,15 @@ function formatDate(date: Date) {
         "url": "https://adschecks.com",
         "logo": "https://adschecks.com/assets/favicons/favicon-512.png"
       }
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
         { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/blog/", "name": "Blog" } }
       ]
-    })}</script>
+    })}></script>
   </Fragment>
 
   <section class="section">

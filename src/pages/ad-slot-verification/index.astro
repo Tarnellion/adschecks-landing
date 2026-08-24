@@ -9,7 +9,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
   ogTitle="Ad Slot Verification Tool — AdsChecks"
 >
   <Fragment slot="head">
-    <script type="application/ld+json">{JSON.stringify({
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "AdsChecks — Ad Slot Verification Tool",
@@ -22,51 +22,29 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         { "@type": "Offer", "name": "Growth", "price": "79", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } },
         { "@type": "Offer", "name": "Standard", "price": "149", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "149", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } }
       ]
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+        <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is an ad slot verification tool?",
-          "acceptedAnswer": { "@type": "Answer", "text": "An ad slot verification tool checks whether ad placements on a web page are actually rendering at the time of a check. It loads a target URL in a controlled environment (specific GEO and device), inspects predefined CSS selectors, captures a screenshot, and records the slot status — OK, SLOT_EMPTY, BLOCKED, or CHALLENGE_DETECTED." }
-        },
-        {
-          "@type": "Question",
-          "name": "How is ad slot verification different from ad fraud detection?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ad slot verification confirms whether a slot is present and rendering on a given page at check time. Ad fraud detection looks for invalid traffic, bot impressions, and click fraud. They solve different problems — verification is about placement delivery and page state; fraud detection is about traffic quality." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I verify ad slots across different GEO regions?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. AdsChecks routes checks through residential proxies in 12+ regions. You can run the same check from US, UK, DE, JP, and other GEOs to compare slot rendering across markets." }
-        },
-        {
-          "@type": "Question",
-          "name": "What statuses does an ad slot verification tool return?",
-          "acceptedAnswer": { "@type": "Answer", "text": "AdsChecks returns four statuses: OK (slot matched expected selector and state), SLOT_EMPTY (selector found but no ad content at check time), CHALLENGE_DETECTED (anti-bot interstitial was returned instead of the page), and BLOCKED (access was prevented in the target GEO or environment)." }
-        },
-        {
-          "@type": "Question",
-          "name": "What evidence is captured per check?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Each check produces a full-page screenshot, per-slot status codes, JSON metadata with selector data and viewport information, and a UTC timestamp. All artifacts are bundled into a downloadable ZIP for sharing with ad ops, publishers, or legal teams." }
-        },
-        {
-          "@type": "Question",
-          "name": "How many ad slots can be verified per page load?",
-          "acceptedAnswer": { "@type": "Answer", "text": "AdsChecks verifies up to 5 predefined ad slot selectors per page load. If you need to check more slots, you can run multiple checks with different selector sets for the same URL." }
-        }
+        { "@type": "Question", "name": "What is an ad slot verification tool?", "acceptedAnswer": { "@type": "Answer", "text": "An ad slot verification tool checks whether ad placements on a web page are rendering — in a specific GEO, on a specific device, at a specific point in time. It loads the target URL in a controlled environment, inspects predefined CSS selectors, captures a screenshot, and returns a structured evidence bundle with status codes and metadata." } },
+        { "@type": "Question", "name": "How is ad slot verification different from ad fraud detection?", "acceptedAnswer": { "@type": "Answer", "text": "Ad slot verification confirms whether a slot is present and rendering on a given page at check time. Ad fraud detection looks for invalid traffic, bot impressions, and click fraud. They solve different problems — verification is about placement delivery and page state; fraud detection is about traffic quality." } },
+        { "@type": "Question", "name": "Can I verify ad slots across different GEO regions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. AdsChecks routes checks through residential proxies in 12+ regions. You can run the same check from US, UK, DE, JP, and other GEOs to compare slot rendering across markets — or to isolate delivery issues that only appear in specific regions." } },
+        { "@type": "Question", "name": "What statuses does an ad slot verification tool return?", "acceptedAnswer": { "@type": "Answer", "text": "AdsChecks returns four statuses: OK (slot matched expected selector and state), SLOT_EMPTY (selector found but no ad content at check time), CHALLENGE_DETECTED (anti-bot interstitial was returned instead of the page), and BLOCKED (access was prevented in the target GEO or environment). All four are valid, documented outcomes — not tool errors." } },
+        { "@type": "Question", "name": "What evidence is captured per check?", "acceptedAnswer": { "@type": "Answer", "text": "Each check produces a full-page screenshot, per-slot status codes, JSON metadata with selector data and viewport information, and a UTC timestamp. All artifacts are bundled into a downloadable ZIP for sharing with ad ops, publishers, or legal teams." } },
+        { "@type": "Question", "name": "How many ad slots can be verified per page load?", "acceptedAnswer": { "@type": "Answer", "text": "AdsChecks verifies up to 5 predefined ad slot selectors per page load. If you need to check more slots on the same URL, you can run multiple checks with different selector sets." } },
+        { "@type": "Question", "name": "Can I schedule recurring verification checks?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Checks can be scheduled to run daily or weekly. Each run produces a fresh evidence bundle. The diff view lets you compare any two runs side-by-side to surface regressions between check cycles." } },
+        { "@type": "Question", "name": "Can I share or export verification results?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every run produces a downloadable ZIP evidence bundle — slot statuses, full-page screenshot, and JSON metadata — ready to attach to a dispute, send to a publisher, or archive in your own records. The diff view lets you compare any two runs side-by-side for before/after documentation." } }
       ]
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
         { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/ad-slot-verification/", "name": "Ad Slot Verification" } }
       ]
-    })}</script>
+    })}></script>
   </Fragment>
 
   <section class="section lp-hero">
