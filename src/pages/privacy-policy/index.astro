@@ -10,22 +10,22 @@ import BaseLayout from '@layouts/BaseLayout.astro';
   bodyClass="page-privacy-policy"
 >
   <Fragment slot="head">
-    <script type="application/ld+json">{JSON.stringify({
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "AdsChecks",
       "url": "https://adschecks.com",
       "email": "contact@adschecks.com",
       "description": "Ad slot verification with proof-first reporting."
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
         { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/privacy-policy/", "name": "Privacy Policy" } }
       ]
-    })}</script>
+    })}></script>
   </Fragment>
 
   <section class="section">
@@ -47,7 +47,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           </div>
           <div class="doc-meta__item">
             <div class="doc-meta__k">Last updated</div>
-            <div class="doc-meta__v">7 March 2026</div>
+            <div class="doc-meta__v">24 August 2026</div>
           </div>
         </div>
       </div>
@@ -86,8 +86,9 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         <div class="doc-card doc-card--span-2">
           <h2>Processors and controllers</h2>
           <p>
-            Form submissions are processed by <strong>Formspree</strong> (processor).
             Hosting and CDN are provided by <strong>Cloudflare Pages</strong> (processor).
+            Website analytics are provided by <strong>Google Ireland Limited</strong> (processor), and only
+            after you consent — see the Analytics section below.
           </p>
           <p>
             Payment processing is handled by <strong>Paddle.com Market Limited</strong> as Merchant of Record.
@@ -100,8 +101,9 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         <div class="doc-card">
           <h2>Cookies</h2>
           <p>
-            This site does not set first-party tracking cookies. Cloudflare, which provides DNS, CDN, and DDoS protection
-            for this site, may set the following technical cookies:
+            We use two categories of cookies: strictly necessary cookies, which are always active, and analytics
+            cookies, which are set only if you accept them in the cookie banner. Cloudflare, which provides DNS,
+            CDN, and DDoS protection for this site, may set the following strictly necessary cookies:
           </p>
           <ul>
             <li><strong>__cf_bm</strong> — Cloudflare Bot Management. Set on pages protected by Cloudflare. Expires after 30&nbsp;minutes. Used to distinguish human visitors from bots.</li>
@@ -110,6 +112,36 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           <p>
             These cookies are strictly necessary for the security and availability of the service. They do not track users across
             sites and do not require consent under ePrivacy rules for strictly-necessary cookies.
+          </p>
+          <p>
+            Your cookie choice itself is stored in your browser&rsquo;s local storage under the key
+            <strong>consent-analytics</strong>. This is not a cookie, is never transmitted to us, and exists only so
+            that the banner does not reappear on every page.
+          </p>
+        </div>
+
+        <div class="doc-card">
+          <h2>Analytics</h2>
+          <p>
+            We use <strong>Google Analytics 4</strong> to measure aggregate website usage &mdash; which pages are
+            viewed, where visitors arrive from, and approximate location at country level. We use this only to
+            understand which content is useful. We do not use it for advertising, remarketing, or profiling.
+          </p>
+          <p>
+            <strong>Nothing is loaded until you consent.</strong> If you decline, or simply ignore the banner, the
+            Google Analytics script is never requested, no analytics cookies are set, and no data about your visit
+            reaches Google.
+          </p>
+          <p>If you accept, the following cookies are set:</p>
+          <ul>
+            <li><strong>_ga</strong> &mdash; distinguishes returning visitors. Expires after 2&nbsp;years.</li>
+            <li><strong>_ga_&lt;container-id&gt;</strong> &mdash; retains session state for the property. Expires after 2&nbsp;years.</li>
+          </ul>
+          <p>
+            <strong>Legal basis (GDPR Art. 6):</strong> consent &mdash; Art. 6(1)(a). You may withdraw consent at any
+            time by clearing this site&rsquo;s cookies and local storage in your browser, which resets your choice and
+            brings the banner back. Google&rsquo;s privacy policy:
+            <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.
           </p>
         </div>
 
