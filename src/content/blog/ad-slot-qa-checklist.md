@@ -148,4 +148,4 @@ A structured verification run before campaign launch takes minutes. A billing di
 
 ---
 
-*AdsChecks runs geo-routed ad slot verification with screenshot proof. [Start a free trial →](https://app.adschecks.com/signup)*
+*AdsChecks runs geo-routed ad slot verification with screenshot proof. [Get started →](https://app.adschecks.com/signup)*

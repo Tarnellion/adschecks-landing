@@ -7,7 +7,7 @@ import { offersWithPriceSpecification } from '@/data/plans';
 
 <BaseLayout
   title="Ad Slot Verification Tool — AdsChecks"
-  description="Stop trusting reports. Verify your ad slots with screenshot proof across 12+ GEOs and devices. 3-day free trial — no charge until day 4."
+  description="Stop trusting reports. Verify your ad slots with screenshot proof across 12+ GEOs and devices. Public pricing from $39/mo."
   canonical="https://adschecks.com/"
 >
   <Fragment slot="head">
@@ -45,7 +45,7 @@ import { offersWithPriceSpecification } from '@/data/plans';
       "mainEntity": [
         { "@type": "Question", "name": "What counts as a verified page?", "acceptedAnswer": { "@type": "Answer", "text": "One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp." } },
         { "@type": "Question", "name": "What happens if my page has more than 5 ad slots?", "acceptedAnswer": { "@type": "Answer", "text": "Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL." } },
-        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required." } },
+        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "Billing starts when you complete checkout. Your full monthly capacity is available immediately — there is no approval step and no waiting period." } },
         { "@type": "Question", "name": "What does BLOCKED or CHALLENGE_DETECTED mean?", "acceptedAnswer": { "@type": "Answer", "text": "Both are valid verification outcomes, not platform errors. CHALLENGE_DETECTED means an anti-bot page (Cloudflare, hCaptcha) was returned instead of the page content. BLOCKED means the CDN denied access from that GEO or IP range. Both are billable because the page load completed and evidence was captured — the result itself is the finding." } },
         { "@type": "Question", "name": "How fast do results come back?", "acceptedAnswer": { "@type": "Answer", "text": "Most runs complete in under 2 minutes. Results appear in the dashboard immediately after the run finishes. There's no batch delay." } },
         { "@type": "Question", "name": "Can I use AdsChecks for multiple clients or domains?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run checks across any number of domains and URLs within one account. Each check is scoped to a specific URL and context — which makes AdsChecks practical for agencies managing verification across multiple publisher or advertiser accounts." } }
@@ -64,10 +64,10 @@ import { offersWithPriceSpecification } from '@/data/plans';
           <span class="pill pill--ink">device</span> context. Up to 5 slots per page load.
         </p>
         <div class="hero__actions">
-          <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+          <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Get started</a>
           <a class="btn btn--ghost" href="#how-it-works">How it works</a>
         </div>
-        <p class="fine">3-day free trial &middot; No charge until day 4 &middot; Cancel any time</p>
+        <p class="fine">Public pricing &middot; No sales call &middot; Cancel any time</p>
       </div>
 
       <div class="hero__status-card" aria-hidden="true">
@@ -488,10 +488,10 @@ import { offersWithPriceSpecification } from '@/data/plans';
         <div class="cta__copy">
           <p class="lead">Ready to see exactly what runs on your pages?</p>
           <div class="cta__actions">
-            <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+            <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Get started</a>
             <a class="btn btn--ghost" href="/pricing/">See pricing</a>
           </div>
-          <p class="fine">3-day free trial &middot; No charge until day 4 &middot; Cancel any time</p>
+          <p class="fine">Public pricing &middot; No sales call &middot; Cancel any time</p>
         </div>
       </div>
     </div>
@@ -524,7 +524,7 @@ import { offersWithPriceSpecification } from '@/data/plans';
       <div class="faq-list">
         <details class="faq-item"><summary>What counts as a verified page?</summary><p>One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp.</p></details>
         <details class="faq-item"><summary>What happens if my page has more than 5 ad slots?</summary><p>Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL.</p></details>
-        <details class="faq-item"><summary>When does billing start?</summary><p>All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required.</p></details>
+        <details class="faq-item"><summary>When does billing start?</summary><p>Billing starts when you complete checkout. Your full monthly capacity is available immediately — there is no approval step and no waiting period.</p></details>
         <details class="faq-item"><summary>What does BLOCKED or CHALLENGE_DETECTED mean?</summary><p>Both are valid verification outcomes, not platform errors. CHALLENGE_DETECTED means an anti-bot page (Cloudflare, hCaptcha) was returned instead of the page content. BLOCKED means the CDN denied access from that GEO or IP range. Both are billable because the page load completed and evidence was captured — the result itself is the finding.</p></details>
         <details class="faq-item"><summary>How fast do results come back?</summary><p>Most runs complete in under 2 minutes. Results appear in the dashboard immediately after the run finishes. There's no batch delay.</p></details>
         <details class="faq-item"><summary>Can I use AdsChecks for multiple clients or domains?</summary><p>Yes. You can run checks across any number of domains and URLs within one account. Each check is scoped to a specific URL and context — which makes AdsChecks practical for agencies managing verification across multiple publisher or advertiser accounts.</p></details>
@@ -538,8 +538,8 @@ import { offersWithPriceSpecification } from '@/data/plans';
       <div class="section__head reveal">
         <div class="section__copy">
           <p class="section__eyebrow mono">Access</p>
-          <h2>Start your free trial</h2>
-          <p class="section__intro">3-day free trial on all plans. No charge until day 4 — account ready in seconds.</p>
+          <h2>Start verifying your ad slots</h2>
+          <p class="section__intro">Public pricing from $39/mo. Self-serve checkout — your account is ready in seconds.</p>
         </div>
       </div>
       <div class="cta">
@@ -551,9 +551,9 @@ import { offersWithPriceSpecification } from '@/data/plans';
             <div class="cta-step"><div class="cta-step__n">03</div><div><div class="cta-step__title">Start verification</div><p class="fine">Run checks and review statuses, screenshots, and JSON metadata in the evidence bundle.</p></div></div>
           </div>
           <div class="cta__actions">
-            <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
+            <a class="btn" href="https://app.adschecks.com/signup?plan=starter">Get started</a>
             <p class="trust-bar"><span>🔒 Secured by Paddle</span><span>Cards · Apple Pay · Google Pay</span><span>Cancel any time</span></p>
-            <p class="fine">3-day free trial &middot; No charge until day 4</p>
+            <p class="fine">Instant access after checkout</p>
             <p class="fine">Custom volume or enterprise setup — <a href="mailto:contact@adschecks.com">contact sales</a>.</p>
           </div>
         </div>

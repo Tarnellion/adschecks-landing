@@ -143,4 +143,4 @@ Verifying Prebid ad slots requires understanding the render sequence (DOM contai
 
 ---
 
-*AdsChecks supports Prebid slot verification with GEO-routed checks, screenshot proof, and JSON metadata. [Start a free trial →](https://app.adschecks.com/signup)*
+*AdsChecks supports Prebid slot verification with GEO-routed checks, screenshot proof, and JSON metadata. [Get started →](https://app.adschecks.com/signup)*

@@ -17,8 +17,8 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         { "@type": "Question", "name": "What counts as a verified page?", "acceptedAnswer": { "@type": "Answer", "text": "One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp." } },
         { "@type": "Question", "name": "What happens if my page has more than 5 ad slots?", "acceptedAnswer": { "@type": "Answer", "text": "Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL." } },
         { "@type": "Question", "name": "What does CHALLENGE_DETECTED or BLOCKED mean?", "acceptedAnswer": { "@type": "Answer", "text": "These are valid verification outcomes, not errors. CHALLENGE_DETECTED means an anti-bot challenge or interstitial was encountered. BLOCKED means access was prevented in that environment. Both are billable because the page load was completed and evidence was captured." } },
-        { "@type": "Question", "name": "How do I get started?", "acceptedAnswer": { "@type": "Answer", "text": "Sign up at app.adschecks.com/signup, pick a plan, and complete checkout via Paddle. All plans include a 3-day free trial — your account is provisioned immediately and no charge is made until day 4." } },
-        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required." } },
+        { "@type": "Question", "name": "How do I get started?", "acceptedAnswer": { "@type": "Answer", "text": "Sign up at app.adschecks.com/signup, pick a plan, and complete checkout via Paddle. Your account is provisioned immediately after payment — no approval step and no waiting period." } },
+        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "Billing starts when you complete checkout. Your full monthly capacity is available immediately — there is no approval step and no waiting period." } },
         { "@type": "Question", "name": "How fast do I get results?", "acceptedAnswer": { "@type": "Answer", "text": "Most verification runs complete within seconds to a few minutes depending on GEO routing and page complexity. Results are available in the dashboard immediately after completion." } },
         { "@type": "Question", "name": "Can I use AdsChecks to check competitor pages?", "acceptedAnswer": { "@type": "Answer", "text": "You may only verify pages and environments you are authorized to test. See the Acceptable Use section in our Terms & Conditions." } },
         { "@type": "Question", "name": "What browsers and devices do you support?", "acceptedAnswer": { "@type": "Answer", "text": "Checks run in Chromium-based environments with desktop and mobile viewport emulation. The specific device context is attached to every result for comparison." } },
@@ -100,13 +100,13 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           <summary>How do I get started?</summary>
           <p>
             Sign up at <a href="https://app.adschecks.com/signup">app.adschecks.com/signup</a>, pick a plan, and
-            complete checkout via Paddle. All plans include a 3-day free trial — your account is provisioned immediately
-            and no charge is made until day 4.
+            complete checkout via Paddle. Your account is provisioned immediately after payment — no approval step
+            and no waiting period.
           </p>
         </details>
         <details class="faq-item">
           <summary>When does billing start?</summary>
-          <p>All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required.</p>
+          <p>Billing starts when you complete checkout. Your full monthly capacity is available immediately — there is no approval step and no waiting period.</p>
         </details>
         <details class="faq-item">
           <summary>How fast do I get results?</summary>
@@ -163,16 +163,16 @@ import BaseLayout from '@layouts/BaseLayout.astro';
       <div class="section__head">
         <div class="section__copy">
           <h2>Ready to start verifying?</h2>
-          <p class="section__intro">Start a 3-day free trial — no charge until day 4.</p>
+          <p class="section__intro">Pick a plan and start verifying — self-serve checkout, no sales call.</p>
         </div>
       </div>
       <div class="cta">
         <div class="cta__copy">
           <div class="cta__actions">
-            <a href="https://app.adschecks.com/signup?plan=starter" class="btn">Start free trial</a>
+            <a href="https://app.adschecks.com/signup?plan=starter" class="btn">Get started</a>
             <a href="/pricing/" class="btn btn--ghost">See pricing</a>
           </div>
-          <p class="fine">3-day free trial &middot; Cancel any time</p>
+          <p class="fine">Public pricing &middot; Cancel any time</p>
         </div>
       </div>
     </div>

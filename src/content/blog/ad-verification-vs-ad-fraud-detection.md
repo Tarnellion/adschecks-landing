@@ -122,4 +122,4 @@ Most operational ad teams that deal with placement compliance and delivery accou
 
 ---
 
-*AdsChecks is an ad slot verification tool. [Start a free trial →](https://app.adschecks.com/signup)*
+*AdsChecks is an ad slot verification tool. [Get started →](https://app.adschecks.com/signup)*
