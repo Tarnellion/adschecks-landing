@@ -145,6 +145,10 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
           (function () {
             var KEY = 'consent-analytics';
 
+            // Cloudflare preview deployments serve from *.pages.dev and would
+            // otherwise report into the same GA property as production.
+            if (location.hostname.slice(-10) === '.pages.dev') return;
+
             function loadAnalytics() {
               if (window.__gaLoaded) return;
               window.__gaLoaded = true;

@@ -64,6 +64,20 @@ Consequences to keep in mind:
 | `pages.css` | Per-page styles: blog index and post, sample output, pricing, legal/docs, status-model (`.sm-*`) |
 | `utilities.css` | Gradient text, `.skip-link` (WCAG 2.4.1 bypass block), `.reveal` / `.is-visible` animations, accessibility, reduced-motion |
 
+### Analytics is consent-gated and environment-aware
+
+GA4 loads only after the visitor presses **Accept**. Nothing reaches Google before that — not even a cookieless ping, which is why this does not use Google Consent Mode.
+
+The measurement id lives in `.env.production` (`PUBLIC_GA_ID=G-XGQWL529CS`). It is a public identifier, served in the HTML of every page, so it is committed rather than kept in the deploy dashboard. A real environment variable overrides the file if one is ever set in Cloudflare.
+
+Three layers decide whether analytics exists at all:
+
+1. **No `PUBLIC_GA_ID`** — neither the banner nor any gtag code is rendered. `.env.production` is only read by `astro build`, so `npm run dev` never has analytics.
+2. **Host ends in `.pages.dev`** — the consent script returns immediately. Cloudflare preview deployments would otherwise report into the production GA property.
+3. **Stored consent** — `consent-analytics` in localStorage, set by the banner or cleared by the footer's *Cookie settings* control.
+
+`tests/analytics-consent.spec.js` pins all of this: it intercepts and aborts every Google request, so the suite never contacts Google while still asserting that a request *would* have been made.
+
 ### Fonts are self-hosted — do not re-add a CDN
 
 Inter ships from `src/styles/fonts/*.woff2` (6 weights, `latin` subset only, ~145 KB total). Vite fingerprints them into `/_astro/`, so they inherit the `immutable` cache rule in `public/_headers`.
