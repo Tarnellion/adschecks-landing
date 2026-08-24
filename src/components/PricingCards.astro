@@ -1,0 +1,49 @@
+---
+import { plans, getPlan, nudgeLinkLabel } from '@/data/plans';
+
+interface Props {
+  /**
+   * Tag used for the plan name. Pick the level that keeps the page outline valid:
+   * `h2` on /pricing/ (the h1 is the page title), `h3` on the homepage
+   * (the section already owns an h2).
+   */
+  headingLevel?: 'h2' | 'h3' | 'h4' | 'span';
+  /** Adds `reveal-group` to the grid and `reveal` to each card (scroll-in animation). */
+  reveal?: boolean;
+  /** `short` uses the compact "pages/month" wording for the volume bullet. */
+  featureWording?: 'long' | 'short';
+}
+
+const { headingLevel = 'h2', reveal = false, featureWording = 'long' } = Astro.props;
+const Name = headingLevel;
+---
+
+<div class:list={['pt-grid', reveal && 'reveal-group']}>
+  {plans.map((plan) => (
+    <article class:list={['pt-card', plan.featured && 'pt-card--featured', reveal && 'reveal']}>
+      <div class="pt-card__label">
+        <Name class="pt-card__name">{plan.name}</Name>
+        {plan.pill && <span class="pt-card__pill">{plan.pill}</span>}
+      </div>
+      <div class="pt-card__price">
+        <div class="pt-card__amount">
+          <span class="pt-card__currency">$</span>
+          <span class="pt-card__num" data-count={plan.price}>{plan.price}</span>
+          <span class="pt-card__per">/mo</span>
+        </div>
+        <div class="pt-card__volume">{plan.volume}</div>
+      </div>
+      <div class="pt-card__divider"></div>
+      <ul class="pt-card__features">
+        {plan.features.map((feature) => (
+          <li class:list={[feature.limit && 'limit']}>{featureWording === 'short' && feature.textShort ? feature.textShort : feature.text}</li>
+        ))}
+      </ul>
+      {plan.nudge && (
+        <p class="pt-card__nudge">{plan.nudge.prefix}<a href={getPlan(plan.nudge.target).ctaHref}>{nudgeLinkLabel(plan.nudge)}</a></p>
+      )}
+      <a class="pt-card__cta" href={plan.ctaHref}>Start free trial</a>
+      <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
+    </article>
+  ))}
+</div>

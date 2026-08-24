@@ -1,0 +1,24 @@
+---
+interface Props {
+  /** Copy for `.pt-custom__desc` — the pitch differs between the homepage and /pricing/. */
+  description: string;
+  /** Label for `.pt-custom__name`. */
+  name?: string;
+  /** `href` of `.pt-custom__cta`. */
+  ctaHref?: string;
+}
+
+const {
+  description,
+  name = 'Custom',
+  ctaHref = 'mailto:contact@adschecks.com',
+} = Astro.props;
+---
+
+<div class="pt-custom">
+  <div class="pt-custom__copy">
+    <span class="pt-custom__name">{name}</span>
+    <span class="pt-custom__desc">{description}</span>
+  </div>
+  <a class="pt-custom__cta" href={ctaHref}>Contact us &rarr;</a>
+</div>
