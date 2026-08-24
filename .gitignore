@@ -30,5 +30,3 @@ playwright.offline.config.js
 AGENTS.md
 Todo.md
 README.md
-playwright.config.js
-tests/

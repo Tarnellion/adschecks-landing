@@ -10,8 +10,7 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date('2026-04-02'),
-      // Per-page overrides via sitemap filter if needed
+      lastmod: new Date(),
       filter: (page) => !page.includes('/pricing-usage') && !page.includes('/refunds-disputes'),
     }),
   ],

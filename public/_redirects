@@ -4,6 +4,9 @@
 /refunds-disputes /refund-policy/ 301
 /refunds-disputes/ /refund-policy/ 301
 
+# Sitemap alias (Astro emits sitemap-index.xml)
+/sitemap.xml /sitemap-index.xml 301
+
 # Canonical HTML entrypoints
 /index.html / 301
 /:page/index.html /:page/ 301
