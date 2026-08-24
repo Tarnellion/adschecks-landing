@@ -264,6 +264,9 @@ const initMapConnectors = () => {
     let rafLoopId = 0
     let resizeRafId = 0
     let lastLoopTs = 0
+    let isInView = false
+
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
     const loopSync = ts => {
         if (!lastLoopTs || ts - lastLoopTs >= 33) {
@@ -275,6 +278,9 @@ const initMapConnectors = () => {
 
     const startLoop = () => {
         if (rafLoopId) return
+        if (reducedMotionQuery.matches) return
+        if (!isInView || document.hidden) return
+        lastLoopTs = 0
         rafLoopId = window.requestAnimationFrame(loopSync)
     }
 
@@ -282,6 +288,7 @@ const initMapConnectors = () => {
         if (!rafLoopId) return
         window.cancelAnimationFrame(rafLoopId)
         rafLoopId = 0
+        lastLoopTs = 0
     }
 
     const scheduleSync = () => {
@@ -293,7 +300,6 @@ const initMapConnectors = () => {
     }
 
     syncConnectors()
-    startLoop()
     window.addEventListener('load', scheduleSync)
     window.addEventListener('resize', scheduleSync, { passive: true })
     document.addEventListener('visibilitychange', () => {
@@ -304,6 +310,35 @@ const initMapConnectors = () => {
         syncConnectors()
         startLoop()
     })
+
+    const viewObserver = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                isInView = entry.isIntersecting
+                if (!isInView) {
+                    stopLoop()
+                    return
+                }
+                syncConnectors()
+                startLoop()
+            })
+        },
+        { rootMargin: '128px 0px' }
+    )
+    viewObserver.observe(mapRoot)
+
+    const onReducedMotionChange = () => {
+        if (reducedMotionQuery.matches) {
+            stopLoop()
+            scheduleSync()
+            return
+        }
+        startLoop()
+    }
+
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+        reducedMotionQuery.addEventListener('change', onReducedMotionChange)
+    }
 
     if ('ResizeObserver' in window) {
         const resizeObserver = new ResizeObserver(scheduleSync)
