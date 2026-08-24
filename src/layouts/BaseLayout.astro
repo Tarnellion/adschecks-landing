@@ -1,4 +1,6 @@
 ---
+import '../styles/index.css';
+
 interface Props {
   title: string;
   description: string;
@@ -22,6 +24,7 @@ const {
 const resolvedOgTitle = ogTitle ?? title;
 const resolvedOgDesc = ogDescription ?? description;
 const currentPath = new URL(canonical).pathname;
+const gaId = import.meta.env.PUBLIC_GA_ID;
 ---
 
 <!doctype html>
@@ -29,8 +32,6 @@ const currentPath = new URL(canonical).pathname;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.bunny.net" />
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900&display=swap" rel="stylesheet" />
     <meta name="theme-color" content="#0a0e13" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -41,7 +42,6 @@ const currentPath = new URL(canonical).pathname;
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/styles/index.css" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AdsChecks" />
     <meta name="twitter:image:alt" content="AdsChecks — Ad Slot Verification Tool" />
@@ -59,6 +59,7 @@ const currentPath = new URL(canonical).pathname;
     <slot name="head" />
   </head>
   <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <div class="read-progress" aria-hidden="true"></div>
     <header class="header">
       <div class="container header__inner">
@@ -120,6 +121,7 @@ const currentPath = new URL(canonical).pathname;
             <a href="/refund-policy/">Refund Policy</a>
             <a href="/privacy-policy/">Privacy Policy</a>
             <a href="/legal-notice/">Legal Notice</a>
+            {gaId && <button id="cookie-settings" class="footer__link-btn" type="button">Cookie settings</button>}
           </div>
         </div>
       </div>
@@ -127,23 +129,75 @@ const currentPath = new URL(canonical).pathname;
 
     <script src="/script.js" defer></script>
 
-    <div id="cookie-bar" class="cookie-bar" hidden>
-      <p class="cookie-bar__text">
-        We use only essential cookies. <a href="/privacy-policy/">Privacy Policy</a>
-      </p>
-      <button id="cookie-dismiss" class="cookie-bar__btn" type="button">Got it</button>
-    </div>
-    <script>
-      (function () {
-        if (localStorage.getItem('cookie-ok')) return;
-        var bar = document.getElementById('cookie-bar');
-        if (!bar) return;
-        bar.removeAttribute('hidden');
-        document.getElementById('cookie-dismiss').addEventListener('click', function () {
-          localStorage.setItem('cookie-ok', '1');
-          bar.setAttribute('hidden', '');
-        });
-      })();
-    </script>
+    {gaId && (
+      <>
+        <div id="cookie-bar" class="cookie-bar" role="region" aria-label="Cookie consent" hidden>
+          <p class="cookie-bar__text">
+            We use strictly necessary cookies to run this site. May we also use analytics cookies to
+            see which pages are useful? <a href="/privacy-policy/">Privacy Policy</a>
+          </p>
+          <div class="cookie-bar__actions">
+            <button id="cookie-decline" class="cookie-bar__btn cookie-bar__btn--ghost" type="button">Decline</button>
+            <button id="cookie-accept" class="cookie-bar__btn" type="button">Accept</button>
+          </div>
+        </div>
+        <script is:inline define:vars={{ gaId }}>
+          (function () {
+            var KEY = 'consent-analytics';
+
+            function loadAnalytics() {
+              if (window.__gaLoaded) return;
+              window.__gaLoaded = true;
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function () { window.dataLayer.push(arguments); };
+              window.gtag('js', new Date());
+              window.gtag('config', gaId);
+              var s = document.createElement('script');
+              s.async = true;
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+              document.head.appendChild(s);
+            }
+
+            var bar = document.getElementById('cookie-bar');
+            if (!bar) return;
+
+            var stored = null;
+            try { stored = localStorage.getItem(KEY); } catch (e) {}
+
+            var remember = function (value) {
+              var saved = false;
+              try { localStorage.setItem(KEY, value); saved = true; } catch (e) {}
+              // Если сохранить не удалось (приватный режим), не прячем баннер молча —
+              // иначе посетитель увидит подтверждение выбора, которого нет.
+              if (saved) bar.setAttribute('hidden', '');
+              return saved;
+            };
+
+            document.getElementById('cookie-accept').addEventListener('click', function () {
+              remember('granted');
+              loadAnalytics();
+            });
+            document.getElementById('cookie-decline').addEventListener('click', function () {
+              remember('denied');
+            });
+
+            var settings = document.getElementById('cookie-settings');
+            if (settings) {
+              settings.addEventListener('click', function () {
+                try { localStorage.removeItem(KEY); } catch (e) {}
+                bar.removeAttribute('hidden');
+                bar.scrollIntoView({ block: 'nearest' });
+                document.getElementById('cookie-decline').focus();
+              });
+            }
+
+            if (stored === 'granted') { loadAnalytics(); return; }
+            if (stored === 'denied') return;
+
+            bar.removeAttribute('hidden');
+          })();
+        </script>
+      </>
+    )}
   </body>
 </html>

@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import PricingCards from '@components/PricingCards.astro';
+import PricingCustomRow from '@components/PricingCustomRow.astro';
+import { offersWithPriceSpecification } from '@/data/plans';
 ---
 
 <BaseLayout
@@ -8,7 +11,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
   canonical="https://adschecks.com/"
 >
   <Fragment slot="head">
-    <script type="application/ld+json">{JSON.stringify({
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "AdsChecks",
@@ -17,13 +20,9 @@ import BaseLayout from '@layouts/BaseLayout.astro';
       "description": "Ad slot verification with proof-first reporting for repeatable QA, commercial review, and dispute support.",
       "url": "https://adschecks.com",
       "author": { "@type": "Person", "name": "Taras Hovorukha", "url": "https://adschecks.com/about/" },
-      "offers": [
-        { "@type": "Offer", "name": "Starter", "price": "39", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "39", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } },
-        { "@type": "Offer", "name": "Growth", "price": "79", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } },
-        { "@type": "Offer", "name": "Standard", "price": "149", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "149", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" } }
-      ]
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+      "offers": offersWithPriceSpecification()
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "AdsChecks",
@@ -33,26 +32,25 @@ import BaseLayout from '@layouts/BaseLayout.astro';
       "logo": "https://adschecks.com/assets/favicons/favicon-512.png",
       "address": { "@type": "PostalAddress", "addressCountry": "UA" },
       "contactPoint": { "@type": "ContactPoint", "email": "contact@adschecks.com", "contactType": "customer support" }
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "AdsChecks",
       "url": "https://adschecks.com/"
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
         { "@type": "Question", "name": "What counts as a verified page?", "acceptedAnswer": { "@type": "Answer", "text": "One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp." } },
         { "@type": "Question", "name": "What happens if my page has more than 5 ad slots?", "acceptedAnswer": { "@type": "Answer", "text": "Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL." } },
-        { "@type": "Question", "name": "What does CHALLENGE_DETECTED or BLOCKED mean?", "acceptedAnswer": { "@type": "Answer", "text": "These are valid verification outcomes, not errors. CHALLENGE_DETECTED means an anti-bot challenge or interstitial was encountered. BLOCKED means access was prevented in that environment. Both are billable because the page load was completed and evidence was captured." } },
-        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your monthly capacity is available immediately — no approval step required." } },
-        { "@type": "Question", "name": "How fast do I get results?", "acceptedAnswer": { "@type": "Answer", "text": "Most verification runs complete within seconds to a few minutes depending on GEO routing and page complexity. Results are available in the dashboard immediately after completion." } },
-        { "@type": "Question", "name": "What browsers and devices do you support?", "acceptedAnswer": { "@type": "Answer", "text": "Checks run in Chromium-based environments with desktop and mobile viewport emulation. The specific device context is attached to every result for comparison." } },
-        { "@type": "Question", "name": "Can I manage multiple clients or sites under one account?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run checks across multiple domains and sites within a single account. Each check is scoped to a specific URL and context — this makes AdsChecks suitable for agencies managing verification across several publisher or advertiser accounts." } }
+        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required." } },
+        { "@type": "Question", "name": "What does BLOCKED or CHALLENGE_DETECTED mean?", "acceptedAnswer": { "@type": "Answer", "text": "Both are valid verification outcomes, not platform errors. CHALLENGE_DETECTED means an anti-bot page (Cloudflare, hCaptcha) was returned instead of the page content. BLOCKED means the CDN denied access from that GEO or IP range. Both are billable because the page load completed and evidence was captured — the result itself is the finding." } },
+        { "@type": "Question", "name": "How fast do results come back?", "acceptedAnswer": { "@type": "Answer", "text": "Most runs complete in under 2 minutes. Results appear in the dashboard immediately after the run finishes. There's no batch delay." } },
+        { "@type": "Question", "name": "Can I use AdsChecks for multiple clients or domains?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run checks across any number of domains and URLs within one account. Each check is scoped to a specific URL and context — which makes AdsChecks practical for agencies managing verification across multiple publisher or advertiser accounts." } }
       ]
-    })}</script>
+    })}></script>
   </Fragment>
 
   <section id="hero" class="hero" data-scene-bg="#0a0e13" data-scene-accent="#6eb8ff">
@@ -508,85 +506,8 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           <p class="section__intro">Public pricing, self-serve checkout. No sales call. No enterprise contract.</p>
         </div>
       </div>
-      <div class="pt-grid reveal-group">
-        <article class="pt-card reveal">
-          <div class="pt-card__label"><span class="pt-card__name">Starter</span></div>
-          <div class="pt-card__price">
-            <div class="pt-card__amount">
-              <span class="pt-card__currency">$</span>
-              <span class="pt-card__num" data-count="39">39</span>
-              <span class="pt-card__per">/mo</span>
-            </div>
-            <div class="pt-card__volume">500 verified pages / month</div>
-          </div>
-          <div class="pt-card__divider"></div>
-          <ul class="pt-card__features">
-            <li>500 verified pages/month</li>
-            <li>Scheduled runs</li>
-            <li class="limit">No GEO routing</li>
-            <li>Screenshots + JSON evidence</li>
-            <li>Cancel any time</li>
-            <li>No overages — runs pause at limit</li>
-          </ul>
-          <p class="pt-card__nudge">GEO routing from <a href="https://app.adschecks.com/signup?plan=growth">Growth — $79/mo →</a></p>
-          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=starter">Start free trial</a>
-          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
-        </article>
-        <article class="pt-card reveal">
-          <div class="pt-card__label"><span class="pt-card__name">Growth</span></div>
-          <div class="pt-card__price">
-            <div class="pt-card__amount">
-              <span class="pt-card__currency">$</span>
-              <span class="pt-card__num" data-count="79">79</span>
-              <span class="pt-card__per">/mo</span>
-            </div>
-            <div class="pt-card__volume">1,000 verified pages / month</div>
-          </div>
-          <div class="pt-card__divider"></div>
-          <ul class="pt-card__features">
-            <li>1,000 verified pages/month</li>
-            <li>Scheduled runs</li>
-            <li>GEO routing included</li>
-            <li>Screenshots + JSON evidence</li>
-            <li>Cancel any time</li>
-            <li>No overages — runs pause at limit</li>
-          </ul>
-          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=growth">Start free trial</a>
-          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
-        </article>
-        <article class="pt-card pt-card--featured reveal">
-          <div class="pt-card__label">
-            <span class="pt-card__name">Standard</span>
-            <span class="pt-card__pill">Most popular</span>
-          </div>
-          <div class="pt-card__price">
-            <div class="pt-card__amount">
-              <span class="pt-card__currency">$</span>
-              <span class="pt-card__num" data-count="149">149</span>
-              <span class="pt-card__per">/mo</span>
-            </div>
-            <div class="pt-card__volume">3,000 verified pages / month</div>
-          </div>
-          <div class="pt-card__divider"></div>
-          <ul class="pt-card__features">
-            <li>3,000 verified pages/month</li>
-            <li>Scheduled runs</li>
-            <li>GEO routing included</li>
-            <li>Screenshots + JSON evidence</li>
-            <li>Cancel any time</li>
-            <li>No overages — runs pause at limit</li>
-          </ul>
-          <a class="pt-card__cta" href="https://app.adschecks.com/signup?plan=standard">Start free trial</a>
-          <p class="pt-card__trial">3-day free trial &middot; No charge until day&nbsp;4</p>
-        </article>
-      </div>
-      <div class="pt-custom">
-        <div class="pt-custom__copy">
-          <span class="pt-custom__name">Custom</span>
-          <span class="pt-custom__desc">Higher-volume usage and commercial workflow scoping.</span>
-        </div>
-        <a class="pt-custom__cta" href="mailto:contact@adschecks.com">Contact us &rarr;</a>
-      </div>
+      <PricingCards headingLevel="h3" reveal featureWording="short" />
+      <PricingCustomRow description="Higher-volume usage and commercial workflow scoping." />
       <p class="fine" style="margin-top: var(--space-16)">Full details: <a href="/pricing/">pricing page</a> · <a href="/what-we-verify/">what we verify</a> · <a href="/refund-policy/">refund policy</a></p>
     </div>
   </section>

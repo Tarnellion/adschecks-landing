@@ -1,5 +1,55 @@
 # ROADMAP
 
+## Session — 2026-08-24
+
+### Completed
+
+**Structured data — the big one:**
+- [x] Found that essentially none of the schema.org markup worked. Astro does not evaluate `{...}` expressions inside `<script>` element content, so `<script type="application/ld+json">{JSON.stringify({...})}</script>` shipped the literal source text `{JSON.stringify({...})}` to the browser. 32 of 34 rendered `ld+json` blocks were invalid.
+- [x] Converted every block to `<script type="application/ld+json" set:html={JSON.stringify({ ... })} />`. Now 34 of 34 are valid.
+
+**CSS pipeline — the other big one:**
+- [x] Moved CSS from `public/styles/` to `src/styles/` and wired it through `import '../styles/index.css'` in `BaseLayout.astro`, so Astro bundles and minifies it instead of serving raw files.
+- [x] 7 render-blocking stylesheet requests → 1 hashed file under `/_astro/`.
+- [x] 152 KB → 87.5 KB (gzip 22.7 KB → 15.3 KB).
+- [x] Removed 124 dead CSS classes.
+
+**Performance:**
+- [x] `initMapConnectors()` in `public/script.js` now starts its rAF loop only while `.map-viz__inner` is in the viewport (IntersectionObserver), stops it on `visibilitychange`, and never starts it under `prefers-reduced-motion: reduce`. Measured: 252 `getBoundingClientRect()` calls/sec while idle → 0.
+
+**Analytics and privacy:**
+- [x] GA4 moved behind `import.meta.env.PUBLIC_GA_ID`. Without the env var neither the consent banner nor gtag renders at all.
+- [x] Consent banner with Accept / Decline; the Google script is not requested until Accept. Choice stored in `localStorage` under `consent-analytics`.
+- [x] Privacy Policy: added an Analytics section, removed the Formspree mention (the site has no forms), refreshed the date.
+
+**SEO / infra:**
+- [x] `robots.txt` now points at `sitemap-index.xml`; added a 301 from `/sitemap.xml` in `public/_redirects`.
+- [x] `astro.config.mjs`: sitemap `lastmod` now comes from the build date (was hardcoded to 2026-04-02).
+- [x] New `public/_headers`: security headers (`nosniff`, `Referrer-Policy`, `X-Frame-Options: DENY`, `Permissions-Policy`, HSTS) plus immutable one-year caching for `/_astro/*` and `/assets/*`.
+
+**Accessibility and structure:**
+- [x] Added a skip link (WCAG 2.4.1 bypass block) to `BaseLayout.astro` with `.skip-link` styles in `utilities.css`.
+- [x] Extracted the pricing cards into `src/components/PricingCards.astro` and `PricingCustomRow.astro`, with plan data in `src/data/plans.ts` (also the source of the JSON-LD `offers`).
+- [x] Plan names are now `h2` on `/pricing/` (the page previously had zero `h2`) and `h3` on the homepage, keeping both outlines valid.
+
+**Repo / tooling:**
+- [x] `.github/workflows/lighthouse.yml`: Node 18 → 22.
+- [x] `package.json`: removed the broken `seo:sitemap` script.
+- [x] `.gitignore`: `tests/` and `playwright.config.js` are no longer ignored.
+
+**Docs (this pass):**
+- [x] `CLAUDE.md` — rewrote the "two CSS directories" section, which was actively harmful: it sent assistants looking for `public/styles/` and a root `styles/`, neither of which exists. Also removed the Formspree and legacy `styles.css` claims and the "Coming soon" bento badges, and documented `set:html` for JSON-LD, the analytics gating, and the component/data split.
+- [x] `README.md` — same corrections plus Node 22, `src/components`, `src/data`, `src/styles`.
+- [x] `DEPLOY.md` — project structure brought in line with reality; added the mandatory `PUBLIC_GA_ID` setup step for Cloudflare Pages.
+
+### Open
+
+- [ ] `tests/` is still absent — the Playwright suite is being restored. `npm test` currently reports "No tests found".
+- [ ] `playwright.config.js` has `webServer: npx serve . -p 3000`, which serves the repo root rather than the Astro output. Needs to point at `dist/client` or `astro preview` before any spec can load a page.
+- [ ] `tsconfig.json` still carries a stale `@styles/*` → `./styles/*` alias pointing at a directory that no longer exists. Nothing imports through it.
+
+---
+
 ## Session — 2026-04-07
 
 ### Completed

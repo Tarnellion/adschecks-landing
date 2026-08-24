@@ -1,5 +1,6 @@
 @layer foundation, layout, components, hero, pages, utilities;
 
+@import "./fonts.css" layer(foundation);
 @import "./foundation.css" layer(foundation);
 @import "./layout.css" layer(layout);
 @import "./components.css" layer(components);

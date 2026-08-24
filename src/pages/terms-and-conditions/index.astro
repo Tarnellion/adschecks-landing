@@ -9,22 +9,22 @@ import BaseLayout from '@layouts/BaseLayout.astro';
   bodyClass="page-terms-and-conditions"
 >
   <Fragment slot="head">
-    <script type="application/ld+json">{JSON.stringify({
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "AdsChecks",
       "url": "https://adschecks.com",
       "email": "contact@adschecks.com",
       "description": "Ad slot verification with proof-first reporting."
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
         { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/terms-and-conditions/", "name": "Terms and Conditions" } }
       ]
-    })}</script>
+    })}></script>
   </Fragment>
 
   <section class="section">

@@ -10,68 +10,24 @@ import BaseLayout from '@layouts/BaseLayout.astro';
   bodyClass="page-faq"
 >
   <Fragment slot="head">
-    <script type="application/ld+json">{JSON.stringify({
+        <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What counts as a verified page?",
-          "acceptedAnswer": { "@type": "Answer", "text": "One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp." }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens if my page has more than 5 ad slots?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL." }
-        },
-        {
-          "@type": "Question",
-          "name": "What does CHALLENGE_DETECTED or BLOCKED mean?",
-          "acceptedAnswer": { "@type": "Answer", "text": "These are valid verification outcomes, not errors. CHALLENGE_DETECTED means an anti-bot challenge or interstitial was encountered. BLOCKED means access was prevented in that environment. Both are billable because the page load was completed and evidence was captured." }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I get started?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sign up at app.adschecks.com/signup, pick a plan, and complete checkout via Paddle. Your account is provisioned immediately after payment — no approval step required." }
-        },
-        {
-          "@type": "Question",
-          "name": "When does billing start?",
-          "acceptedAnswer": { "@type": "Answer", "text": "All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required." }
-        },
-        {
-          "@type": "Question",
-          "name": "How fast do I get results?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Most verification runs complete within seconds to a few minutes depending on GEO routing and page complexity. Results are available in the dashboard immediately after completion." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I use AdsChecks to check competitor pages?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You may only verify pages and environments you are authorized to test. See the Acceptable Use section in our Terms & Conditions." }
-        },
-        {
-          "@type": "Question",
-          "name": "What browsers and devices do you support?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Checks run in Chromium-based environments with desktop and mobile viewport emulation. The specific device context is attached to every result for comparison." }
-        },
-        {
-          "@type": "Question",
-          "name": "How do refunds work?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Completed verified pages are not refundable, including results with CHALLENGE_DETECTED and BLOCKED statuses. Duplicate or clearly accidental charges can be reviewed. See our Refund Policy for full details." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I verify ad slots on pages I don't own as a publisher?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Publishers can use AdsChecks to verify ad delivery on their own properties — checking that slots are rendering as configured, that sponsored placements are appearing correctly, and that GEO-specific delivery is working. You may only check pages and environments you control or are authorized to test." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I manage multiple clients or sites under one account?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run checks across multiple domains and sites within a single account. Each check is scoped to a specific URL and context — this makes AdsChecks suitable for agencies managing verification across several publisher or advertiser accounts. For higher-volume multi-client usage, contact us about a Custom plan." }
-        }
+        { "@type": "Question", "name": "What counts as a verified page?", "acceptedAnswer": { "@type": "Answer", "text": "One completed page load for a target URL in a selected check context (GEO + device), with verification of up to 5 predefined ad slots. Each verified page produces statuses, screenshots, JSON metadata, and a UTC timestamp." } },
+        { "@type": "Question", "name": "What happens if my page has more than 5 ad slots?", "acceptedAnswer": { "@type": "Answer", "text": "Each verified page checks up to 5 predefined selectors. If you need to verify more slots, you can run multiple checks with different selector sets for the same URL." } },
+        { "@type": "Question", "name": "What does CHALLENGE_DETECTED or BLOCKED mean?", "acceptedAnswer": { "@type": "Answer", "text": "These are valid verification outcomes, not errors. CHALLENGE_DETECTED means an anti-bot challenge or interstitial was encountered. BLOCKED means access was prevented in that environment. Both are billable because the page load was completed and evidence was captured." } },
+        { "@type": "Question", "name": "How do I get started?", "acceptedAnswer": { "@type": "Answer", "text": "Sign up at app.adschecks.com/signup, pick a plan, and complete checkout via Paddle. All plans include a 3-day free trial — your account is provisioned immediately and no charge is made until day 4." } },
+        { "@type": "Question", "name": "When does billing start?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include a 3-day free trial. Billing starts on day 4 after you complete checkout. Your full monthly capacity is available immediately — no approval step required." } },
+        { "@type": "Question", "name": "How fast do I get results?", "acceptedAnswer": { "@type": "Answer", "text": "Most verification runs complete within seconds to a few minutes depending on GEO routing and page complexity. Results are available in the dashboard immediately after completion." } },
+        { "@type": "Question", "name": "Can I use AdsChecks to check competitor pages?", "acceptedAnswer": { "@type": "Answer", "text": "You may only verify pages and environments you are authorized to test. See the Acceptable Use section in our Terms & Conditions." } },
+        { "@type": "Question", "name": "What browsers and devices do you support?", "acceptedAnswer": { "@type": "Answer", "text": "Checks run in Chromium-based environments with desktop and mobile viewport emulation. The specific device context is attached to every result for comparison." } },
+        { "@type": "Question", "name": "How do refunds work?", "acceptedAnswer": { "@type": "Answer", "text": "Completed verified pages are not refundable, including results with CHALLENGE_DETECTED and BLOCKED statuses. Duplicate or clearly accidental charges can be reviewed. See our Refund Policy for full details." } },
+        { "@type": "Question", "name": "Can I verify ad slots on pages I don't own as a publisher?", "acceptedAnswer": { "@type": "Answer", "text": "Publishers can use AdsChecks to verify ad delivery on their own properties — checking that slots are rendering as configured, that sponsored placements are appearing correctly, and that GEO-specific delivery is working. You may only check pages and environments you control or are authorized to test." } },
+        { "@type": "Question", "name": "Can I manage multiple clients or sites under one account?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run checks across multiple domains and sites within a single account. Each check is scoped to a specific URL and context — this makes AdsChecks suitable for agencies managing verification across several publisher or advertiser accounts. For higher-volume multi-client usage, contact us about a Custom plan." } }
       ]
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "AdsChecks",
@@ -81,15 +37,15 @@ import BaseLayout from '@layouts/BaseLayout.astro';
       "logo": "https://adschecks.com/assets/favicons/favicon-512.png",
       "address": { "@type": "PostalAddress", "addressCountry": "UA" },
       "contactPoint": { "@type": "ContactPoint", "email": "contact@adschecks.com", "contactType": "customer support" }
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
+    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "item": { "@id": "https://adschecks.com/", "name": "AdsChecks" } },
         { "@type": "ListItem", "position": 2, "item": { "@id": "https://adschecks.com/faq/", "name": "FAQ" } }
       ]
-    })}</script>
+    })}></script>
   </Fragment>
 
   <section class="section">
