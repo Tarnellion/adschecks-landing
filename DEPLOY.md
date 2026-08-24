@@ -19,7 +19,30 @@
 
 4. Нажми **Save**
 
-> Это единственное изменение в CF. Всё остальное (домен, переменные окружения, _redirects) остаётся как было.
+---
+
+## Шаг 1b — Один раз: переменные окружения
+
+**Pages → adschecks → Settings → Environment variables**
+
+| Переменная | Значение | Окружения |
+|---|---|---|
+| `PUBLIC_GA_ID` | `G-XXXXXXXXXX` (ID своего GA4-потока) | Production **и** Preview |
+
+Это обязательный шаг, если нужна аналитика. Переменная читается на этапе сборки
+(`import.meta.env.PUBLIC_GA_ID` в `src/layouts/BaseLayout.astro`), поэтому после её
+добавления или изменения нужен **новый деплой** — на уже собранный сайт она не подействует.
+
+Поведение без переменной осознанное, а не баг: если `PUBLIC_GA_ID` не задан, в HTML
+не попадает ни баннер согласия, ни код gtag — вообще ничего. Так превью- и локальные
+сборки гарантированно не шлют данные в аналитику.
+
+Когда переменная задана, действует второй уровень гейтинга — уже в браузере: скрипт
+Google подгружается только после нажатия **Accept** в баннере. Выбор запоминается в
+`localStorage` под ключом `consent-analytics` (`granted` / `denied`). Если посетитель
+нажал Decline или просто проигнорировал баннер, запроса к `googletagmanager.com` не будет.
+
+Префикс `PUBLIC_` обязателен — без него Astro не отдаст значение в клиентский код.
 
 ---
 
@@ -50,6 +73,10 @@ git push origin main
    - Навигация работает (About, Pricing, FAQ и т.д.)
    - Мобильное меню работает
    - Нет 404 на внутренних страницах
+   - В DevTools → Network стили приходят одним файлом из `/_astro/` (а не семью запросами)
+   - `https://adschecks.com/sitemap-index.xml` отдаёт 200, `/sitemap.xml` — 301 на него
+   - Если задан `PUBLIC_GA_ID` — внизу виден баннер согласия, и запрос к
+     `googletagmanager.com` появляется только после нажатия **Accept**
 
 ---
 
@@ -61,7 +88,7 @@ git push origin main
 4. Ищи строку с ошибкой (обычно `error` или `failed`)
 
 Самые частые причины:
-- Node version — убедись что в `.node-version` стоит `18`
+- Node version — убедись что в `.node-version` стоит `22` (Astro 6 требует Node 22)
 - Зависимости — запусти `npm install` локально и проверь нет ли ошибок
 - Путь output — должен быть `dist/client`, не `dist`
 
@@ -85,27 +112,58 @@ git push origin main
 AdsChecks/
 ├── src/
 │   ├── layouts/
-│   │   └── BaseLayout.astro    # шапка, навигация, футер
+│   │   └── BaseLayout.astro    # шапка, навигация, футер, баннер согласия, импорт CSS
+│   ├── components/             # PricingCards.astro, PricingCustomRow.astro
+│   ├── data/
+│   │   └── plans.ts            # цены тарифов + offers для JSON-LD
+│   ├── styles/                 # единственный источник CSS, бандлится Astro
+│   │   ├── index.css           # точка входа: порядок @layer + импорты
+│   │   ├── foundation.css
+│   │   ├── layout.css
+│   │   ├── components.css
+│   │   ├── hero.css
+│   │   ├── pages.css
+│   │   └── utilities.css
+│   ├── content/blog/           # markdown-статьи блога
+│   ├── content.config.ts       # схема коллекции blog
 │   └── pages/
 │       ├── index.astro         # главная
 │       ├── pricing/index.astro
 │       ├── faq/index.astro
 │       ├── about/index.astro
 │       ├── what-we-verify/index.astro
+│       ├── ad-slot-verification/index.astro
 │       ├── status-model/index.astro
+│       ├── blog/               # index.astro + [slug].astro
 │       ├── privacy-policy/index.astro
 │       ├── terms-and-conditions/index.astro
 │       ├── refund-policy/index.astro
 │       ├── legal-notice/index.astro
 │       └── 404.astro
-├── public/                     # статика (styles, assets, og.png, _redirects)
+├── public/                     # копируется как есть: script.js, assets/, og.png,
+│                               # robots.txt, _redirects, _headers
 ├── dist/                       # генерируется при билде, НЕ коммитить
+│   └── client/                 # ← это и есть output directory для CF Pages
 ├── astro.config.mjs
+├── playwright.config.js
 ├── package.json
-└── .node-version               # 18
+└── .node-version               # 22
 ```
 
-> Старые HTML-файлы (`index.html`, `pricing/index.html` и т.д.) остаются в репо — они не мешают Astro, просто не используются при сборке.
+> CSS не лежит в `public/`. Он живёт только в `src/styles/` и подключается импортом
+> `import '../styles/index.css'` в `BaseLayout.astro` — Astro бандлит и минифицирует его
+> в один файл с хешем в имени внутри `/_astro/`. Файл в `public/` попал бы в сборку
+> нетронутым и в обход бандлера, поэтому директории `public/styles/` быть не должно.
+
+### Что раздаёт Cloudflare из `public/`
+
+- `_redirects` — старые адреса (`/pricing-usage`, `/refunds-disputes`),
+  редирект `/sitemap.xml` → `/sitemap-index.xml`, канонизация `.html` → директория.
+- `_headers` — security-заголовки (`nosniff`, `Referrer-Policy`, `X-Frame-Options: DENY`,
+  `Permissions-Policy`, HSTS) и годовой immutable-кэш для `/_astro/*` и `/assets/*`.
+  Кэш на `/_astro/*` безопасен именно потому, что Astro пишет хеш в имя файла.
+- `robots.txt` — ссылается на `https://adschecks.com/sitemap-index.xml`
+  (интеграция sitemap отдаёт индекс, а не плоский `sitemap.xml`).
 
 ---
 
