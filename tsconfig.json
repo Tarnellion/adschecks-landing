@@ -3,10 +3,27 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@styles/*": ["./styles/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ]
     }
-  }
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "tests",
+    "scripts",
+    "design",
+    "playwright.config.js",
+    "lighthouserc.mjs"
+  ]
 }

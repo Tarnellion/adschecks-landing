@@ -1,0 +1,4 @@
+# Files that must never reach the CDN even if they appear in public/
+.DS_Store
+**/.DS_Store
+Thumbs.db

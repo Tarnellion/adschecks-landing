@@ -22,8 +22,12 @@ playwright.offline.config.js
 *.swo
 *~
 
-# Claude Code
-.claude/
+# Claude Code — skills, agents and shared settings ARE versioned:
+# they are project infrastructure and must change alongside the code
+# they describe. Only machine-local and scratch paths are ignored.
+.claude/settings.local.json
+.claude/*.local.json
+.claude/worktrees/
 .playwright-mcp/
 
 # Internal working files

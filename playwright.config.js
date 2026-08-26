@@ -31,7 +31,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // ubuntu-latest has 4 cores; one worker turned a 30s suite into 5-7 minutes.
+  workers: process.env.CI ? 2 : undefined,
   reporter: [['list'], ['html', { open: 'never' }]],
   timeout: 30_000,
   expect: { timeout: 7_000 },
@@ -51,7 +52,10 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run build && npm run preview',
+    // CI builds once in its own step and sets SKIP_BUILD, so the runner does not
+    // pay for a second `astro build` here. Locally the build is part of the command
+    // so `npm test` always tests current source rather than a stale dist/.
+    command: process.env.SKIP_BUILD ? 'npm run preview' : 'npm run build && npm run preview',
     url: `${BASE_URL}/`,
     // Locally: reuse whatever is already on 4321 instead of rebuilding.
     // On CI: always build from scratch.

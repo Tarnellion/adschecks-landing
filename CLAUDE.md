@@ -23,6 +23,71 @@ npm run test:debug           # Playwright debug mode
 
 Node **22** is required (`.node-version`); Astro 6 will not run on 18.
 
+## Verification contract
+
+**Source is not evidence. The built output is.** Two failures in this repo were invisible in the
+source files and only showed up when the build was measured:
+
+- Astro does not evaluate `{...}` inside `<script>` element content. `<script type="application/ld+json">{JSON.stringify({...})}</script>`
+  shipped literal source text to the browser; 32 of 34 schema.org blocks were invalid for months.
+  Every block now uses `set:html` — see the structured data section.
+- A computed-style comparison after a CSS cleanup listed `background-color` but not `background-image`,
+  so a disappearing background would have passed. `tests/assets-resolve.spec.js` now checks that
+  everything a page *references* actually resolves, rather than a hand-maintained property list.
+
+Do not report a front-end change as working until the built site has been measured. Run the gate
+before any commit that touches `src/`, `public/` or `src/styles/`.
+
+## Budgets
+
+Current actuals — a budget above reality catches nothing, so tighten these when they improve.
+
+| | Now | Ceiling |
+|---|---|---|
+| CSS bundle, gzip | 15.6 KB | 16 KB |
+| Fonts (6 × woff2, latin only) | 145 KB | 145 KB |
+| First-party stylesheets per page | 1 | 1 |
+| Third-party origins | 0 | 0 |
+| Routes | 15 | — |
+| Valid ld+json blocks | 34 | all |
+
+## Adding a route
+
+`ROUTES` in `tests/_helpers.js` is a hand-written list. **A page that is not registered there is
+invisible to five specs and roughly 40 assertions.** When adding a page or post: create it under
+`src/pages/` (`trailingSlash: 'always'`, `build.format: 'directory'`), pass the required `BaseLayout`
+props, emit any JSON-LD with `set:html`, register it in `ROUTES`, link it from nav or footer, add a
+`_redirects` entry if a URL changed, then run the gate.
+
+## Deploy reality
+
+Pushing to `main` **is** the production build — Cloudflare Pages builds from the GitHub integration
+and there is no staging. Branch pushes get a preview at `*.pages.dev`, where analytics is disabled by
+a host check in the consent script. Rollback is a dashboard action; see `DEPLOY.md`.
+
+Never `git add .` — the working tree carries `.playwright-mcp/`, `dist/` and a gitignored `README.md`.
+Stage explicit paths. Commit messages follow Conventional Commits with a scope and a real sentence.
+Do not commit or push without being asked.
+
+## Docs map
+
+| File | What it is | Language |
+|---|---|---|
+| `CLAUDE.md` | Rules and invariants for the assistant | English |
+| `DEPLOY.md` | Cloudflare procedure, written for a human | Russian |
+| `ROADMAP.md` | History and backlog — read it when asking "why is it like this" | Mixed |
+| `.claude/skills/*` | Procedures: verification, visual review, design system, copy | English |
+| `README.md` | Local, gitignored, not a source of truth | English |
+
+## Known traps
+
+- `overflow-x: hidden` on `html`, `body` and `.section` makes clipping silent. Use
+  `findHorizontalOverflow`, never `scrollWidth > clientWidth`.
+- `.playwright-mcp/` is scratch output, not evidence.
+- `scripts/generate-social-images.py` is broken (hardcoded macOS Arial paths, writes to the wrong
+  path, uses the wrong font) and is wired to nothing. Do not rely on it.
+- `initCountUp()` writes `textContent` into `.pt-card__num`, destroying any nested markup.
+
 ## Architecture
 
 ### Framework
@@ -110,27 +175,40 @@ This is load-bearing. Astro does **not** evaluate `{...}` expressions inside `<s
 - `initRevealAnimations()` — IntersectionObserver for `.reveal` → `.is-visible`
 - `initCountUp()` — animates pricing numbers (`data-count`) on scroll into view
 
-### Analytics and consent
-GA4 is wired in `BaseLayout.astro` and gated twice:
-1. **Build time** — the whole block is `{gaId && (...)}` where `gaId = import.meta.env.PUBLIC_GA_ID`. Without that env var, neither the consent banner nor any gtag code is rendered at all. This is deliberate: local and preview builds ship zero analytics.
-2. **Runtime** — the Google script is only injected after the visitor clicks **Accept**. The choice is stored in `localStorage` under `consent-analytics` (`granted` / `denied`). Declining or ignoring the banner means `googletagmanager.com` is never requested.
-
-`/privacy-policy/` documents this behaviour; keep the two in sync if the mechanism changes.
-
 ### Testing
-Playwright is configured in `playwright.config.js`: Chromium only, `testDir: './tests'`, HTML reporter, `baseURL: http://localhost:3000`, `webServer: npx serve . -p 3000`.
+`playwright.config.js`: Chromium only, `testDir: './tests'`, `baseURL: http://localhost:4321`. The
+`webServer` runs `npm run build && npm run preview`, so the suite tests a **real production build
+served through wrangler** — `public/_headers` and `public/_redirects` are live during the run and
+are themselves asserted. `PUBLIC_GA_ID` defaults to `G-TEST12345` so the consent banner exists in
+the test build; Google hosts are intercepted and aborted, so the suite never contacts Google.
 
-Caveats as of 2026-08-24 — verify before relying on a green run:
-- The `tests/` directory is not present in the working tree; `npm test` reports "No tests found". The suite is being restored.
-- The `webServer` command serves the **repo root**, not the Astro output. Specs that load a real page need it pointed at the built site (`dist/client`) or at `astro preview`.
+| Spec | Protects |
+|------|----------|
+| `responsive-overflow.spec.js` | No element spills past the viewport — 16 routes × 7 widths |
+| `assets-resolve.spec.js` | Every `url()`, `src`, `srcset` and icon a page references actually resolves |
+| `a11y.spec.js` | axe-core across every route at 375 and 1280 |
+| `structured-data.spec.js` | Every ld+json block parses; no unevaluated Astro expression in the HTML |
+| `delivery-and-seo.spec.js` | Redirects, security headers, cache policy, robots, sitemap, canonicals |
+| `analytics-consent.spec.js` | Zero Google requests before consent; Decline and Accept both persist |
+| `pricing.spec.js` | Card prices match the JSON-LD offers; heading semantics on `/pricing/` |
+| `layout-invariants.spec.js` | CTA row/column, grid track counts, mobile nav |
+| `head-assets.spec.js` | Exactly one first-party stylesheet; no `@import`; `@layer` order intact |
+| `skip-link.spec.js` | Skip link is the first tab stop and reaches `#main` |
 
-Layout invariants the suite is meant to protect (each one is backed by a real rule in `src/styles/`):
-- `.hero__actions` is `flex-direction: row` at ≥641px and stacks below that (`hero.css`)
-- `.hero__inner` is one column below 980px and a 12-column grid at ≥980px, with `.hero__copy` spanning 6 (`hero.css`)
-- `.bento` collapses every card to full width at ≤768px (`components.css`)
-- No horizontal overflow at any breakpoint — `foundation.css` sets `overflow-x: hidden` on `html` and `body`, so a regression hides rather than announcing itself. `initPageDiagnostics()` (`?check`) exposes `scrollWidth - clientWidth` on `documentElement.dataset` for exactly this reason.
+**Reuse `tests/_helpers.js` before writing a new spec.** It exports `ROUTES` (the canonical route
+list), `WIDTHS`, `blockExternalFonts`, `waitForFonts`, `useReducedMotion`, `findHorizontalOverflow`
+and `gridColumnCount`.
 
-`playwright.offline.config.js` is a local-only variant pinned to a cached Chromium binary; it is gitignored.
+`findHorizontalOverflow` deliberately does **not** use `scrollWidth > clientWidth`: `foundation.css`
+sets `overflow-x: hidden` on both `html` and `body` and `.section` adds `overflow: hidden`, so
+clipping is silent — it shows up neither as a scrollbar nor in `scrollWidth`. The helper walks the
+box tree instead, skipping `[aria-hidden="true"]` subtrees and anything inside a scrollable ancestor.
+
+Layout invariants the suite pins (changing these requires changing the tests in the same commit):
+- `.hero__actions` — `row` at ≥641px, `column` below
+- `.check-grid` — 1 track at 375px, 2 at 1280px; `.pt-grid` — 1 and 3. `gridColumnCount` reads
+  `grid-template-columns` as a string, so replacing grid with flex fails even if the result looks identical
+- `/pricing/` — exactly one `h1` and exactly three `h2`, all three being `h2.pt-card__name`
 
 ### Responsive Breakpoints
 Viewports to check when reviewing a layout change: **320px, 375px, 430px** (mobile), **768px** (tablet), **1024px, 1280px, 1440px** (desktop).
@@ -166,7 +244,11 @@ There are none. The marketing site has no `<form>` element and no form backend. 
 9. Mid-page CTA
 10. Pricing (`#terms-overview`) — "Pricing plans" — `<PricingCards>` + `<PricingCustomRow>`
 11. FAQ (`#faq`) — 6 `<details class="faq-item">`
-12. Final CTA (`#get-started`) — "Start your free trial" + `.trust-bar`
+12. Final CTA (`#get-started`) — "Start verifying your ad slots" + `.trust-bar`
+
+> There is **no free trial**. The promise was removed from all 88 places it appeared in `b95c36c`
+> because the product does not offer one. Do not reintroduce "free trial" / "try free" wording —
+> the Free plan exists only for registration and stays locked until a plan is paid for.
 
 ## Key CSS Variables
 
