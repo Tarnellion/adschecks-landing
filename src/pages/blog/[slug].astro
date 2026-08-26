@@ -87,7 +87,8 @@ const canonical = `https://adschecks.com/blog/${post.id}/`;
           // without this the table content is mouse-only (WCAG 2.1.1).
           wrapper.tabIndex = 0;
           wrapper.setAttribute('role', 'region');
-          wrapper.setAttribute('aria-label', table.caption?.textContent?.trim() || 'Table, scroll horizontally to see more');
+          const caption = table.querySelector('caption');
+          wrapper.setAttribute('aria-label', caption?.textContent?.trim() || 'Table, scroll horizontally to see more');
           table.parentNode?.insertBefore(wrapper, table);
           wrapper.appendChild(table);
         });

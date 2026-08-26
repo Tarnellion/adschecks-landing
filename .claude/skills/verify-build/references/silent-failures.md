@@ -72,3 +72,30 @@ hostname appears to work in both branches. Serve the static build directly when 
 needed.
 
 **Now caught by.** Nothing automatic. `lsof -ti:4321 | xargs kill -9` before a suspicious run.
+
+---
+
+## 5. axe returns `incomplete`, and discarding it looks like a pass
+
+**Symptom.** The accessibility gate reported zero violations on the homepage while **197 nodes** —
+most of the text on the page — had never been evaluated. axe refuses to judge colour contrast when
+an ancestor carries a large absolutely-positioned pseudo element or a gradient background; it
+returns `incomplete` rather than a verdict. The spec destructured only `{ violations }`, so those
+197 nodes silently vanished.
+
+**What it hid.** Flattening the decorative layers for the audit exposed four `.check-item__note`
+elements at 3.24:1 and three in-text links distinguished from their surrounding text by colour
+alone at 1.31–1.5:1. All were real WCAG AA failures sitting in production.
+
+**Why it is dangerous.** A gate that cannot evaluate something and reports nothing is
+indistinguishable from a gate that evaluated it and found it clean. This is the same shape as
+failure #2: absence of a finding was read as absence of a problem.
+
+**Now handled by.** `tests/a11y.spec.js` injects `DECORATIVE_LAYERS_OFF` before analysing, so axe
+computes against the solid token background the reader actually perceives.
+
+**Residual hole, measured not assumed.** Flattening reduces the unresolved set on `/` from 197 to
+166 nodes; nested gradients elsewhere still defeat axe. Those are recorded as a
+`contrast-unresolved` annotation on each test rather than asserted to zero — a red gate nobody can
+satisfy gets disabled, and then it protects nothing. Closing the remainder means computing contrast
+against sampled rendered pixels, which has not been built.

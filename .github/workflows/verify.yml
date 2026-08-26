@@ -49,9 +49,11 @@ jobs:
         run: npm run typecheck
 
       - name: Build
+        # No PUBLIC_GA_ID here on purpose. An unset repo variable expands to an
+        # empty string, and a real env var overrides .env.production — the build
+        # would ship without the consent banner and analytics-consent.spec.js
+        # would silently self-skip, which is exactly the check we least want to lose.
         run: npm run build
-        env:
-          PUBLIC_GA_ID: ${{ vars.PUBLIC_GA_ID }}
 
       - name: Budgets
         # Fast static gate — fails in ~1s rather than after the full suite.

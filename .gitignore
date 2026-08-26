@@ -34,3 +34,6 @@ playwright.offline.config.js
 AGENTS.md
 Todo.md
 README.md
+
+# Lighthouse CI run output
+.lighthouseci/

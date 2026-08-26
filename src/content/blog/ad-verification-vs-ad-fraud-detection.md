@@ -52,7 +52,7 @@ Fraud detection is typically integrated into DSPs, measurement platforms, or thi
 
 ## Where they differ
 
-| | Ad slot verification | Ad fraud detection |
+| Aspect | Ad slot verification | Ad fraud detection |
 |---|---|---|
 | **Question answered** | Is this slot rendering right now? | Is this traffic real? |
 | **Level of analysis** | Page-level observation | Impression/traffic-level analysis |

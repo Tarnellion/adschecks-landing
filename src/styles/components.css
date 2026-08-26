@@ -856,7 +856,7 @@
 
 .check-item__note {
     font-size: var(--xs);
-    color: rgba(var(--text-rgb), 0.38);
+    color: rgba(var(--text-rgb), 0.56);
     font-style: italic;
     line-height: 1.5;
 }

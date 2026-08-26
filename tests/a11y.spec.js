@@ -31,6 +31,18 @@ import {
 
 const A11Y_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
+/**
+ * Decorative layers that stop axe from computing contrast. Every selector here
+ * must be a purely visual overlay with a solid token colour beneath it — never
+ * something that changes the colour a reader actually sees.
+ */
+const DECORATIVE_LAYERS_OFF = `
+  body::before, body::after { display: none !important; }
+  html, body { background-image: none !important; }
+  .section, .section--alt, .section--accent, .hero, .map-viz, .map-viz__inner,
+  .cta, .bento__item, .pt-card, .doc-card, .sm-page { background-image: none !important; }
+`;
+
 /** 375 = the narrowest phone the design commits to; 1280 = the primary desktop width. */
 const WIDTHS = [375, 1280];
 
@@ -98,7 +110,36 @@ for (const route of ALL_ROUTES) {
       // violations, which would be a false pass.
       await expect(page.locator('#main')).toHaveCount(1);
 
-      const { violations } = await new AxeBuilder({ page }).withTags(A11Y_TAGS).analyze();
+      // axe refuses to judge colour contrast when an ancestor carries a large
+      // absolutely-positioned pseudo element or a gradient background: it returns
+      // `incomplete` rather than a verdict. On this site's homepage that was 197
+      // nodes — the overwhelming majority of the page silently unchecked, and it
+      // hid four real failures at 3.24:1 plus three colour-only links.
+      //
+      // These layers are decorative (body::before/::after and section gradient
+      // washes, all aria-hidden), and the solid token background sits underneath.
+      // Flattening them for the audit lets axe compute against the colour the
+      // reader actually perceives instead of abandoning the check.
+      await page.addStyleTag({ content: DECORATIVE_LAYERS_OFF });
+
+      const { violations, incomplete } = await new AxeBuilder({ page })
+        .withTags(A11Y_TAGS)
+        .analyze();
+
+      // Flattening cuts the unresolved set roughly in half but does not empty it:
+      // nested gradients elsewhere still defeat axe. Record what stayed
+      // unresolved instead of pretending the page was fully checked. This is a
+      // known, measured hole in the gate — see
+      // .claude/skills/verify-build/references/silent-failures.md.
+      const unresolved = incomplete
+        .filter((v) => v.id === 'color-contrast')
+        .reduce((sum, v) => sum + v.nodes.length, 0);
+      if (unresolved > 0) {
+        test.info().annotations.push({
+          type: 'contrast-unresolved',
+          description: `${unresolved} node(s) on ${route.path} @ ${width}px — axe could not compute a background colour`,
+        });
+      }
 
       // Assert on one-line summaries, never on the raw axe objects: comparing
       // the objects makes Playwright print a page of nested JSON that buries

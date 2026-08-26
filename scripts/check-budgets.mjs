@@ -130,9 +130,15 @@ if (cssGzip > BUDGET.cssGzipBytes) {
 
 // ── 5. No unexpected third-party origins ─────────────────────────────────────
 const seenHosts = new Map();
-for (const file of htmlFiles) {
-  const html = readFileSync(file, 'utf8');
-  for (const match of html.matchAll(/https?:\/\/([a-z0-9.-]+)/gi)) {
+// Markup is not enough. @font-face src and background url() live in the bundled
+// CSS and a beacon would live in script.js — a font quietly moving back to a CDN
+// is exactly the regression this budget exists to prevent, and it would never
+// appear in the HTML. .xml/.txt/.svg are excluded on purpose: their namespace
+// URIs (www.w3.org, www.sitemaps.org) are identifiers, not origins.
+const originScanned = files.filter((f) => ['.html', '.css', '.js'].includes(extname(f)));
+for (const file of originScanned) {
+  const text = readFileSync(file, 'utf8');
+  for (const match of text.matchAll(/(?:https?:)?\/\/([a-z0-9][a-z0-9.-]*\.[a-z]{2,})/gi)) {
     const host = match[1].toLowerCase();
     if (!seenHosts.has(host)) seenHosts.set(host, relative(DIST, file));
   }
